@@ -43,7 +43,7 @@ export class AuthService {
               this.userData = new User(user);
               localStorage.setItem('user', JSON.stringify(this.userData));
               localStorage.setItem('token', token);
-              this.router.navigate(['']);
+              this.router.navigate(['admin']);
               // got to the main page
               resolve(true);
             } else {
@@ -74,7 +74,7 @@ export class AuthService {
   SignOut() {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
-    this.router.navigate([`/login`]).then(() => {
+    this.router.navigate([``]).then(() => {
     });
   }
 

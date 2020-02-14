@@ -18,8 +18,8 @@ export class SecureInnerPagesGuardGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (this.authService.isLoggedIn) {
       this.toaster.info("You are not allowed to access this URL!");
-      this.router.navigate(['/dashboard'])
-    }
+      this.router.navigate(['admin'])
+    } else 
     return true;
   }
 

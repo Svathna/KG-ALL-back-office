@@ -11,9 +11,8 @@ type FormErrors = { [u in UserFields]: string };
   templateUrl: './auth-page.component.html',
   styleUrls: ['./auth-page.component.css']
 })
-export class AuthPageComponent {
-  ngOnInit(): void {
-    throw new Error("Method not implemented.");
+export class AuthPageComponent implements OnInit{
+  ngOnInit() {
   }
   public newUser = false;
   public loginForm: FormGroup;

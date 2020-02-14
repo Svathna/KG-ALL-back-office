@@ -10,7 +10,7 @@
         <!-- Logo - style you can find in header.scss -->
         <!-- ============================================================== -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" [routerLink]="['']">
                 <span fxShow="false" fxShow.gt-xs>
                  <!-- dark Logo text -->
                  <!-- <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo"> -->
@@ -29,7 +29,11 @@
         <!-- ============================================================== -->
         <!-- app header component - style you can find in header.scss / header.component.ts-->
         <!-- ============================================================== -->
-        <app-header></app-header>
+        <!-- <button mat-raised-button (click)="goToLoginPage()">
+            See My Tree
+        </button> -->
+        <button mat-raised-button (click)="signOut()">
+            <mat-icon>exit_to_app</mat-icon> Sign Out </button>
     </mat-toolbar>
     <!-- ============================================================== -->
     <!-- End Topbar - style you can find in pages.scss -->

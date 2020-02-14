@@ -23,6 +23,7 @@ import { SpinnerComponent } from './shared/spinner.component';
 import { AuthPageComponent } from './auth-page/auth-page.component';
 import { AuthService } from './service/auth.service';
 import { SecureInnerPagesGuardGuard } from './secure-inner-pages-guard.guard';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SecureInnerPagesGuardGuard } from './secure-inner-pages-guard.guard';
     AppHeaderComponent,
     SpinnerComponent,
     AppSidebarComponent,
-    AuthPageComponent
+    AuthPageComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
