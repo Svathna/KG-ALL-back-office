@@ -37,13 +37,13 @@ export class AuthService {
         .subscribe(( response: LoginResponse) => {
           const { token, user } = response;
           if (user && response.success) {
-            if (user.type === UserType.ADMIN || user.type === UserType.NORMAL_USER) {
+            if (user.type === UserType.ADMIN) {
               // OH YEAH! logged in successfuly
               this.toster.success('Login succesful');
               this.userData = new User(user);
               localStorage.setItem('user', JSON.stringify(this.userData));
               localStorage.setItem('token', token);
-              this.router.navigate(['admin']);
+              this.router.navigate(['']);
               // got to the main page
               resolve(true);
             } else {
@@ -74,7 +74,7 @@ export class AuthService {
   SignOut() {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
-    this.router.navigate([``]).then(() => {
+    this.router.navigate(['login']).then(() => {
     });
   }
 
