@@ -9,7 +9,8 @@ export interface Menu {
 
 const MENUITEMS = [
   { state: 'user', type: 'link', name: 'Users' },
-  { state: 'tree', type: 'link', name: 'Tress' },
+  { state: 'tree', type: 'link', name: 'Trees' },
+  { state: 'simple-form', type: 'link', name: 'Simple Form' },
   // { state: 'dashboard', name: 'Dashboard', type: 'link', icon: 'av_timer' },
   // { state: 'button', type: 'link', name: 'Buttons', icon: 'crop_7_5' },
   // { state: 'grid', type: 'link', name: 'Grid List', icon: 'view_comfy' },

@@ -34,6 +34,7 @@ import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
 import { TableComponent } from './table/table.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { TreesComponent } from './trees/trees.component';
+import { SimpleFormComponent } from './simple-form/simple-form.component';
 
 @NgModule({
   imports: [
@@ -68,7 +69,8 @@ import { TreesComponent } from './trees/trees.component';
     SliderComponent,
     SlideToggleComponent,
     TableComponent,
-    TreesComponent
+    TreesComponent,
+    SimpleFormComponent
   ]
 })
 export class MaterialComponentsModule {}
