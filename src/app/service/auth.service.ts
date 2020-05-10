@@ -27,42 +27,44 @@ export class AuthService {
   ngOnInit(): void { }
 
   // Sign in function
-  SignIn(email, password) {
+  SignIn(userName, password) {
     return new Promise((resolve, reject) => {
       try {
-        this.http.post(environment.apiURL + '/user/login', {
-          email,
+        console.log(userName, password)
+        this.http.post(environment.apiURL + '/user/admin/login', {
+          userName,
           password,
         })
-        .subscribe(( response: LoginResponse) => {
-          const { token, user } = response;
-          if (user && response.success) {
-            if (user.type === UserType.ADMIN) {
-              // OH YEAH! logged in successfuly
-              this.toster.success('Login succesful');
-              this.userData = new User(user);
-              localStorage.setItem('user', JSON.stringify(this.userData));
-              localStorage.setItem('token', token);
-              this.router.navigate(['']);
-              // got to the main page
-              resolve(true);
+          .subscribe((response: LoginResponse) => {
+            const { token, user } = response;
+            if (user && response.success) {
+              if (user.type === UserType.ADMIN) {
+                // OH YEAH! logged in successfuly
+                this.toster.success('Login succesful');
+                this.userData = new User(user);
+                localStorage.setItem('user', JSON.stringify(this.userData));
+                localStorage.setItem('token', token);
+                this.router.navigate(['']);
+                // got to the main page
+                resolve(true);
+              } else {
+                localStorage.setItem('user', null);
+                localStorage.setItem('token', null);
+                this.toster.error('No Permission To Acess');
+                reject('No Permission To Acess');
+              }
             } else {
               localStorage.setItem('user', null);
               localStorage.setItem('token', null);
-              this.toster.error('No Permission To Acess');
-              reject('No Permission To Acess');
+              this.toster.error('No user found');
+              reject('No user found');
             }
-          } else {
-            localStorage.setItem('user', null);
-            localStorage.setItem('token', null);
-            this.toster.error('No user found');
-            reject('No user found');
-          }
-        }, (res) => {
-          const errorMessage = res.error.message;
-          this.toster.error(errorMessage);
-          reject('Error, logging in');
-        });
+          }, (res) => {
+            console.log(res);
+            const errorMessage = res.error.message;
+            this.toster.error(errorMessage);
+            reject('Error, logging in');
+          });
       } catch (err) {
         this.toster.error(err);
         reject(err);

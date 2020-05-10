@@ -5,17 +5,30 @@ Email: niravjoshi87@gmail.com
 File: scss
 */
 // Variables
-@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700");
 
-$bodyfont: 'Poppins', sans-serif;
-$headingfont: 'Poppins', sans-serif;
+$bodyfont: "Poppins", sans-serif;
+$headingfont: "Poppins", sans-serif;
 
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 
 /*Material Theme Colors*/
 
-$primary: mat-palette($mat-green, 600);
-$accent: mat-palette($mat-indigo, 500);
+$kg-all-blue: (
+  500: #3069bb,
+  600: #75bde0,
+  contrast: (
+    500: $light-primary-text,
+    600: $light-primary-text,
+  ),
+);
+
+$custom_palettes: (
+  kg-all-blue: $kg-all-blue,
+);
+
+$primary: mat-palette($kg-all-blue);
+$accent: mat-palette($kg-all-blue, 600);
 $warn: mat-palette($mat-pink, 500);
 $theme: mat-light-theme($primary, $accent, $warn);
 $background: map-get($theme, background);
@@ -24,7 +37,7 @@ $foreground: map-get($theme, foreground);
 @include mat-core();
 
 $custom-typography: mat-typography-config(
-  $font-family: 'Poppins, sans-serif'
+  $font-family: "Poppins, sans-serif",
 );
 
 // Override the typography in the core CSS.
@@ -37,22 +50,22 @@ $custom-typography: mat-typography-config(
 
 /*Theme Colors*/
 
-$topbar: #0C631E;
-$sidebar: #fff;
-$sidebar-white: #e5edef;
-$sidebar-alt: #f2f6f8;
+$topbar: #75bde0;
+$sidebar: #172740;
+$sidebar-white: #172740;
+$sidebar-alt: #172740;
 $bodycolor: #eef5f9;
 $headingtext: #455a64;
 $bodytext: #67757c;
-$sidebar-text: #607d8b;
+$sidebar-text: #fff;
 $sidebar-icons: #99abb4;
 
 $font-16: 16px;
 
 $light-text: #a6b7bf;
-$themecolor: #0C631E;
-$themecolor-alt: #0C631E;
-$themecolor-dark: #0C631E;
+$themecolor: #75bde0;
+$themecolor-alt: #3069bb;
+$themecolor-dark: #75bde0;
 
 /*bootstrap Color*/
 $danger: #fc4b6c;

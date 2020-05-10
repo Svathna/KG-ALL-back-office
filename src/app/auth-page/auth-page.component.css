@@ -1,5 +1,5 @@
 .auth-bg {
-  background: url(../../assets/images/ptt-background.jpg);
+  /* background-color: #172740; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,5 +23,5 @@ input::placeholder {
 }
 
 .card {
-  background-color: gray !important;
+  background-color: #172740 !important;
 }

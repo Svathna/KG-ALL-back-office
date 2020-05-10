@@ -1,38 +1,42 @@
 <!-- ============================================================== -->
 <!-- Main wrapper - style you can find in pages.scss -->
 <!-- ============================================================== -->
-<div class="main-container"> 
+<div class="main-container">
+  <!-- ============================================================== -->
+  <!-- Topbar - style you can find in header.scss -->
+  <!-- ============================================================== -->
+  <mat-toolbar color="primary" class="topbar telative">
     <!-- ============================================================== -->
-    <!-- Topbar - style you can find in header.scss -->
+    <!-- Logo - style you can find in header.scss -->
     <!-- ============================================================== -->
-    <mat-toolbar color="primary" class="topbar telative">
-        <!-- ============================================================== -->
-        <!-- Logo - style you can find in header.scss -->
-        <!-- ============================================================== -->
-        <div class="navbar-header">
-            <a class="navbar-brand" [routerLink]="['']">
-                <span fxShow="false" fxShow.gt-xs>
-                 <!-- dark Logo text -->
-                 <!-- <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo"> -->
-                 <!-- Light Logo text -->    
-                 <img src="assets/images/ppt-sidebar-logo.png" class="light-logo" alt="homepage">
-                </span> </a>
-        </div>
-        <!-- ============================================================== -->
-        <!-- sidebar toggle -->
-        <!-- ============================================================== -->
-        
-        <span fxFlex></span>
-        <!-- ============================================================== -->
-        <!-- app header component - style you can find in header.scss / header.component.ts-->
-        <!-- ============================================================== -->
-        
-        <button mat-raised-button (click)="goToLoginPage()">
-            See My Tree
-        </button>
-    </mat-toolbar>
+    <div class="navbar-header">
+      <a class="navbar-brand" [routerLink]="['']">
+        <span fxShow="false" fxShow.gt-xs>
+          <!-- dark Logo text -->
+          <!-- <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo"> -->
+          <!-- Light Logo text -->
+          <img
+            src="assets/images/KG-ALL-logo.svg"
+            class="light-logo"
+            alt="homepage"
+          />
+        </span>
+      </a>
+    </div>
     <!-- ============================================================== -->
-    <!-- End Topbar - style you can find in pages.scss -->
+    <!-- sidebar toggle -->
     <!-- ============================================================== -->
-    
+
+    <span fxFlex></span>
+    <!-- ============================================================== -->
+    <!-- app header component - style you can find in header.scss / header.component.ts-->
+    <!-- ============================================================== -->
+
+    <button mat-raised-button (click)="goToLoginPage()">
+      See My Tree
+    </button>
+  </mat-toolbar>
+  <!-- ============================================================== -->
+  <!-- End Topbar - style you can find in pages.scss -->
+  <!-- ============================================================== -->
 </div>

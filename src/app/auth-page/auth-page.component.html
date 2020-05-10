@@ -1,30 +1,8 @@
-<mat-toolbar color="primary" class="topbar telative">
-  <!-- ============================================================== -->
-  <!-- Logo - style you can find in header.scss -->
-  <!-- ============================================================== -->
-  <div class="navbar-header">
-    <a class="navbar-brand" [routerLink]="['']">
-      <span fxShow="false" fxShow.gt-xs>
-        <!-- dark Logo text -->
-        <!-- <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo"> -->
-        <!-- Light Logo text -->
-        <img src="assets/images/ppt-sidebar-logo.png" class="light-logo" alt="homepage">
-      </span> </a>
-  </div>
-  <!-- ============================================================== -->
-  <!-- sidebar toggle -->
-  <!-- ============================================================== -->
-
-  <span fxFlex></span>
-  <!-- ============================================================== -->
-  <!-- app header component - style you can find in header.scss / header.component.ts-->
-  <!-- ============================================================== -->
-</mat-toolbar>
 <div class="auth-bg">
   <div class="authentication-box">
     <div class="card" style="width: 500px;">
       <div class="text-center">
-        <img src="assets/images/ppt-sidebar-logo.png" />
+        <img src="assets/images/KG-ALL-logo.svg" />
       </div>
       <div class="card-body text-white">
         <div class="text-center">
@@ -33,42 +11,54 @@
         </div>
         <form [formGroup]="loginForm" *ngIf="!newUser">
           <div class="form-group">
-            <label class="col-form-label pt-0"><strong>Email</strong></label>
-            <input class="form-control rounded border" formControlName="email" type="email" required=""
-              placeholder="email" />
-            <div *ngIf="
-                loginForm.controls.email.touched &&
-                loginForm.controls.email.errors?.required
-              " class="text text-danger mt-1">
-              Email is required
-            </div>
-            <div *ngIf="
-                loginForm.controls.email.touched &&
-                loginForm.controls.email.errors?.email
-              " class="text text-danger mt-1">
-              Invalid Email
+            <label class="col-form-label pt-0"><strong>Username</strong></label>
+            <input
+              class="form-control rounded border"
+              formControlName="userName"
+              required
+              placeholder="Username"
+            />
+            <div
+              *ngIf="
+                loginForm.controls.userName.touched &&
+                loginForm.controls.userName.errors?.required
+              "
+              class="text text-danger mt-1"
+            >
+              Username is required
             </div>
           </div>
           <div class="form-group">
             <label class="col-form-label"><strong>Password</strong></label>
             <show-hide-password btnStyle="primary" [btnOutline]="false">
-              <input class="form-control rounded border" type="password" formControlName="password" required=""
-                placeholder="password" />
+              <input
+                class="form-control rounded border"
+                type="password"
+                formControlName="password"
+                required=""
+                placeholder="password"
+              />
             </show-hide-password>
-            <div *ngIf="
+            <div
+              *ngIf="
                 loginForm.controls.password.touched &&
                 loginForm.controls.password.errors?.required
-              " class="text text-danger mt-1">
+              "
+              class="text text-danger mt-1"
+            >
               Password is required
             </div>
           </div>
           <div class="form-group form-row row mt-3 mb-0">
             <div class="col text-center">
-              <button class="btn btn-primary" [disabled]="!loginForm.valid " (click)="login(loginForm.value)"
-                type="submit">
+              <button
+                class="btn btn-primary"
+                [disabled]="!loginForm.valid"
+                (click)="login(loginForm.value)"
+                type="submit"
+              >
                 <span>{{ authService.showLoader ? "" : "Login" }}</span>
               </button>
-
             </div>
           </div>
         </form>

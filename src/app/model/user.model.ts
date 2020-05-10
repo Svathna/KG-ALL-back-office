@@ -1,26 +1,22 @@
 export enum UserType {
-    NORMAL_USER = 1,
-    ADMIN = 2,
+    ADMIN = 1,
+    NORMAL_USER = 2,
 }
 
 export class User {
-    fullName: string;
+    userName: string;
     type: UserType;
-    email: string;
-    password: string;
+    phoneNumber: number;
     registrationTokens: string[];
     deleted: boolean;
-    photo: string;
     _id: string;
 
     constructor(user) {
-        this.fullName = user.fullName;
+        this.userName = user.userName;
         this.type = user.type ? user.type : null;
-        this.email = user.email;
-        this.password = user.password;
+        this.phoneNumber = user.phoneNumber;
         this.registrationTokens = user.registrationTokens;
         this.deleted = user.deleted;
-        this.photo = user.photo;
         this._id = user._id;
     }
 }
