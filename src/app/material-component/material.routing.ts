@@ -17,11 +17,21 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
 import { SliderComponent } from './slider/slider.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
 import { TableComponent } from './table/table.component';
+import { TreesComponent } from './trees/trees.component';
+import { SimpleFormComponent } from './simple-form/simple-form.component';
 
 export const MaterialRoutes: Routes = [
   {
-    path: 'table',
+    path: 'user',
     component: TableComponent
+  },
+  {
+    path: 'tree',
+    component: TreesComponent
+  },
+  {
+    path: 'simple-form',
+    component: SimpleFormComponent
   },
   {
     path: 'button',

@@ -9,13 +9,13 @@ import { HomePageComponent } from './home-page/home-page.component';
 
 export const AppRoutes: Routes = [
   {
-    path: 'admin',
+    path: '',
     component: FullComponent,
     canActivate: [AdminGuard],
     children: [
       {
-        path: 'admin',
-        redirectTo: '/dashboard',
+        path: '',
+        redirectTo: 'user',
         canActivate: [AdminGuard],
         pathMatch: 'full'
       },
@@ -25,7 +25,7 @@ export const AppRoutes: Routes = [
           () => import('./material-component/material.module').then(m => m.MaterialComponentsModule)
       },
       {
-        path: 'dashboard',
+        path: '',
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
       }
     ]
@@ -35,8 +35,8 @@ export const AppRoutes: Routes = [
     canActivate: [SecureInnerPagesGuardGuard],
     component: AuthPageComponent
   },
-  {
-    path: '',
-    component: HomePageComponent,
-  }
+  // {
+  //   path: '',
+  //   component: HomePageComponent,
+  // }
 ];

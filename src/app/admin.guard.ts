@@ -20,7 +20,7 @@ export class AdminGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (!this.authService.isLoggedIn) {
       this.toaster.warning("You need to login first!")
-      this.router.navigate(['']);
+      this.router.navigate(['login']);
       return false;
     }
     return true;

@@ -4,12 +4,14 @@ export interface Menu {
   state: string;
   name: string;
   type: string;
-  icon: string;
+  // icon: string;
 }
 
 const MENUITEMS = [
-  { state: 'table', type: 'link', name: 'Table', icon: 'view_list' },
-  { state: 'dashboard', name: 'Dashboard', type: 'link', icon: 'av_timer' },
+  { state: 'user', type: 'link', name: 'Users' },
+  { state: 'tree', type: 'link', name: 'Trees' },
+  { state: 'simple-form', type: 'link', name: 'Simple Form' },
+  // { state: 'dashboard', name: 'Dashboard', type: 'link', icon: 'av_timer' },
   // { state: 'button', type: 'link', name: 'Buttons', icon: 'crop_7_5' },
   // { state: 'grid', type: 'link', name: 'Grid List', icon: 'view_comfy' },
   // { state: 'lists', type: 'link', name: 'Lists', icon: 'view_list' },

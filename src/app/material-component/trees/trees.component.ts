@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { Tree } from '../../model/tree.model';
 import { UserService } from '../../service/user.service';
-import { User } from '../../model/user.model';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  selector: 'app-trees',
+  templateUrl: './trees.component.html',
+  styleUrls: ['./trees.component.scss']
 })
-export class TableComponent implements OnInit {
-  users: User[];
+export class TreesComponent implements OnInit {
+  trees: Tree[];
   loading: boolean = false;
 
   public settings = {
@@ -52,11 +52,17 @@ export class TableComponent implements OnInit {
           }
         },
       },
-      fullName: {
-        title: 'FullName'
+      name: {
+        title: 'Name'
       },
-      email: {
-        title: 'Email'
+      description: {
+        title: 'Desciption'
+      },
+      owner: {
+        title: 'Owner',
+        valuePrepareFunction: (owner) => {
+          return owner.fullName;
+        }
       }
     },
     actions: {
@@ -74,11 +80,10 @@ export class TableComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
-    this.userService.getAllUsers().subscribe((res: any) => {
-      this.users = res.users;
-      console.log(this.users);
+    this.userService.getAllTrees().subscribe((res: any) => {
+      this.trees = res.trees;
+      console.log(this.trees);
       this.loading = false;
     })
   }
-
 }

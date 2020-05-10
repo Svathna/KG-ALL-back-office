@@ -1,2 +1,1 @@
-<p>table works!</p>
-<ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
+<ng2-smart-table *ngIf="!loading" [settings]="settings" [source]="users"></ng2-smart-table>
