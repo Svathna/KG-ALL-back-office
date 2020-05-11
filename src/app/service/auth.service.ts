@@ -6,82 +6,82 @@ import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 
 export interface LoginResponse {
-  token: string;
-  user: User;
-  success: boolean;
+	token: string;
+	user: User;
+	success: boolean;
 }
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class AuthService {
-  public userData: any;
-  public showLoader: boolean = false;
+	public userData: User;
+	public showLoader: boolean = false;
 
-  constructor(
-    public router: Router,
-    private http: HttpClient,
-    public toster: ToastrService,
-  ) { }
+	constructor(
+		public router: Router,
+		private http: HttpClient,
+		public toster: ToastrService,
+	) { }
 
-  ngOnInit(): void { }
+	ngOnInit(): void { }
 
-  // Sign in function
-  SignIn(userName, password) {
-    return new Promise((resolve, reject) => {
-      try {
-        console.log(userName, password)
-        this.http.post(environment.apiURL + '/user/admin/login', {
-          userName,
-          password,
-        })
-          .subscribe((response: LoginResponse) => {
-            const { token, user } = response;
-            if (user && response.success) {
-              if (user.type === UserType.ADMIN) {
-                // OH YEAH! logged in successfuly
-                this.toster.success('Login succesful');
-                this.userData = new User(user);
-                localStorage.setItem('user', JSON.stringify(this.userData));
-                localStorage.setItem('token', token);
-                this.router.navigate(['']);
-                // got to the main page
-                resolve(true);
-              } else {
-                localStorage.setItem('user', null);
-                localStorage.setItem('token', null);
-                this.toster.error('No Permission To Acess');
-                reject('No Permission To Acess');
-              }
-            } else {
-              localStorage.setItem('user', null);
-              localStorage.setItem('token', null);
-              this.toster.error('No user found');
-              reject('No user found');
-            }
-          }, (res) => {
-            console.log(res);
-            const errorMessage = res.error.message;
-            this.toster.error(errorMessage);
-            reject('Error, logging in');
-          });
-      } catch (err) {
-        this.toster.error(err);
-        reject(err);
-      }
-    });
-  }
+	// Sign in function
+	SignIn(userName, password) {
+		return new Promise((resolve, reject) => {
+			try {
+				console.log(userName, password)
+				this.http.post(environment.apiURL + '/user/admin/login', {
+					userName,
+					password,
+				})
+					.subscribe((response: LoginResponse) => {
+						const { token, user } = response;
+						if (user && response.success) {
+							if (user.type === UserType.ADMIN) {
+								// OH YEAH! logged in successfuly
+								this.toster.success('Login succesful');
+								this.userData = user;
+								localStorage.setItem('user', JSON.stringify(this.userData));
+								localStorage.setItem('token', token);
+								this.router.navigate(['']);
+								// got to the main page
+								resolve(true);
+							} else {
+								localStorage.setItem('user', null);
+								localStorage.setItem('token', null);
+								this.toster.error('No Permission To Acess');
+								reject('No Permission To Acess');
+							}
+						} else {
+							localStorage.setItem('user', null);
+							localStorage.setItem('token', null);
+							this.toster.error('No user found');
+							reject('No user found');
+						}
+					}, (res) => {
+						console.log(res);
+						const errorMessage = res.error.message;
+						this.toster.error(errorMessage);
+						reject('Error, logging in');
+					});
+			} catch (err) {
+				this.toster.error(err);
+				reject(err);
+			}
+		});
+	}
 
-  // Sign out
-  SignOut() {
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
-    this.router.navigate(['login']).then(() => {
-    });
-  }
+	// Sign out
+	SignOut() {
+		localStorage.removeItem('user');
+		localStorage.removeItem('token');
+		this.router.navigate(['login']).then(() => {
+		});
+	}
 
-  get isLoggedIn(): boolean {
-    const token = localStorage.getItem('token');
-    return (token != null) ? true : false;
-  }
+	get isLoggedIn(): boolean {
+		const token = localStorage.getItem('token');
+		return (token != null) ? true : false;
+	}
 }
