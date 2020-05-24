@@ -9,9 +9,8 @@
           <h4>LOGIN</h4>
           <h6>Enter your Username and Password</h6>
         </div>
-        <form [formGroup]="loginForm" *ngIf="!newUser">
+        <form class="mt-5" [formGroup]="loginForm" *ngIf="!newUser">
           <div class="form-group">
-            <label class="col-form-label pt-0"><strong>Username</strong></label>
             <input
               class="form-control rounded border"
               formControlName="userName"
@@ -29,7 +28,6 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-form-label"><strong>Password</strong></label>
             <show-hide-password btnStyle="primary" [btnOutline]="false">
               <input
                 class="form-control rounded border"
@@ -49,7 +47,7 @@
               Password is required
             </div>
           </div>
-          <div class="form-group form-row row mt-3 mb-0">
+          <div class="form-group form-row row mt-4 mb-0">
             <div class="col text-center">
               <button
                 class="btn btn-primary"
