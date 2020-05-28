@@ -6,7 +6,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
   users: User[];
@@ -31,33 +31,9 @@ export class TableComponent implements OnInit {
           return cell.row.index + 1;
         }
       },
-      photo: {
-        title: 'Photo',
-        type: 'html',
-        editable: false,
-        filter: false,
-        valuePrepareFunction: (photo) => {
-          if (photo) {
-            return this._domSanitizer.bypassSecurityTrustHtml(`
-              <img src="${photo}"
-                class="img-50 align-top m-r-15 rounded"
-                style="height: 50px; object-fit: cover; vertical-align: middle;">
-              `);
-          } else {
-            return this._domSanitizer.bypassSecurityTrustHtml(`
-              <img src="assets/images/user.png"
-                class="img-50 align-top m-r-15 rounded"
-                style="height: 50px; object-fit: cover; vertical-align: middle;">
-              `);
-          }
-        },
-      },
       fullName: {
         title: 'FullName'
       },
-      email: {
-        title: 'Email'
-      }
     },
     actions: {
       add: false,
