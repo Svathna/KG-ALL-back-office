@@ -4,7 +4,7 @@ import { FullComponent } from './layouts/full/full.component';
 import { AuthPageComponent } from './auth-page/auth-page.component';
 import { AdminGuard } from './admin.guard';
 import { SecureInnerPagesGuardGuard } from './secure-inner-pages-guard.guard';
-import { HomePageComponent } from './home-page/home-page.component';
+import { CompanysComponent } from './companys/companys.component';
 
 
 export const AppRoutes: Routes = [
@@ -15,9 +15,13 @@ export const AppRoutes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'user',
+        redirectTo: 'company',
         canActivate: [AdminGuard],
         pathMatch: 'full'
+      },
+      {
+        path: 'company',
+        component: CompanysComponent
       },
       {
         path: '',
@@ -35,8 +39,4 @@ export const AppRoutes: Routes = [
     canActivate: [SecureInnerPagesGuardGuard],
     component: AuthPageComponent
   },
-  // {
-  //   path: '',
-  //   component: HomePageComponent,
-  // }
 ];

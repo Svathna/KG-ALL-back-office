@@ -24,6 +24,7 @@ import { AuthPageComponent } from './auth-page/auth-page.component';
 import { AuthService } from './service/auth.service';
 import { SecureInnerPagesGuardGuard } from './secure-inner-pages-guard.guard';
 import { HomePageComponent } from './home-page/home-page.component';
+import { CompanysComponent } from './companys/companys.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     SpinnerComponent,
     AppSidebarComponent,
     AuthPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    CompanysComponent
   ],
   imports: [
     BrowserModule,

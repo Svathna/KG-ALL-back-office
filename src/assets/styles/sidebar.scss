@@ -30,6 +30,9 @@ mat-sidenav {
                 > a{
                   color:$themecolor;
                 }
+                mat-icon {
+                  color:$themecolor;
+                }
             }
         }
         
