@@ -25,6 +25,7 @@ import { AuthService } from './service/auth.service';
 import { SecureInnerPagesGuardGuard } from './secure-inner-pages-guard.guard';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CompanysComponent } from './companys/companys.component';
+import { MaterialComponentsModule } from './material-component/material.module';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { CompanysComponent } from './companys/companys.component';
     DemoMaterialModule,
     ToastrModule.forRoot(),
     FlexLayoutModule,
+    MaterialComponentsModule,
     HttpClientModule,
     SharedModule,
     RouterModule.forRoot(AppRoutes)
