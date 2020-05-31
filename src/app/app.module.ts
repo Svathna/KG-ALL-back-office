@@ -26,6 +26,8 @@ import { SecureInnerPagesGuardGuard } from './secure-inner-pages-guard.guard';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CompanysComponent } from './companys/companys.component';
 import { MaterialComponentsModule } from './material-component/material.module';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './store/reducers';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,14 @@ import { MaterialComponentsModule } from './material-component/material.module';
     MaterialComponentsModule,
     HttpClientModule,
     SharedModule,
-    RouterModule.forRoot(AppRoutes)
+    RouterModule.forRoot(AppRoutes),
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    })
   ],
   providers: [
     AdminGuard,
