@@ -28,6 +28,8 @@ import { CompanysComponent } from './companys/companys.component';
 import { MaterialComponentsModule } from './material-component/material.module';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './store/reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './app.effects';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,8 @@ import { reducers, metaReducers } from './store/reducers';
         strictStateImmutability: true,
         strictActionImmutability: true
       }
-    })
+    }),
+    EffectsModule.forRoot([AppEffects])
   ],
   providers: [
     AdminGuard,

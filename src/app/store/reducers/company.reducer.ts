@@ -14,7 +14,6 @@ export const initialState: CompanysState = {
     error: false,
 };
 
-
 const companysReducer = createReducer(
     initialState,
     // Search

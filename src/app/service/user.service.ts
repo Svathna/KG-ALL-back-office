@@ -1,17 +1,10 @@
 import { Injectable } from '@angular/core';
 import { User } from '../model/user.model';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 
 export interface UserResponse {
   user: User;
-  success: boolean;
-  message: string;
-}
-
-export interface UsersResponse {
-  users: User[];
   success: boolean;
   message: string;
 }
@@ -25,7 +18,6 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
   ) { }
 
   getAllUsers() {
