@@ -9,7 +9,6 @@ export interface CompanyDetail {
     name: string;
     nameInKhmer: string;
     description: string;
-    deleted: boolean;
     _id: string;
 }
 
@@ -21,7 +20,6 @@ export interface Moc {
     type: CompanyType;
     mocUsernamePasswordLogin: UsernamePasworrd;
     _id: string;
-    deleted: boolean;
 }
 
 export enum CompanyType {
@@ -45,7 +43,6 @@ export interface Dot {
     bankAccountNumber: number;
     taxCardNumber: string;
     phoneNumber: string;
-    deleted: boolean;
     _id: string;
 }
 
@@ -56,6 +53,5 @@ export interface TaxHistory {
     others: string;
     month: string;
     year: number;
-    deleted: boolean;
     _id: string;
 }

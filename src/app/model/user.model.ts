@@ -4,10 +4,10 @@ export enum UserType {
 }
 
 export interface User {
+    fullName: string;
     userName: string;
     type: UserType;
     phoneNumber: number;
-    registrationTokens: string[];
-    deleted: boolean;
+    registrationTokens?: string[];
     _id: string;
 }

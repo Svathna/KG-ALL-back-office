@@ -25,6 +25,18 @@ Global Styles
     box-sizing:border-box;
 }
 
+.text-bold {
+    font-weight: bold;
+}
+
+.khmer-title {
+    font-family: "Kantumruy-bold", sans-serif;
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
 body {
     font-family: $bodyfont;
     margin: 0;
@@ -99,7 +111,7 @@ h5,
 h6 {
     
     font-family: $headingfont;
-    font-weight: 400;
+    font-weight: bold;
 }
 
 h1 {
@@ -716,12 +728,14 @@ Mat card
     -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05)!important; 
     margin: 15px;
     padding: 0px!important;
-    border-radius: $radius;
+    border-radius: $radius !important;
     
     .mat-card-content{
         font-size:1rem;
         line-height: 23px;
-        padding: 24px;    
+        margin: 0;
+        padding: 24px;
+        border-radius: 0 0 $radius $radius;
     }
     .mat-card-image {
         width: calc(100% + 0px);
