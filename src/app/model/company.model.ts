@@ -1,14 +1,24 @@
-export interface Company {
-    company: CompanyDetail;
+export interface CompanyDetail {
+    name: string;
+    nameInKhmer: string;
+    _id: string;
     moc: Moc;
     dot: Dot;
     taxHistory: TaxHistory;
 }
 
-export interface CompanyDetail {
+export interface CompanyResponse {
     name: string;
     nameInKhmer: string;
-    description: string;
+    _id: string;
+    moc?: Moc;
+    dot?: Dot;
+    taxHistory?: TaxHistory;
+}
+
+export interface Company {
+    name: string;
+    nameInKhmer: string;
     _id: string;
 }
 

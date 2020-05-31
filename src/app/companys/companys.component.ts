@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CompanyDetail } from '../model/company.model';
+import { Company } from '../model/company.model';
 import { User, UserType } from '../model/user.model';
 
-const COMPANY_DETAIL_TESTING: CompanyDetail = {
+const COMPANY_DETAIL_TESTING: Company = {
   name: 'Computer Science Co,LTD',
   nameInKhmer: 'វិទ្យាសាស្រ្តកំព្យូទ័រ កូអិលធីឌី',
-  description: 'testing',
   _id: '0ajfjjsd099433',
 };
 
