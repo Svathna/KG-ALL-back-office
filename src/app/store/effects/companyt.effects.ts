@@ -4,8 +4,8 @@ import * as CompanyAction from '../actions/company.action';
 import { ToastrService } from 'ngx-toastr';
 import { CompanyService } from '../../service/company.service';
 import { exhaustMap, map, catchError } from 'rxjs/operators';
-import { CompanyResponse } from '../../model/company.model';
 import { of } from 'rxjs';
+import { CompanyResponse } from '../../model/company.model';
 
 @Injectable()
 export class CompanysEffects {
@@ -18,16 +18,18 @@ export class CompanysEffects {
 
   getCompanys$ = createEffect(() => this.actions$.pipe(
     ofType(CompanyAction.getCompanys),
-    exhaustMap(() =>
-      this.companyService.getCompanys().pipe(
-        map((companys: CompanyResponse[]) => {
-          return CompanyAction.getCompanysSuccess({ companys })
+    exhaustMap(() => {
+      console.log('yeeee')
+      return this.companyService.getCompanys().pipe(
+        map((data: CompanyResponse) => {
+          console.log(data)
+          return CompanyAction.getCompanysSuccess({ companys: data.companys });
         }),
         catchError(({ error }) => {
             this.toaster.error(error.message);
             return of(CompanyAction.getComapanysFailure({ error: error.message? error.message : null }));
         })
-      )
+      )}
     )
   ));
 

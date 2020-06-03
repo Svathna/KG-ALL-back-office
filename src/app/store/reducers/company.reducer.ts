@@ -1,9 +1,9 @@
 import { createReducer, Action, on } from '@ngrx/store';
-import { CompanyResponse } from '../../model/company.model';
+import { CompanyDetail } from '../../model/company.model';
 import * as fromCompany from '../actions/company.action';
 
 export interface CompanysState {
-    companys: CompanyResponse[];
+    companys: CompanyDetail[];
     isFetching: boolean;
     error: boolean | null;
 }
@@ -17,8 +17,16 @@ export const initialState: CompanysState = {
 const companysReducer = createReducer(
     initialState,
     // Search
-    on(fromCompany.getCompanys, (state) => ({ ...state, isFetching: true })),
+    on(fromCompany.getCompanys, (state) => {
+        console.log(state);
+        return ({
+            ...state,
+            isFetching: true
+        });
+    }),
     on(fromCompany.getCompanysSuccess, (state, { companys }) => {
+        console.log(state);
+        console.log(companys);
         return ({
             ...state,
             companys,

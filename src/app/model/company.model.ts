@@ -1,19 +1,19 @@
+import { User } from "./user.model";
+
 export interface CompanyDetail {
     name: string;
     nameInKhmer: string;
     _id: string;
-    moc: Moc;
-    dot: Dot;
-    taxHistory: TaxHistory;
-}
-
-export interface CompanyResponse {
-    name: string;
-    nameInKhmer: string;
-    _id: string;
+    user?: User;
     moc?: Moc;
     dot?: Dot;
     taxHistory?: TaxHistory;
+}
+
+export interface CompanyResponse {
+    companys: CompanyDetail[];
+    success: boolean;
+    message: string;
 }
 
 export interface Company {

@@ -12,6 +12,7 @@ export class CompanyService {
   ) { }
   
   getCompanys() {
+    console.log('yahh');
     return this.http.get(environment.apiURL + '/company');
   }
 

@@ -1,8 +1,8 @@
 import { createAction, props } from '@ngrx/store';
-import { CompanyResponse } from '../../model/company.model';
+import { CompanyDetail } from '../../model/company.model';
 
 export const getCompanys = createAction('[Company List Page] Get Companys');
-export const getCompanysSuccess = createAction('[Company List Page] Get Companys Success', props<{ companys: CompanyResponse[] }>());
+export const getCompanysSuccess = createAction('[Company List Page] Get Companys Success', props<{ companys: CompanyDetail[] }>());
 export const getComapanysFailure = createAction('[Company List Page] Get Companys Failure', props<{ error: string }>());
 // export const getCompanyById = createAction('[Company Page] Get Company By Id', props<{ id: string }>());
 // export const getProfileSuccessById = createAction('[Company Page] Get Company Success By Id', props<{ company:  CompanyResponse}>());
