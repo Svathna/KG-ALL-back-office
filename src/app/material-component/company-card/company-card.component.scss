@@ -1,11 +1,14 @@
 .company-card {
-    width: 300px;
+    min-width: 350px;
+    min-height: 260px;
+    background-color: #172740;
 
     mat-card-header {
         background-color: #3069bb;
+        min-height: 76px;
     }
 
-    mat-card-content {
-        background-color: #172740;
-    }
+    // mat-card-content {
+    //     background-color: #172740;
+    // }
 }

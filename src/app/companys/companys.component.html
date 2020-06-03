@@ -1,1 +1,21 @@
-<company-card [company]="companyTesting" [user]="userTesting"></company-card>
+<div *ngIf="isFetching">
+    <mat-progress-bar mode="query"></mat-progress-bar>
+</div>
+
+<div *ngIf="!isFetching" fxLayout="row wrap" fxLayoutAlign="start" fxLayoutGap="20px">
+    <div>
+        <mat-card class="add-card cursor-pointer" fxLayout="column" fxLayoutAlign="center center">
+            <div>
+                <img src="assets/images/add-icon.svg" alt="add icon">
+            </div>
+            <h3 class="btn-title">Register new company</h3>
+        </mat-card>
+    </div>
+
+    <div *ngFor="let company of companys">
+        <company-card [company]="company" [user]="company.user"></company-card>
+    </div>
+    <div *ngFor="let company of companys">
+        <company-card [company]="company" [user]="company.user"></company-card>
+    </div>
+</div>
