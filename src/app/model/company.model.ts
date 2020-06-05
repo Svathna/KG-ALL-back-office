@@ -28,7 +28,8 @@ export interface Moc {
     capital: number;
     dateOfBTV: Date;
     type: CompanyType;
-    mocUsernamePasswordLogin: UsernamePasworrd;
+    mocUsernameLogin: string;
+    mocPasswordLogin: string;
     _id: string;
 }
 
@@ -38,10 +39,10 @@ export enum CompanyType {
     PUBLIC_LIMITED_COMPANY = 3,
 }
 
-export interface UsernamePasworrd {
-    userName: string;
-    password: string;
-}
+// export interface UsernamePasworrd {
+//     userName: string;
+//     password: string;
+// }
 
 export interface Dot {
     dotNumber: number;
@@ -51,7 +52,7 @@ export interface Dot {
     bankName: string;
     bankAccountName: string;
     bankAccountNumber: number;
-    taxCardNumber: string;
+    taxationCardNumber: string;
     phoneNumber: string;
     _id: string;
 }
