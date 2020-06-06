@@ -31,6 +31,7 @@ import { reducers, metaReducers } from './store/reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { CompanysEffects } from './store/effects/companyt.effects';
+import { ModalsModule } from './modals/modals.module';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { CompanysEffects } from './store/effects/companyt.effects';
     MaterialComponentsModule,
     HttpClientModule,
     SharedModule,
+    ModalsModule,
     RouterModule.forRoot(AppRoutes),
     StoreModule.forRoot(reducers, {
       metaReducers,

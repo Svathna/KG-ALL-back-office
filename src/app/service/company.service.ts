@@ -20,4 +20,16 @@ export class CompanyService {
     return this.http.get(environment.apiURL + `/company/${id}`);
   }
 
+//   openLoginModal() {
+//     this.loginModal = this.openModal(LoginComponent);
+// }
+
+//   openModal(portalComponent) {
+//     const modal = this.matDialog.open(AuthModalComponent, {
+//         width: '1000px',
+//     });
+
+//     return modal;
+//   }
+
 }

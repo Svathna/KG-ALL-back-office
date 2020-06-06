@@ -8,6 +8,8 @@ import * as CompanyAction from '../store/actions/company.action';
 import { AppState } from '../store/app.state';
 import { selectAllCompanys } from '../store/selectors/companys.selector';
 import { CompanyService } from '../service/company.service';
+import { MatDialog } from '@angular/material/dialog';
+import { RegisterCompanyModalComponent } from '../modals/register-company-modal/register-company-modal.component';
 
 const COMPANY_DETAIL_TESTING: Company = {
   name: 'Computer Science Co,LTD',
@@ -36,6 +38,7 @@ export class CompanysComponent implements OnInit {
 
   constructor(
     private companyService: CompanyService,
+    private dialog: MatDialog,
   ) {}
 
   ngOnInit() {
@@ -45,6 +48,17 @@ export class CompanysComponent implements OnInit {
       if (data.success) {
         this.companys = data.companys;
       }
+    });
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(RegisterCompanyModalComponent, {
+        width: '1000px',
+        height: '500px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
     });
   }
 
