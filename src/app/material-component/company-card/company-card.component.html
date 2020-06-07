@@ -1,8 +1,13 @@
 <mat-card class="company-card cursor-pointer" fxLayout="column" fxLayoutAlign="start none">
-        <mat-card-header fxLayout="column" fxLayoutAlign="center center">
-            <h5 class="khmer-title text-bold text-center">{{ company.nameInKhmer }}</h5>
-            <h5 class="text-bold text-center">{{ company.name }}</h5>
-        </mat-card-header>
+        <div class="mat-card-header p-b-5" fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxLayout="column" fxFlex fxLayoutAlign="start">
+                <h5 class="khmer-title text-bold">{{ company.nameInKhmer }}</h5>
+                <h5 class="text-bold m-0">{{ company.name }}</h5>
+            </div>
+            <div>
+                <mat-icon class="delete-icon">delete</mat-icon>
+            </div>
+        </div>
 
         <mat-card-content>
             <div *ngIf="user" class="text-white" fxLayout="column" fxLayoutAlign="start none" fxLayoutGap="10px">

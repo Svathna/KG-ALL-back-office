@@ -3,9 +3,12 @@
     min-height: 260px;
     background-color: #172740;
 
-    mat-card-header {
+    .mat-card-header {
         background-color: #3069bb;
         min-height: 76px;
+        padding-left: 24px;
+        padding-right: 0;
+        padding-bottom: 4px;
     }
 
     // mat-card-content {
