@@ -32,6 +32,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { CompanysEffects } from './store/effects/companyt.effects';
 import { ModalsModule } from './modals/modals.module';
+import { MatFormFieldModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ModalsModule } from './modals/modals.module';
     MaterialComponentsModule,
     HttpClientModule,
     SharedModule,
+    MatFormFieldModule,
     ModalsModule,
     RouterModule.forRoot(AppRoutes),
     StoreModule.forRoot(reducers, {

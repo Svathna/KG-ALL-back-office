@@ -1,1 +1,75 @@
-<p>register-company-modal works!</p>
+<form [formGroup]="companyForm">
+    <div fxLayout="column">
+        <h3>Register company</h3>
+        <div class="mt-2" fxLayout="row" fxLayoutAlign="space-between">
+            <div fxFlex="48">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            Company name
+                        </mat-label>
+                        <input matInput placeholder="Placeholder">
+                    </mat-form-field>
+                </p>
+            </div>
+            <div fxFlex="48">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            <label>
+                                ឈ្មោះក្រុមហ៊ុន
+                            </label>
+                        </mat-label>
+                        <input matInput placeholder="Placeholder">
+                    </mat-form-field>
+                </p>
+            </div>
+        </div>
+
+        <h5>Manager information</h5>
+        <div fxLayout="row" fxLayoutAlign="space-between">
+            <div fxFlex="48">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Fullname</mat-label>
+                        <input matInput placeholder="Placeholder">
+                    </mat-form-field>
+                </p>
+            </div>
+            <div fxFlex="48">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Phone number</mat-label>
+                        <input matInput placeholder="Placeholder">
+                    </mat-form-field>
+                </p>
+            </div>
+        </div>
+
+        <h5>Username and Password login</h5>
+        <div fxLayout="row" fxLayoutAlign="space-between">
+            <div fxFlex="48">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Username</mat-label>
+                        <input matInput placeholder="Placeholder">
+                    </mat-form-field>
+                </p>
+            </div>
+            <div fxFlex="48">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput placeholder="Placeholder" [type]="passwordVisible? 'text' : 'password'">
+                        <mat-icon class="cursor-pointer" (click)="passwordEyeOffOnn()" matSuffix>{{ passwordVisible? 'visibility' : 'visibility_off'}}</mat-icon>
+                    </mat-form-field>
+                </p>
+            </div>
+        </div>
+        <div fxFlex fxLayoutAlign="end">
+            <button color="primary" mat-raised-button (click)="save()">
+                Save
+            </button>
+        </div>
+    </div>
+</form>

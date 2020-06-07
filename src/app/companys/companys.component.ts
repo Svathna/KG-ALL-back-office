@@ -53,8 +53,8 @@ export class CompanysComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(RegisterCompanyModalComponent, {
-        width: '1000px',
-        height: '500px'
+        width: '800px',
+        height: '500px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
