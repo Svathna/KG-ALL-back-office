@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CompanyService } from '../../service/company.service';
 import { exhaustMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { CompanyResponse } from '../../model/company.model';
+import { CompanysResponse } from '../../model/company.model';
 
 @Injectable()
 export class CompanysEffects {
@@ -21,7 +21,7 @@ export class CompanysEffects {
     exhaustMap(() => {
       console.log('yeeee')
       return this.companyService.getCompanys().pipe(
-        map((data: CompanyResponse) => {
+        map((data: CompanysResponse) => {
           console.log(data)
           return CompanyAction.getCompanysSuccess({ companys: data.companys });
         }),

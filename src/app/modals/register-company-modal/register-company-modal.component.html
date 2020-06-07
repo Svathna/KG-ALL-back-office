@@ -1,3 +1,7 @@
+<div class="mb-3" *ngIf="isFetching">
+    <mat-progress-bar mode="query"></mat-progress-bar>
+</div>
+
 <form [formGroup]="companyForm">
     <div fxLayout="column">
         <h3>Register company</h3>
@@ -8,7 +12,7 @@
                         <mat-label>
                             Company name
                         </mat-label>
-                        <input matInput placeholder="Placeholder">
+                        <input formControlName="name" matInput placeholder="Placeholder">
                     </mat-form-field>
                 </p>
             </div>
@@ -20,7 +24,7 @@
                                 ឈ្មោះក្រុមហ៊ុន
                             </label>
                         </mat-label>
-                        <input matInput placeholder="Placeholder">
+                        <input matInput formControlName="nameInKhmer" placeholder="Placeholder">
                     </mat-form-field>
                 </p>
             </div>
@@ -32,7 +36,7 @@
                 <p>
                     <mat-form-field appearance="outline">
                         <mat-label>Fullname</mat-label>
-                        <input matInput placeholder="Placeholder">
+                        <input matInput formControlName="fullName" placeholder="Placeholder">
                     </mat-form-field>
                 </p>
             </div>
@@ -40,7 +44,7 @@
                 <p>
                     <mat-form-field appearance="outline">
                         <mat-label>Phone number</mat-label>
-                        <input matInput placeholder="Placeholder">
+                        <input matInput formControlName="phoneNumber" placeholder="Placeholder" type="tel">
                     </mat-form-field>
                 </p>
             </div>
@@ -52,7 +56,7 @@
                 <p>
                     <mat-form-field appearance="outline">
                         <mat-label>Username</mat-label>
-                        <input matInput placeholder="Placeholder">
+                        <input matInput formControlName="userName" placeholder="Placeholder">
                     </mat-form-field>
                 </p>
             </div>
@@ -60,14 +64,14 @@
                 <p>
                     <mat-form-field appearance="outline">
                         <mat-label>Password</mat-label>
-                        <input matInput placeholder="Placeholder" [type]="passwordVisible? 'text' : 'password'">
+                        <input matInput formControlName="password" placeholder="Placeholder" [type]="passwordVisible? 'text' : 'password'">
                         <mat-icon class="cursor-pointer" (click)="passwordEyeOffOnn()" matSuffix>{{ passwordVisible? 'visibility' : 'visibility_off'}}</mat-icon>
                     </mat-form-field>
                 </p>
             </div>
         </div>
         <div fxFlex fxLayoutAlign="end">
-            <button color="primary" mat-raised-button (click)="save()">
+            <button [disabled]="companyForm.invalid || isFetching" color="primary" mat-raised-button (click)="save()">
                 Save
             </button>
         </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Company, CompanyDetail, CompanyResponse } from '../model/company.model';
+import { Company, CompanyDetail, CompanysResponse } from '../model/company.model';
 import { User, UserType } from '../model/user.model';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -8,7 +8,7 @@ import * as CompanyAction from '../store/actions/company.action';
 import { AppState } from '../store/app.state';
 import { selectAllCompanys } from '../store/selectors/companys.selector';
 import { CompanyService } from '../service/company.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RegisterCompanyModalComponent } from '../modals/register-company-modal/register-company-modal.component';
 
 const COMPANY_DETAIL_TESTING: Company = {
@@ -35,6 +35,7 @@ export class CompanysComponent implements OnInit {
   userTesting = USER_TESTING;
   companys: CompanyDetail[] = [];
   isFetching = false;
+  dialogRef: MatDialogRef<any>;
 
   constructor(
     private companyService: CompanyService,
@@ -42,8 +43,12 @@ export class CompanysComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.fetchCompanys();
+  }
+
+  fetchCompanys() {
     this.isFetching = true;
-    this.companyService.getCompanys().subscribe((data: CompanyResponse) => {
+    this.companyService.getCompanys().subscribe((data: CompanysResponse) => {
       this.isFetching = false;
       if (data.success) {
         this.companys = data.companys;
@@ -52,13 +57,15 @@ export class CompanysComponent implements OnInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(RegisterCompanyModalComponent, {
+    this.dialogRef = this.dialog.open(RegisterCompanyModalComponent, {
         width: '800px',
         height: '500px',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+    this.dialogRef.afterClosed().subscribe(data => {
+      if (data && data.success) {
+        this.fetchCompanys();
+      }
     });
   }
 

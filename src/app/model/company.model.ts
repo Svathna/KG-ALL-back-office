@@ -10,8 +10,14 @@ export interface CompanyDetail {
     taxHistory?: TaxHistory;
 }
 
-export interface CompanyResponse {
+export interface CompanysResponse {
     companys: CompanyDetail[];
+    success: boolean;
+    message: string;
+}
+
+export interface CompanyResponse {
+    companys: CompanyDetail;
     success: boolean;
     message: string;
 }

@@ -12,12 +12,15 @@ export class CompanyService {
   ) { }
   
   getCompanys() {
-    console.log('yahh');
     return this.http.get(environment.apiURL + '/company');
   }
 
   getCompanyById(id: string) {
     return this.http.get(environment.apiURL + `/company/${id}`);
+  }
+
+  registerCompany(body) {
+    return this.http.post(environment.apiURL + `/company`, body);
   }
 
 //   openLoginModal() {
