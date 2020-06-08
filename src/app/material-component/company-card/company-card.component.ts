@@ -12,7 +12,9 @@ import { RegisterCompanyModalComponent } from '../../modals/register-company-mod
 export class CompanyCardComponent implements OnInit {
   @Input() user: User;
   @Input() company: CompanyDetail;
+
   @Output() edit = new EventEmitter<CompanyDetail>();
+  @Output() remove = new EventEmitter<CompanyDetail>();
 
   dialogRef: MatDialogRef<any>;
 
@@ -25,6 +27,7 @@ export class CompanyCardComponent implements OnInit {
 
   deleteCompany(event) {
     event.preventDefault();
+    this.remove.emit(this.company);
   }
 
   editCompany(event) {

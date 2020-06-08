@@ -30,7 +30,6 @@ export class AuthService {
 	SignIn(userName, password) {
 		return new Promise((resolve, reject) => {
 			try {
-				console.log(userName, password)
 				this.http.post(environment.apiURL + '/user/admin/login', {
 					userName,
 					password,
@@ -60,7 +59,6 @@ export class AuthService {
 							reject('No user found');
 						}
 					}, (res) => {
-						console.log(res);
 						const errorMessage = res.error.message;
 						this.toster.error(errorMessage);
 						reject('Error, logging in');

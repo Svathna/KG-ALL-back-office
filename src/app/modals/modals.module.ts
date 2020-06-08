@@ -5,9 +5,10 @@ import { MatIconModule, MatFormFieldModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DemoMaterialModule } from '../demo-material-module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { RemoveCompanyConfirmModalComponent } from './remove-company-confirm-modal/remove-company-confirm-modal.component';
 
 @NgModule({
-  declarations: [RegisterCompanyModalComponent],
+  declarations: [RegisterCompanyModalComponent, RemoveCompanyConfirmModalComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -16,6 +17,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FlexLayoutModule
   ],
   exports: [RegisterCompanyModalComponent],
-  entryComponents: [RegisterCompanyModalComponent]
+  entryComponents: [RegisterCompanyModalComponent, RemoveCompanyConfirmModalComponent]
 })
 export class ModalsModule { }

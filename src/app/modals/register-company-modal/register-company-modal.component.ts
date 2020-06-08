@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { CompanyService } from '../../service/company.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CompanyResponse, CompanyDetail } from '../../model/company.model';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-register-company-modal',
   templateUrl: './register-company-modal.component.html',
@@ -17,6 +18,7 @@ export class RegisterCompanyModalComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private companyService: CompanyService,
+    private toaster: ToastrService,
     @Optional() @Inject(MAT_DIALOG_DATA) public dataCompany: any,
     public dialogRef: MatDialogRef<RegisterCompanyModalComponent>,
   ) {
@@ -61,8 +63,11 @@ export class RegisterCompanyModalComponent implements OnInit {
     this.isFetching = true;
     this.companyService.registerCompany(this.companyForm.value).subscribe((data: CompanyResponse) => {
       this.isFetching = false;
-      if (data.success) {
+      if (data && data.success) {
+        this.toaster.success("Company registered");
         this.dialogRef.close({ success: data.success });
+      } else {
+        this.toaster.error(data.message ? data.message : 'Server error');
       }
     });
   }
@@ -74,16 +79,21 @@ export class RegisterCompanyModalComponent implements OnInit {
     this.isFetching = true;
     this.companyService.updateCompany(this.companyForm.value, this.company._id).subscribe((data: CompanyResponse) => {
       this.isFetching = false;
-      if (data.success) {
+      if (data && data.success) {
+        this.toaster.success("Company updated");
         this.dialogRef.close({ success: data.success });
+      } else {
+        this.toaster.error(data.message ? data.message : 'Server error')
       }
     })
   }
 
-
-
   passwordEyeOffOnn() {
     this.passwordVisible = !this.passwordVisible;
+  }
+
+  cancel() {
+    this.dialogRef.close();
   }
 
 }

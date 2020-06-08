@@ -71,6 +71,9 @@
             </div>
         </div>
         <div fxFlex fxLayoutAlign="end">
+            <button class="mr-2" [disabled]="isFetching" mat-raised-button (click)="cancel()">
+                Cancel
+            </button>
             <button *ngIf="!dataCompany" [disabled]="companyForm.invalid || isFetching" color="primary" mat-raised-button (click)="save()">
                 Save
             </button>

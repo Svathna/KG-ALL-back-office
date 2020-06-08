@@ -1,29 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { Company, CompanyDetail, CompanysResponse } from '../model/company.model';
-import { User, UserType } from '../model/user.model';
-import * as CompanyAction from '../store/actions/company.action';
-import { CompanyService } from '../service/company.service';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { RegisterCompanyModalComponent } from '../modals/register-company-modal/register-company-modal.component';
+import { Component, OnInit } from "@angular/core";
+import {
+  Company,
+  CompanyDetail,
+  CompanysResponse,
+} from "../model/company.model";
+import { User, UserType } from "../model/user.model";
+import * as CompanyAction from "../store/actions/company.action";
+import { CompanyService } from "../service/company.service";
+import { MatDialog, MatDialogRef } from "@angular/material/dialog";
+import { RegisterCompanyModalComponent } from "../modals/register-company-modal/register-company-modal.component";
+import { RemoveCompanyConfirmModalComponent } from "../modals/remove-company-confirm-modal/remove-company-confirm-modal.component";
 
 const COMPANY_DETAIL_TESTING: Company = {
-  name: 'Computer Science Co,LTD',
-  nameInKhmer: 'វិទ្យាសាស្រ្តកំព្យូទ័រ កូអិលធីឌី',
-  _id: '0ajfjjsd099433',
+  name: "Computer Science Co,LTD",
+  nameInKhmer: "វិទ្យាសាស្រ្តកំព្យូទ័រ កូអិលធីឌី",
+  _id: "0ajfjjsd099433",
 };
 
 const USER_TESTING: User = {
-  fullName: 'SereyVathna',
-  userName: 'sereyvathna',
+  fullName: "SereyVathna",
+  userName: "sereyvathna",
   phoneNumber: 89034920,
   type: UserType.NORMAL_USER,
-  _id: '09039nklklakBdk',
+  _id: "09039nklklakBdk",
 };
 
 @Component({
-  selector: 'app-companys',
-  templateUrl: './companys.component.html',
-  styleUrls: ['./companys.component.scss']
+  selector: "app-companys",
+  templateUrl: "./companys.component.html",
+  styleUrls: ["./companys.component.scss"],
 })
 export class CompanysComponent implements OnInit {
   companyTesting = COMPANY_DETAIL_TESTING;
@@ -53,11 +58,11 @@ export class CompanysComponent implements OnInit {
 
   registerCompany() {
     this.dialogRef = this.dialog.open(RegisterCompanyModalComponent, {
-        width: '800px',
-        height: '500px',
+      width: "800px",
+      height: "500px",
     });
 
-    this.dialogRef.afterClosed().subscribe(data => {
+    this.dialogRef.afterClosed().subscribe((data) => {
       if (data && data.success) {
         this.fetchCompanys();
       }
@@ -66,16 +71,29 @@ export class CompanysComponent implements OnInit {
 
   editCompany(company: CompanyDetail) {
     this.dialogRef = this.dialog.open(RegisterCompanyModalComponent, {
-      width: '800px',
-      height: '500px',
-      data: { company }
-  });
+      width: "800px",
+      height: "500px",
+      data: { company },
+    });
 
-  this.dialogRef.afterClosed().subscribe(data => {
-    if (data && data.success) {
-      this.fetchCompanys();
-    }
-  });
+    this.dialogRef.afterClosed().subscribe((data) => {
+      if (data && data.success) {
+        this.fetchCompanys();
+      }
+    });
   }
 
+  removeCompany(company: CompanyDetail) {
+    this.dialogRef = this.dialog.open(RemoveCompanyConfirmModalComponent, {
+      width: '500px',
+      height: '150px',
+      data: { id:  company._id}
+    });
+
+    this.dialogRef.afterClosed().subscribe((data) => {
+      if (data && data.success) {
+        this.fetchCompanys();
+      }
+    });
+  }
 }

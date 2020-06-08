@@ -21,12 +21,10 @@ export class UserService {
   ) { }
 
   getAllUsers() {
-    console.log('hey');
     return this.http.get(environment.apiURL + '/user');
   }
 
   getAllTrees() {
-    console.log('hey');
     return this.http.get(environment.apiURL + '/tree');
   }
 }

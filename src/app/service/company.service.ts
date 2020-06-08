@@ -27,6 +27,10 @@ export class CompanyService {
     return this.http.patch(environment.apiURL + `/company/${companyId}`, body);
   }
 
+  removeCompany(id: string) {
+    return this.http.delete(environment.apiURL + `/company/${id}`);
+  }
+
 //   openLoginModal() {
 //     this.loginModal = this.openModal(LoginComponent);
 // }
