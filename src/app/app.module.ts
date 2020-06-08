@@ -33,6 +33,8 @@ import { AppEffects } from './app.effects';
 import { CompanysEffects } from './store/effects/companyt.effects';
 import { ModalsModule } from './modals/modals.module';
 import { MatFormFieldModule } from '@angular/material';
+import { CompanyDetailComponent } from './companys/company-detail/company-detail.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { MatFormFieldModule } from '@angular/material';
     AppSidebarComponent,
     AuthPageComponent,
     HomePageComponent,
-    CompanysComponent
+    CompanysComponent,
+    CompanyDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,7 @@ import { MatFormFieldModule } from '@angular/material';
     SharedModule,
     MatFormFieldModule,
     ModalsModule,
-    RouterModule.forRoot(AppRoutes),
+    RouterModule.forRoot(AppRoutes, { useHash: true }),
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {

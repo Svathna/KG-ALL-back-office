@@ -10,6 +10,7 @@ import { CompanyService } from "../service/company.service";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { RegisterCompanyModalComponent } from "../modals/register-company-modal/register-company-modal.component";
 import { RemoveCompanyConfirmModalComponent } from "../modals/remove-company-confirm-modal/remove-company-confirm-modal.component";
+import { Router } from "@angular/router";
 
 const COMPANY_DETAIL_TESTING: Company = {
   name: "Computer Science Co,LTD",
@@ -40,6 +41,7 @@ export class CompanysComponent implements OnInit {
   constructor(
     private companyService: CompanyService,
     private dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -95,5 +97,9 @@ export class CompanysComponent implements OnInit {
         this.fetchCompanys();
       }
     });
+  }
+
+  goToCompanyDetail(id: string) {
+    this.router.navigate([`company-detail/${id}`]);
   }
 }

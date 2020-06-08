@@ -5,6 +5,7 @@ import { AuthPageComponent } from './auth-page/auth-page.component';
 import { AdminGuard } from './admin.guard';
 import { SecureInnerPagesGuardGuard } from './secure-inner-pages-guard.guard';
 import { CompanysComponent } from './companys/companys.component';
+import { CompanyDetailComponent } from './companys/company-detail/company-detail.component';
 
 
 export const AppRoutes: Routes = [
@@ -22,6 +23,11 @@ export const AppRoutes: Routes = [
       {
         path: 'company',
         component: CompanysComponent
+      },
+      {
+        path: 'company-detail/:id',
+        component: CompanyDetailComponent,
+        canActivate: [AdminGuard],
       },
       {
         path: '',
