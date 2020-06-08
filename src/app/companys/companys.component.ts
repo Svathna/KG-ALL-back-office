@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Company, CompanyDetail, CompanysResponse } from '../model/company.model';
 import { User, UserType } from '../model/user.model';
-import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { CompanysState } from '../store/reducers/company.reducer';
 import * as CompanyAction from '../store/actions/company.action';
-import { AppState } from '../store/app.state';
-import { selectAllCompanys } from '../store/selectors/companys.selector';
 import { CompanyService } from '../service/company.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RegisterCompanyModalComponent } from '../modals/register-company-modal/register-company-modal.component';
@@ -56,7 +51,7 @@ export class CompanysComponent implements OnInit {
     });
   }
 
-  openDialog() {
+  registerCompany() {
     this.dialogRef = this.dialog.open(RegisterCompanyModalComponent, {
         width: '800px',
         height: '500px',

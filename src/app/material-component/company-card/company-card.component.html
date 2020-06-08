@@ -4,9 +4,9 @@
                 <h5 class="khmer-title text-bold">{{ company.nameInKhmer }}</h5>
                 <h5 class="text-bold m-0">{{ company.name }}</h5>
             </div>
-            <div fxLayout="column" fxFlex fxLayoutAlign="end center">
-                <mat-icon class="delete-icon">delete</mat-icon>
-                <mat-icon class="edit-icon">edit</mat-icon>
+            <div fxLayout="column" fxFlex="10" fxFlex fxLayoutAlign="end end">
+                <mat-icon (click)="deleteCompany($event)" class="delete-icon">delete</mat-icon>
+                <mat-icon (click)="editCompany($event)" class="edit-icon">edit</mat-icon>
             </div>
         </div>
 
@@ -23,7 +23,7 @@
                 </div>
                 <div fxLayout="row" fxLayoutAlign="space-between end">
                     <h6>Phonenumber:</h6>
-                    <h6>{{ user.phoneNumber }}</h6>
+                    <h6>0{{ user.phoneNumber }}</h6>
                 </div>
             </div>
         </mat-card-content>

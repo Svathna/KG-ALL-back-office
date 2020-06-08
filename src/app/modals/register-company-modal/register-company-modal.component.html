@@ -71,8 +71,11 @@
             </div>
         </div>
         <div fxFlex fxLayoutAlign="end">
-            <button [disabled]="companyForm.invalid || isFetching" color="primary" mat-raised-button (click)="save()">
+            <button *ngIf="!dataCompany" [disabled]="companyForm.invalid || isFetching" color="primary" mat-raised-button (click)="save()">
                 Save
+            </button>
+            <button *ngIf="dataCompany" [disabled]="companyForm.invalid || isFetching" color="primary" mat-raised-button (click)="update()">
+                Update
             </button>
         </div>
     </div>
