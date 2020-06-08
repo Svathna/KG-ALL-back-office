@@ -64,4 +64,18 @@ export class CompanysComponent implements OnInit {
     });
   }
 
+  editCompany(company: CompanyDetail) {
+    this.dialogRef = this.dialog.open(RegisterCompanyModalComponent, {
+      width: '800px',
+      height: '500px',
+      data: { company }
+  });
+
+  this.dialogRef.afterClosed().subscribe(data => {
+    if (data && data.success) {
+      this.fetchCompanys();
+    }
+  });
+  }
+
 }

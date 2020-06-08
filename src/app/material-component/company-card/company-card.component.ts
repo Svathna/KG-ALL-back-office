@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { User } from '../../model/user.model';
 import { CompanyDetail } from '../../model/company.model';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
@@ -12,6 +12,7 @@ import { RegisterCompanyModalComponent } from '../../modals/register-company-mod
 export class CompanyCardComponent implements OnInit {
   @Input() user: User;
   @Input() company: CompanyDetail;
+  @Output() edit = new EventEmitter<CompanyDetail>();
 
   dialogRef: MatDialogRef<any>;
 
@@ -24,28 +25,11 @@ export class CompanyCardComponent implements OnInit {
 
   deleteCompany(event) {
     event.preventDefault();
-    console.log(event);
   }
 
   editCompany(event) {
     event.preventDefault();
-    console.log(event);
-    this.openDialogEditCompany();
-  }
-
-  openDialogEditCompany() {
-    this.dialogRef = this.dialog.open(RegisterCompanyModalComponent, {
-        width: '800px',
-        height: '500px',
-        data: { company: this.company }
-    });
-
-    this.dialogRef.afterClosed().subscribe(data => {
-      console.log(data);
-      // if (data && data.success) {
-      //   this.fetchCompanys();
-      // }
-    });
+    this.edit.emit(this.company);
   }
 
 }

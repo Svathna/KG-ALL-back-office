@@ -23,6 +23,10 @@ export class CompanyService {
     return this.http.post(environment.apiURL + `/company`, body);
   }
 
+  updateCompany(body, companyId: string) {
+    return this.http.patch(environment.apiURL + `/company/${companyId}`, body);
+  }
+
 //   openLoginModal() {
 //     this.loginModal = this.openModal(LoginComponent);
 // }

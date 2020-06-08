@@ -24,7 +24,6 @@ export class RegisterCompanyModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.company)
     if (this.dataCompany) {
       this.buildEditForm();
     } else {
@@ -45,7 +44,6 @@ export class RegisterCompanyModalComponent implements OnInit {
 
   buildEditForm() {
     this.company = this.dataCompany.company;
-    console.log(this.company);
     this.companyForm = this.formBuilder.group({
       name: new FormControl(this.company.name, [Validators.required]),
       nameInKhmer: new FormControl(this.company.nameInKhmer, [Validators.required]),
@@ -57,15 +55,13 @@ export class RegisterCompanyModalComponent implements OnInit {
   }
 
   save() {
-    console.log(this.companyForm.value)
     if(this.companyForm.invalid) {
       return;
     }
     this.isFetching = true;
     this.companyService.registerCompany(this.companyForm.value).subscribe((data: CompanyResponse) => {
-      console.log(data);
       this.isFetching = false;
-      if(data.success) {
+      if (data.success) {
         this.dialogRef.close({ success: data.success });
       }
     });
@@ -75,8 +71,13 @@ export class RegisterCompanyModalComponent implements OnInit {
     if(this.companyForm.invalid) {
       return;
     }
-    console.log(this.companyForm.value);
     this.isFetching = true;
+    this.companyService.updateCompany(this.companyForm.value, this.company._id).subscribe((data: CompanyResponse) => {
+      this.isFetching = false;
+      if (data.success) {
+        this.dialogRef.close({ success: data.success });
+      }
+    })
   }
 
 

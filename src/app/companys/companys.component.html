@@ -13,6 +13,6 @@
     </div>
 
     <div *ngFor="let company of companys">
-        <company-card *ngIf="company.user" [company]="company" [user]="company.user"></company-card>
+        <company-card *ngIf="company.user" (edit)="editCompany($event)" [company]="company" [user]="company.user"></company-card>
     </div>
 </div>
