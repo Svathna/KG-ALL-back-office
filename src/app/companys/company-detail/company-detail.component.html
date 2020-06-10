@@ -1,3 +1,25 @@
-<div class="mat-card w-100-p h-100-p">
-    
+<div *ngIf="isFetching">
+    <mat-progress-bar mode="query"></mat-progress-bar>
 </div>
+<mat-card *ngIf="!isFetching && company" class="mat-card h-100-p" fxLayout="column" fxLayoutAlign="start">
+        <div class="header mat-card-header text-center" fxLayout="column" fxLayoutAlign="center">
+            <h1>{{ company.nameInKhmer }}</h1>
+            <h1>{{ company.name }}</h1>
+        </div>
+        <div>
+            <mat-tab-group>
+                <mat-tab>
+                  <ng-template mat-tab-label>
+                    Detail
+                  </ng-template>
+                  
+                </mat-tab>
+                <mat-tab>
+                  <ng-template mat-tab-label>
+                    Obligation
+                  </ng-template>
+                  <h1>Terrible sushi restaurants</h1>
+                </mat-tab>
+              </mat-tab-group>
+        </div>
+</mat-card>

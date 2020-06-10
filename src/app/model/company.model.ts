@@ -17,7 +17,7 @@ export interface CompanysResponse {
 }
 
 export interface CompanyResponse {
-    companys: CompanyDetail;
+    company: CompanyDetail;
     success: boolean;
     message: string;
 }

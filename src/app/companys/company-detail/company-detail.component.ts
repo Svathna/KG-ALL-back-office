@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { Route, ActivatedRoute } from '@angular/router';
 import { CompanyService } from '../../service/company.service';
 import { CompanyDetail, CompanyResponse } from '../../model/company.model';
@@ -6,7 +6,8 @@ import { CompanyDetail, CompanyResponse } from '../../model/company.model';
 @Component({
   selector: 'app-company-detail',
   templateUrl: './company-detail.component.html',
-  styleUrls: ['./company-detail.component.scss']
+  styleUrls: ['./company-detail.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class CompanyDetailComponent implements OnInit, OnDestroy {
   isFetching = false;
@@ -31,8 +32,8 @@ export class CompanyDetailComponent implements OnInit, OnDestroy {
     this.isFetching = true;
     this.companyService.getCompanyById(this.id).subscribe((data: CompanyResponse) => {
       this.isFetching = false;
-      if (data && data.companys) {
-        this.company = data.companys;
+      if (data && data.company) {
+        this.company = data.company;
         console.log(this.company);
       }
     });
