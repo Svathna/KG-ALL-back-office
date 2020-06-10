@@ -1,5 +1,13 @@
 import { User } from "./user.model";
 
+export enum DocumentType {
+    MOC_CERTIFICATE = 'moc_certificate',
+    BUSINESS_EXTRACT_FILE = 'business_extract',
+    VAT_CERTIFICATE = 'vat_certificate',
+    PATENT = 'patent',
+    GDT_CARD = 'gdt_card',
+    OTHERS = 'others',
+}
 export interface CompanyDetail {
     name: string;
     nameInKhmer: string;

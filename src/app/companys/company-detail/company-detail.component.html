@@ -10,13 +10,16 @@
             <mat-tab-group>
                 <mat-tab>
                   <ng-template mat-tab-label>
-                    Detail
+                    ពត័មានទូទៅ
                   </ng-template>
-                  <app-general [user]="company.user"></app-general>
+                  <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="30px">
+                    <app-general [user]="company.user"></app-general>
+                    <app-moc></app-moc>
+                  </div>
                 </mat-tab>
                 <mat-tab>
                   <ng-template mat-tab-label>
-                    Obligation
+                    កាតព្វកិច្ចក្រុមហ៊ុន
                   </ng-template>
                   <h1>Terrible sushi restaurants</h1>
                 </mat-tab>

@@ -35,6 +35,7 @@ import { ModalsModule } from './modals/modals.module';
 import { MatFormFieldModule } from '@angular/material';
 import { CompanyDetailComponent } from './companys/company-detail/company-detail.component';
 import { GeneralComponent } from './companys/company-detail/general/general.component';
+import { MocComponent } from './companys/company-detail/moc/moc.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { GeneralComponent } from './companys/company-detail/general/general.comp
     HomePageComponent,
     CompanysComponent,
     CompanyDetailComponent,
-    GeneralComponent
+    GeneralComponent,
+    MocComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +85,7 @@ import { GeneralComponent } from './companys/company-detail/general/general.comp
       multi: true
     }
   ],
-  exports: [GeneralComponent],
+  exports: [GeneralComponent, MocComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
