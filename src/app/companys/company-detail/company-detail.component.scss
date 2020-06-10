@@ -2,7 +2,19 @@
     height: 200px;
     background-color: #3069bb;
 }
+md-tab-group {
+    background-color: pink !important;
+}
+
+.mat-tab-body-wrapper {
+    background: transparent;
+    padding: 20px;
+}
 
 // .mat-tab-label-active {
 //     background-color: #172740 !important;
 // }
+
+.mat-tab-body-content {
+    background-color: transparent !important;
+}

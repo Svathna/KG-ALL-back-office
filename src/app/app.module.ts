@@ -34,7 +34,6 @@ import { CompanysEffects } from './store/effects/companyt.effects';
 import { ModalsModule } from './modals/modals.module';
 import { MatFormFieldModule } from '@angular/material';
 import { CompanyDetailComponent } from './companys/company-detail/company-detail.component';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { GeneralComponent } from './companys/company-detail/general/general.component';
 
 @NgModule({
@@ -84,6 +83,7 @@ import { GeneralComponent } from './companys/company-detail/general/general.comp
       multi: true
     }
   ],
+  exports: [GeneralComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
