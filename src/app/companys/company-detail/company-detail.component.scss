@@ -2,13 +2,15 @@
     height: 200px;
     background-color: #3069bb;
 }
-md-tab-group {
-    background-color: pink !important;
+
+.mat-tab-label  {
+    font-size: 16px;
 }
 
 .mat-tab-body-wrapper {
     background: transparent;
     padding: 20px;
+    padding-top: 30px;
 }
 
 // .mat-tab-label-active {
