@@ -10,11 +10,21 @@
             <mat-tab-group>
                 <mat-tab>
                   <ng-template mat-tab-label>
-                    ពត័មានទូទៅ
+                    ពត៌មានទូទៅ
                   </ng-template>
                   <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="30px">
                     <app-general [user]="company.user"></app-general>
-                    <app-moc></app-moc>
+                    <!-- Minstry of Commerce -->
+                    <app-moc [moc]="company.moc"></app-moc>
+                    <!-- <div *ngIf="!company.moc">
+                      <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="10px">
+                        <h4 class="pb-3 m-t-5 text-khmer-bold">ក្រសួងពាណិជ្ជកម្ម</h4>
+                        <button color="primary" mat-raised-button (click)="addMoc()">
+                          បញ្ចូលពត៌មាន
+                        </button>
+                      </div>
+                    </div> -->
+
                   </div>
                 </mat-tab>
                 <mat-tab>

@@ -64,11 +64,11 @@ html {
     background: $white;
 }
 a:hover, a:focus, a{
-    text-decoration: none;
+    text-decoration: underline;
 }
 a.link{
-    color:$headingtext;
-    text-decoration: none;
+    color:$themecolor;
+    text-decoration: underline;
     &:hover, &:focus{
         color:$themecolor;
     }
