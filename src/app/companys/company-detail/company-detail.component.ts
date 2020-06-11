@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { Route, ActivatedRoute } from '@angular/router';
 import { CompanyService } from '../../service/company.service';
 import { CompanyDetail, CompanyResponse } from '../../model/company.model';
+import { MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { AddMocModalComponent } from '../../modals/add-moc-modal/add-moc-modal.component';
 
 @Component({
   selector: 'app-company-detail',
@@ -13,11 +15,13 @@ export class CompanyDetailComponent implements OnInit, OnDestroy {
   isFetching = false;
   id: string;
   company: CompanyDetail;
+  dialogRef: MatDialogRef<any>;
   private routeSub: any;
 
   constructor(
     private route: ActivatedRoute,
-    private companyService: CompanyService
+    private companyService: CompanyService,
+    private dialog: MatDialog,
   ) {
     this.routeSub = this.route.params.subscribe(params => {
       this.id = params['id']? params['id'] : '';
@@ -36,6 +40,20 @@ export class CompanyDetailComponent implements OnInit, OnDestroy {
         this.company = data.company;
         console.log(this.company);
       }
+    });
+  }
+
+  onAddMoc(event) {
+    this.dialogRef = this.dialog.open(AddMocModalComponent, {
+      width: "800px",
+      // height: "500px",
+    });
+
+    this.dialogRef.afterClosed().subscribe((data) => {
+      console.log(data);
+      // if (data && data.success) {
+      //   this.fetchCompanys();
+      // }
     });
   }
 

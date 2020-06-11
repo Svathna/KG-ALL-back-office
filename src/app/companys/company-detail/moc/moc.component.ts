@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { DocumentType, Moc } from '../../../model/company.model';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { DocumentType, Moc, CompanyDetail } from '../../../model/company.model';
 
 @Component({
   selector: 'app-moc',
@@ -9,14 +9,16 @@ import { DocumentType, Moc } from '../../../model/company.model';
 export class MocComponent implements OnInit {
   @Input() moc: Moc;
 
+  @Output() addMoc = new EventEmitter<CompanyDetail>();
+
   constructor() { }
 
   ngOnInit() {
     console.log(this.moc);
   }
-  
-  addMoc() {
-    console.log('Yoooo');
+
+  onAddMoc(event) {
+    this.addMoc.emit(event);
   }
 
 }

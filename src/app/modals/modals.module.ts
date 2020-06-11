@@ -6,9 +6,14 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DemoMaterialModule } from '../demo-material-module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RemoveCompanyConfirmModalComponent } from './remove-company-confirm-modal/remove-company-confirm-modal.component';
+import { AddMocModalComponent } from './add-moc-modal/add-moc-modal.component';
 
 @NgModule({
-  declarations: [RegisterCompanyModalComponent, RemoveCompanyConfirmModalComponent],
+  declarations: [
+    RegisterCompanyModalComponent,
+    RemoveCompanyConfirmModalComponent,
+    AddMocModalComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -17,6 +22,9 @@ import { RemoveCompanyConfirmModalComponent } from './remove-company-confirm-mod
     FlexLayoutModule
   ],
   exports: [RegisterCompanyModalComponent],
-  entryComponents: [RegisterCompanyModalComponent, RemoveCompanyConfirmModalComponent]
+  entryComponents: [RegisterCompanyModalComponent,
+    RemoveCompanyConfirmModalComponent,
+    AddMocModalComponent
+  ],
 })
 export class ModalsModule { }

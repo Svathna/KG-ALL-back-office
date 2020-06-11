@@ -1,0 +1,100 @@
+<div class="mb-3" *ngIf="isFetching">
+    <mat-progress-bar mode="query"></mat-progress-bar>
+</div>
+
+<form [formGroup]="mocForm">
+    <div fxLayout="column">
+        <div class="mt-2" fxLayout="row" fxLayoutAlign="space-between">
+            <div fxFlex="48">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            <label class="mt-1">
+                                ចុះបញ្ជីពាណិជ្ជកម្មលេខ
+                            </label>
+                        </mat-label>
+                        <input formControlName="mocNumber" matInput placeholder="Placeholder">
+                    </mat-form-field>
+                </p>
+            </div>
+            <div fxFlex="48">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            <label class="mt-1">
+                                ចុះថ្ងៃទី
+                            </label>
+                        </mat-label>
+                        <input matInput formControlName="notedDate" placeholder="Placeholder">
+                    </mat-form-field>
+                </p>
+            </div>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="space-between">
+            <div fxFlex="48">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            <label class="mt-1">
+                                ប្រភេទ
+                            </label>
+                        </mat-label>
+                        <input matInput formControlName="type" placeholder="Placeholder">
+                    </mat-form-field>
+                </p>
+            </div>
+            <div fxFlex="48">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            <label class="mt-1">
+                                ថ្ងៃខែតម្កល់ប្រតិវេទប្រចាំឆ្នាំ
+                            </label>
+                        </mat-label>
+                        <input matInput formControlName="dateOfBTV" placeholder="Placeholder" type="tel">
+                    </mat-form-field>
+                </p>
+            </div>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="space-between">
+            <div fxFlex="48">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            <label>
+                                ឈ្មោះប្រើប្រាស់ប្រព័ន្ធពាណិជ្ជកម្ម
+                            </label>
+                        </mat-label>
+                        <input matInput formControlName="mocUsernameLogin" placeholder="Placeholder">
+                    </mat-form-field>
+                </p>
+            </div>
+            <div fxFlex="48">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            <label>
+                                លេខកូដសម្ងាត់
+                            </label>
+                        </mat-label>
+                        <input matInput formControlName="mocPasswordLogin" placeholder="Placeholder" [type]="passwordVisible? 'text' : 'password'">
+                        <mat-icon class="cursor-pointer" (click)="passwordEyeOffOnn()" matSuffix>{{ passwordVisible? 'visibility' : 'visibility_off'}}</mat-icon>
+                    </mat-form-field>
+                </p>
+            </div>
+        </div>
+        <div fxFlex fxLayoutAlign="end">
+            <button class="mr-2" [disabled]="isFetching" mat-raised-button (click)="cancel()">
+                Cancel
+            </button>
+            <button [disabled]="mocForm.invalid || isFetching" color="primary" mat-raised-button (click)="save()">
+                Save
+            </button>
+            <!-- <button *ngIf="dataCompany" [disabled]="companyForm.invalid || isFetching" color="primary" mat-raised-button (click)="update()">
+                Update
+            </button> -->
+        </div>
+    </div>
+</form>
