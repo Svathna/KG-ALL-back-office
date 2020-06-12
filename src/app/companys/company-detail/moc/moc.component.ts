@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { DocumentType, Moc, CompanyDetail } from '../../../model/company.model';
+import { DocType, Moc, CompanyDetail } from '../../../model/company.model';
 
 @Component({
   selector: 'app-moc',

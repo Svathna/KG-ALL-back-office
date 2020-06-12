@@ -47,13 +47,16 @@ export class CompanyDetailComponent implements OnInit, OnDestroy {
     this.dialogRef = this.dialog.open(AddMocModalComponent, {
       width: "800px",
       // height: "500px",
+      data: {
+        companyId: this.company._id
+      },
     });
 
     this.dialogRef.afterClosed().subscribe((data) => {
       console.log(data);
-      // if (data && data.success) {
-      //   this.fetchCompanys();
-      // }
+      if (data && data.success) {
+        this.getCompanyDetail();
+      }
     });
   }
 

@@ -85,7 +85,7 @@ export class RegisterCompanyModalComponent implements OnInit {
       } else {
         this.toaster.error(data.message ? data.message : 'Server error')
       }
-    })
+    });
   }
 
   passwordEyeOffOnn() {

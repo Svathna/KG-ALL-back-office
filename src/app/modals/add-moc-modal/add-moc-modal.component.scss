@@ -1,3 +1,7 @@
 ::ng-deep .mat-form-field-flex > .mat-form-field-infix > .mat-input-element {
     height: 25px !important;
 }
+
+::ng-deep .mat-select-trigger {
+    height: 24px !important;
+}

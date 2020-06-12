@@ -1,6 +1,6 @@
 import { User } from "./user.model";
 
-export enum DocumentType {
+export enum DocType {
     MOC_CERTIFICATE = 'moc_certificate',
     BUSINESS_EXTRACT_FILE = 'business_extract',
     VAT_CERTIFICATE = 'vat_certificate',
@@ -8,14 +8,22 @@ export enum DocumentType {
     GDT_CARD = 'gdt_card',
     OTHERS = 'others',
 }
+
+export interface Doc {
+    title: string,
+    file_url: string,
+    type: DocType,
+}
+
 export interface CompanyDetail {
     name: string;
     nameInKhmer: string;
     _id: string;
     user?: User;
-    moc?: Moc;
-    dot?: Dot;
-    taxHistory?: TaxHistory;
+    MOC?: Moc;
+    DOT?: Dot;
+    docs: Doc[],
+    taxHistorys?: TaxHistory[];
 }
 
 export interface CompanysResponse {
@@ -26,6 +34,12 @@ export interface CompanysResponse {
 
 export interface CompanyResponse {
     company: CompanyDetail;
+    success: boolean;
+    message: string;
+}
+
+export interface MocResponse {
+    moc: Moc;
     success: boolean;
     message: string;
 }

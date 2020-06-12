@@ -31,6 +31,10 @@ export class CompanyService {
     return this.http.delete(environment.apiURL + `/company/${id}`);
   }
 
+  addMocToCompany(body) {
+    return this.http.post(environment.apiURL + `/moc`, body);
+  }
+
 //   openLoginModal() {
 //     this.loginModal = this.openModal(LoginComponent);
 // }
