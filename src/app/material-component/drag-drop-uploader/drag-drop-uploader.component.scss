@@ -1,0 +1,44 @@
+$color_green: #80BA6B;
+
+@mixin transition($transitions...) {
+  -webkit-transition: $transitions;
+  -moz-transition: $transitions;
+  -ms-transition: $transitions;
+  -o-transition: $transitions;
+  transition: $transitions;
+}
+
+.drop-zone {
+  width: auto;
+  height: auto;
+  padding: 16px;
+  border-radius: 4px;
+  border: 1px solid $color_green;
+  background-color: #fff;
+}
+
+.btn-bg {
+  background-color: $color_green;
+  color: white;
+}
+
+.file-input {
+  display: none;
+}
+
+.drop-container {
+  border-radius: 10px;
+  border: 2px dashed $color_green;
+  padding: 12px;
+  width: 200px;
+  text-align: center;
+
+  &.is-drop-over {
+    background-color: #888888;
+    border-color: #2ca1ac;
+  }
+}
+
+.text-small {
+  font-size: small;
+}

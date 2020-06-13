@@ -60,14 +60,12 @@ export class AddMocModalComponent implements OnInit {
   }
 
   save() {
-    console.log(this.mocForm.value);
     if(this.mocForm.invalid && this.companyId) {
       return;
     }
     const value = this.mocForm.value;
     const companyId = this.companyId;
     Object.assign(value, {companyId});
-    console.log(value);
     this.isFetching = true;
     this.companyService.addMocToCompany(value).subscribe((data: MocResponse) => {
       this.isFetching = false;
@@ -79,13 +77,4 @@ export class AddMocModalComponent implements OnInit {
       }
     });
   }
-
-  uploadedCompletedPDF(response) {
-    console.log(response);
-  }
-
-  onLoadingPDF(isLoading) {
-    console.log(isLoading);
-  }
-
 }

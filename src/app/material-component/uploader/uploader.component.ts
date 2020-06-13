@@ -24,11 +24,11 @@ export class UploaderComponent implements OnInit {
 
   event: UploadInput = {
     type: 'uploadAll',
-    url: environment.CLOUDINARY_URL,
+    url: environment.cloudinaryURL,
     method: 'POST',
-    // data: {
-    //   upload_preset: ,
-    //  }
+    data: {
+      upload_preset: environment.cloudinaryPreset,
+     }
   };
 
   constructor(
@@ -49,6 +49,7 @@ export class UploaderComponent implements OnInit {
   }
 
   onUploadOutput(output: UploadOutput): void {
+    console.log(output);
     switch (output.type) {
       case 'allAddedToQueue':
         this.startUpload();

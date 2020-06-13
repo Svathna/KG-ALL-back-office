@@ -38,7 +38,6 @@ export class CompanyDetailComponent implements OnInit, OnDestroy {
       this.isFetching = false;
       if (data && data.company) {
         this.company = data.company;
-        console.log(this.company);
       }
     });
   }
@@ -53,7 +52,6 @@ export class CompanyDetailComponent implements OnInit, OnDestroy {
     });
 
     this.dialogRef.afterClosed().subscribe((data) => {
-      console.log(data);
       if (data && data.success) {
         this.getCompanyDetail();
       }

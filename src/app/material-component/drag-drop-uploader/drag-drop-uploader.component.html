@@ -1,0 +1,14 @@
+<div class="drop-zone">
+  <div class="drop-container" accept="image/*,.bmp,.jpg,.png,.gif,.doc,.docx,.ppt,.pptx,.pdf" type="file"
+    (drop)="uploadDocument($event)" (dragover)="setDragOver(true, $event)" (dragleave)="setDragOver(false)"
+    [ngClass]="{ 'is-drop-over': dragOver }">
+    <div>
+      <button mat-raised-button class="btn-bg" (click)="fileInput.click()">
+        Upload
+      </button>
+      <input #fileInput accept=".docx,.pdf" type="file"
+        (change)="uploadDocument($event)" class="file-input" [multiple]="multiple">
+    </div>
+    <span class="text-small">or drag file in here</span>
+  </div>
+</div>

@@ -14,11 +14,22 @@ export class MocComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.moc);
   }
 
   onAddMoc(event) {
     this.addMoc.emit(event);
+  }
+
+  uploadedCompletedPDF(response) {
+    console.log(response);
+  }
+
+  onLoadingPDF(isLoading) {
+    console.log(isLoading);
+  }
+
+  uploadDocument(event) {
+    console.log(event);
   }
 
 }

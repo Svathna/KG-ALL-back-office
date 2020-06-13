@@ -37,6 +37,7 @@ import { TreesComponent } from './trees/trees.component';
 import { SimpleFormComponent } from './simple-form/simple-form.component';
 import { CompanyCardComponent } from './company-card/company-card.component';
 import { UploaderComponent } from './uploader/uploader.component';
+import { DragDropUploaderComponent } from './drag-drop-uploader/drag-drop-uploader.component';
 
 @NgModule({
   imports: [
@@ -74,8 +75,9 @@ import { UploaderComponent } from './uploader/uploader.component';
     TreesComponent,
     SimpleFormComponent,
     CompanyCardComponent,
-    UploaderComponent
+    UploaderComponent,
+    DragDropUploaderComponent
   ],
-  exports: [CompanyCardComponent, UploaderComponent]
+  exports: [CompanyCardComponent, UploaderComponent, DragDropUploaderComponent]
 })
 export class MaterialComponentsModule {}
