@@ -49,7 +49,6 @@ export class UploaderComponent implements OnInit {
   }
 
   onUploadOutput(output: UploadOutput): void {
-    console.log(output);
     switch (output.type) {
       case 'allAddedToQueue':
         this.startUpload();
@@ -84,7 +83,7 @@ export class UploaderComponent implements OnInit {
           this.hasCompleted.next(response);
           this.toastrService.success('File uploaded!');
         } else {
-          this.toastrService.error('Error uploading image!', 'Please try again later');
+          this.toastrService.error('Error uploading!', 'Please try again later');
         }
         this.isLoading = false
         this.loading.next(false);

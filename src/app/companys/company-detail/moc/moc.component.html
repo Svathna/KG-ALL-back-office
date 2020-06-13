@@ -32,7 +32,7 @@
                 <h6>
                     1. <a href="#">{{ 'MOC Certificate/វិញ្ញាបនប័ត្រចុះបញ្ជីពាណិជ្ជកម្ម' }}</a>
                 </h6>
-                <app-uploader 
+                <app-uploader
                     [allowedContentTypes]="['application/pdf']"
                     (hasCompleted)="uploadedCompletedPDF($event)"
                     (loading)="onLoadingPDF($event)">
@@ -42,11 +42,6 @@
                 <h6>
                     2. <a href="#">{{ 'Business Extract File/សម្រង់ក្រុមហ៊ុន' }}</a>
                 </h6>
-                <app-uploader 
-                    [allowedContentTypes]="['application/pdf']"
-                    (hasCompleted)="uploadedCompletedPDF($event)"
-                    (loading)="onLoadingPDF($event)">
-                </app-uploader>
             </div>
         </div>
     </div>

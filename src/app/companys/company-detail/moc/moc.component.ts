@@ -9,6 +9,8 @@ import { DocType, Moc, CompanyDetail } from '../../../model/company.model';
 export class MocComponent implements OnInit {
   @Input() moc: Moc;
 
+  isUploading = false;
+
   @Output() addMoc = new EventEmitter<CompanyDetail>();
 
   constructor() { }
@@ -26,10 +28,6 @@ export class MocComponent implements OnInit {
 
   onLoadingPDF(isLoading) {
     console.log(isLoading);
+    this.isUploading = isLoading;
   }
-
-  uploadDocument(event) {
-    console.log(event);
-  }
-
 }

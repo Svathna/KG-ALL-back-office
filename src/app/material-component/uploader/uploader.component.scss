@@ -8,6 +8,8 @@
 }
 
 .upload-button {
+    width: auto;
+    height: auto;
     @include transition(0.2s linear);
 
     .file-input {
@@ -17,7 +19,7 @@
     .drop-container {
         background-color: #BBBBBB;
         border-radius: 20px;
-        border: 2px dashed #3EC1CD;
+        border: 2px dashed #3069bb;
         padding: 40px 20px;
         width: 100%;
         text-align: center;

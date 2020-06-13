@@ -7,17 +7,20 @@
      ngFileSelect
      [options]="options"
      (uploadOutput)="onUploadOutput($event)"
-     [uploadInput]="uploadInput"
-     [multiple]="multiple">
+     [uploadInput]="uploadInput">
   <div class="drop-container"
     ngFileDrop
     [options]="options"
     (uploadOutput)="onUploadOutput($event)"
     [uploadInput]="uploadInput"
     [ngClass]="{ 'is-drop-over': dragOver }">
-    <h5>Drag &amp; Drop</h5>
-    <div *ngIf="isLoading" class="spinner-wrapper">
+    <h5>Drag &amp; Drop file</h5>
+    <!-- <span class="text-small">PDF file</span> -->
+    <!-- <div *ngIf="isLoading" class="spinner-wrapper">
       <i class="fa fa-spin fa-cog"></i>
-    </div>
+    </div> -->
+    <div *ngIf="isLoading">
+      <mat-progress-bar mode="query"></mat-progress-bar>
+  </div>
   </div>
 </label>
