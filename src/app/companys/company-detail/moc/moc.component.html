@@ -32,11 +32,26 @@
                 <h6>
                     1. <a href="#">{{ 'MOC Certificate/វិញ្ញាបនប័ត្រចុះបញ្ជីពាណិជ្ជកម្ម' }}</a>
                 </h6>
-                <app-uploader
-                    [allowedContentTypes]="['application/pdf']"
-                    (hasCompleted)="uploadedCompletedPDF($event)"
-                    (loading)="onLoadingPDF($event)">
-                </app-uploader>
+                <div *ngIf="!pdf" fxLayoutGap="10px">
+                    <app-uploader
+                        [allowedContentTypes]="['application/pdf']"
+                        (hasCompleted)="uploadedCompletedPDF($event)"
+                        (loading)="onLoadingPDF($event)">
+                    </app-uploader>
+                </div>
+                <div *ngIf="pdf">
+                    <pdf-viewer [src]="pdf"
+                      #pdfComponent
+                      [(page)]="currentPDFpage"
+                      [fit-to-page]="true"
+                      [show-all]="true"
+                      [original-size]="false"
+                      [autoresize]="true"
+                      [stick-to-page]="true"
+                      (after-load-complete)="pdfLoaded($event)"
+                      style="display: block;">
+                    </pdf-viewer>
+                </div>
             </div>
             <div fxLayout="column" fxLayoutGap="20px">
                 <h6>
@@ -69,55 +84,3 @@
         </div>
     </div>
 </div>
-
-<!-- <div *ngIf="moc" fxLayout="row">
-        <div fxFlex="50" fxLayout="column" fxLayoutGap="10px">
-            <div fxLayout="row" fxLayoutAlign="start">
-                <h6 fxFlex="50">ឈ្មោះប្រើប្រាស់ប្រព័ន្ធពាណិជ្ជកម្ម :</h6>
-                <h5>{{ moc.mocUsernameLogin }}</h5>
-            </div>
-        
-            <div fxLayout="row" fxLayoutAlign="start">
-                <h6 fxFlex="50">លេខកូដសម្ងាត់ :</h6>
-                <h5>{{ moc.mocPasswordLogin }}</h5>
-            </div>
-        
-            <div fxLayout="row" fxLayoutAlign="start">
-                <h6 fxFlex="50">ចុះបញ្ជីពាណិជ្ជកម្មលេខ :</h6>
-                <h5>{{ moc.mocNumber }}</h5>
-            </div>
-        
-            <div fxLayout="row" fxLayoutAlign="start">
-                <h6 fxFlex="50">ចុះថ្ងៃទី :</h6>
-                <h5>{{ moc.notedDate}}</h5>
-            </div>
-        
-            <div fxLayout="row" fxLayoutAlign="start">
-                <h6 fxFlex="50">ដើមទុនចុះបញ្ជី :</h6>
-                <h5>{{ moc.capital }} <strong>រៀល</strong></h5>
-            </div>
-        
-            <div fxLayout="row" fxLayoutAlign="start">
-                <h6 fxFlex="50">ប្រភេទ :</h6>
-                <h5>{{ moc.type }}</h5>
-            </div>
-        
-            <div fxLayout="row" fxLayoutAlign="start">
-                <h6 fxFlex="50">ថ្ងៃខែតម្កល់ប្រតិវេទប្រចាំឆ្នាំ :</h6>
-                <h5>{{ moc.dateOfBTV }}</h5>
-            </div>
-        
-            <div fxLayout="row" fxLayoutAlign="start">
-                <h6 fxFlex="30">ទាញយកឯកសារជា PDF :</h6>
-            </div>
-        
-            <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="40px">
-                <h6>
-                    1. <a href="#">{{ 'MOC Certificate/វិញ្ញាបនប័ត្រចុះបញ្ជីពាណិជ្ជកម្ម' }}</a>
-                </h6>
-                <h6>
-                    2. <a href="#">{{ 'Business Extract File/សម្រង់ក្រុមហ៊ុន' }}</a>
-                </h6>
-            </div>
-        </div>
-    </div> -->

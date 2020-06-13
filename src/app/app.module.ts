@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoMaterialModule } from './demo-material-module';
 import { ToastrModule } from 'ngx-toastr';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 import { SharedModule } from './shared/shared.module';
 import { SpinnerComponent } from './shared/spinner.component';
@@ -63,6 +64,7 @@ import { MocComponent } from './companys/company-detail/moc/moc.component';
     MaterialComponentsModule,
     HttpClientModule,
     SharedModule,
+    PdfViewerModule,
     MatFormFieldModule,
     ModalsModule,
     RouterModule.forRoot(AppRoutes, { useHash: true }),

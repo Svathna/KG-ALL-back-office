@@ -41,6 +41,7 @@
     "jquery": "^3.4.1",
     "ng-chartist": "4.1.0",
     "ng2-completer": "^3.0.3",
+    "ng2-pdf-viewer": "^6.3.0",
     "ng2-smart-table": "^1.5.0",
     "ngx-show-hide-password": "^2.1.0",
     "ngx-toastr": "^11.2.1",

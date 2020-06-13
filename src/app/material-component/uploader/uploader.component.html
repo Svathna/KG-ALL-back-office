@@ -1,6 +1,4 @@
-
-
-<label class="upload-button">
+<label class="upload-button cursor-pointer">
   <input type="file"
      accept="{{allowedContentTypes}}"
      class="file-input"
@@ -14,7 +12,7 @@
     (uploadOutput)="onUploadOutput($event)"
     [uploadInput]="uploadInput"
     [ngClass]="{ 'is-drop-over': dragOver }">
-    <h5>Drag &amp; Drop file</h5>
+    <h5>Drag &amp; Drop</h5>
     <!-- <span class="text-small">PDF file</span> -->
     <!-- <div *ngIf="isLoading" class="spinner-wrapper">
       <i class="fa fa-spin fa-cog"></i>

@@ -10,6 +10,9 @@ export class MocComponent implements OnInit {
   @Input() moc: Moc;
 
   isUploading = false;
+  pdf = '';
+  pdfPages = 0;
+  currentPDFpage = 1;
 
   @Output() addMoc = new EventEmitter<CompanyDetail>();
 
@@ -23,11 +26,25 @@ export class MocComponent implements OnInit {
   }
 
   uploadedCompletedPDF(response) {
-    console.log(response);
+    const pdf = response.secure_url;
+    this.pdf = pdf;
+    console.log(this.pdf);
   }
 
   onLoadingPDF(isLoading) {
     console.log(isLoading);
     this.isUploading = isLoading;
   }
+
+  pdfLoaded({_pdfInfo: pdfInfo}) {
+    this.pdfPages = pdfInfo.numPages;
+  }
+
+  // nextPDFpage() {
+  //   this.currentPDFpage = this.currentPDFpage + 1;
+  // }
+
+  // previousPDFpage() {
+  //   this.currentPDFpage = this.currentPDFpage - 1;
+  // }
 }
