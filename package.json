@@ -44,6 +44,7 @@
     "ng2-smart-table": "^1.5.0",
     "ngx-show-hide-password": "^2.1.0",
     "ngx-toastr": "^11.2.1",
+    "ngx-uploader": "^8.0.0",
     "node-sass": "^4.12.0",
     "popper.js": "^1.16.0",
     "rxjs": "^6.3.3",

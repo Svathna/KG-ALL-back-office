@@ -48,6 +48,7 @@ import {OverlayModule} from '@angular/cdk/overlay';
 import {PlatformModule} from '@angular/cdk/platform';
 import {ObserversModule} from '@angular/cdk/observers';
 import {PortalModule} from '@angular/cdk/portal';
+import { NgxUploaderModule } from 'ngx-uploader';
 
 /**
  * NgModule that includes all Material modules that are required to serve the demo-app.
@@ -94,6 +95,7 @@ import {PortalModule} from '@angular/cdk/portal';
     OverlayModule,
     PlatformModule,
     PortalModule,
+    NgxUploaderModule,
   ]
 })
 export class DemoMaterialModule {}

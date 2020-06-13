@@ -36,6 +36,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { TreesComponent } from './trees/trees.component';
 import { SimpleFormComponent } from './simple-form/simple-form.component';
 import { CompanyCardComponent } from './company-card/company-card.component';
+import { UploaderComponent } from './uploader/uploader.component';
 
 @NgModule({
   imports: [
@@ -72,8 +73,9 @@ import { CompanyCardComponent } from './company-card/company-card.component';
     TableComponent,
     TreesComponent,
     SimpleFormComponent,
-    CompanyCardComponent
+    CompanyCardComponent,
+    UploaderComponent
   ],
-  exports: [CompanyCardComponent]
+  exports: [CompanyCardComponent, UploaderComponent]
 })
 export class MaterialComponentsModule {}

@@ -80,4 +80,12 @@ export class AddMocModalComponent implements OnInit {
     });
   }
 
+  uploadedCompletedPDF(response) {
+    console.log(response);
+  }
+
+  onLoadingPDF(isLoading) {
+    console.log(isLoading);
+  }
+
 }

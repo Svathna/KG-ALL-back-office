@@ -6,8 +6,8 @@
         </a>
     </div>
 
-    <div *ngIf="moc" fxLayout="row">
-        <div fxLayout="column" fxFlex="25" fxLayoutAlign="start" fxLayoutGap="10px">
+    <div *ngIf="moc" fxLayout="row" fxFlex="100">
+        <div fxLayout="column" fxFlex="20" fxLayoutAlign="start" fxLayoutGap="10px">
             <h6>ឈ្មោះប្រើប្រាស់ប្រព័ន្ធពាណិជ្ជកម្ម :</h6>
             <h6>លេខកូដសម្ងាត់ :</h6>
             <h6>ចុះបញ្ជីពាណិជ្ជកម្មលេខ :</h6>
@@ -17,7 +17,7 @@
             <h6>ថ្ងៃខែតម្កល់ប្រតិវេទប្រចាំឆ្នាំ :</h6>
             <h6 fxFlex="30">ទាញយកឯកសារជា PDF :</h6>
         </div>
-        <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="10px">
+        <div fxLayout="column" fxFlex="30" fxLayoutAlign="start" fxLayoutGap="10px">
             <h5>{{ moc.mocUsernameLogin }}</h5>
             <h5>{{ moc.mocPasswordLogin }}</h5>
             <h5>{{ moc.mocNumber }}</h5>
@@ -26,15 +26,15 @@
             <h5>{{ moc.type }}</h5>
             <h5>{{ moc.dateOfBTV ? moc.dateOfBTV : '?'}}</h5>
         </div>
-    </div>
 
-    <div *ngIf="moc" fxLayout="row" fxLayoutAlign="start" fxLayoutGap="40px">
-        <h6>
-            1. <a href="#">{{ 'MOC Certificate/វិញ្ញាបនប័ត្រចុះបញ្ជីពាណិជ្ជកម្ម' }}</a>
-        </h6>
-        <h6>
-            2. <a href="#">{{ 'Business Extract File/សម្រង់ក្រុមហ៊ុន' }}</a>
-        </h6>
+        <div fxLayout="row" fxFlex="50" fxLayoutAlign="space-between">
+            <h6>
+                1. <a href="#">{{ 'MOC Certificate/វិញ្ញាបនប័ត្រចុះបញ្ជីពាណិជ្ជកម្ម' }}</a>
+            </h6>
+            <h6>
+                2. <a href="#">{{ 'Business Extract File/សម្រង់ក្រុមហ៊ុន' }}</a>
+            </h6>
+        </div>
     </div>
 
     <div *ngIf="!moc" fxLayout="row">

@@ -1,0 +1,23 @@
+
+
+<label class="upload-button">
+  <input type="file"
+     accept="{{allowedContentTypes}}"
+     class="file-input"
+     ngFileSelect
+     [options]="options"
+     (uploadOutput)="onUploadOutput($event)"
+     [uploadInput]="uploadInput"
+     [multiple]="multiple">
+  <div class="drop-container"
+    ngFileDrop
+    [options]="options"
+    (uploadOutput)="onUploadOutput($event)"
+    [uploadInput]="uploadInput"
+    [ngClass]="{ 'is-drop-over': dragOver }">
+    <h5>Drag &amp; Drop</h5>
+    <div *ngIf="isLoading" class="spinner-wrapper">
+      <i class="fa fa-spin fa-cog"></i>
+    </div>
+  </div>
+</label>
