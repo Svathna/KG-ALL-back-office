@@ -1,5 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DocType, Moc, CompanyDetail } from '../../../model/company.model';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+
+declare var require: any
+const FileSaver = require('file-saver');
 
 @Component({
   selector: 'app-moc',
@@ -16,7 +20,9 @@ export class MocComponent implements OnInit {
 
   @Output() addMoc = new EventEmitter<CompanyDetail>();
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+  ) { }
 
   ngOnInit() {
   }
@@ -40,11 +46,11 @@ export class MocComponent implements OnInit {
     this.pdfPages = pdfInfo.numPages;
   }
 
-  // nextPDFpage() {
-  //   this.currentPDFpage = this.currentPDFpage + 1;
-  // }
-
-  // previousPDFpage() {
-  //   this.currentPDFpage = this.currentPDFpage - 1;
-  // }
+  downloadPDF() {
+    console.log('yeee');
+    if (!this.pdf) {
+      return;
+    }
+    FileSaver.saveAs(this.pdf);
+  }
 }

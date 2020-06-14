@@ -30,7 +30,7 @@
         <div fxLayout="row" fxFlex="50" fxLayoutAlign="space-between">
             <div fxLayout="column" fxLayoutGap="20px">
                 <h6>
-                    1. <a href="#">{{ 'MOC Certificate/វិញ្ញាបនប័ត្រចុះបញ្ជីពាណិជ្ជកម្ម' }}</a>
+                    1. <a (click)="downloadPDF()" class="link cursor-pointer">{{ 'MOC Certificate/វិញ្ញាបនប័ត្រចុះបញ្ជីពាណិជ្ជកម្ម' }}</a>
                 </h6>
                 <div *ngIf="!pdf" fxLayoutGap="10px">
                     <app-uploader
