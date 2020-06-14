@@ -27,8 +27,10 @@ export class MocComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.moc_certificate = this.company.docs.moc_certificate ? this.company.docs.moc_certificate : '';
-    this.business_extract = this.company.docs.business_extract ? this.company.docs.business_extract : '';
+    if (this.company.docs) {
+      this.moc_certificate = this.company.docs.moc_certificate ? this.company.docs.moc_certificate : '';
+      this.business_extract = this.company.docs.business_extract ? this.company.docs.business_extract : '';
+    }
   }
 
   onAddMoc(event) {
@@ -37,17 +39,10 @@ export class MocComponent implements OnInit {
 
   uploadedCompletedMocCertificate(response) {
     const moc_certificate = response.secure_url;
-    console.log(moc_certificate);
-    console.log(response.secure_url)
-    // this.moc_certificate = moc_certificate;
     this.uploadMocCertificateToCompany(moc_certificate);
   }
 
-  mocCertificateLoaded(event) {
-
-  }
-
-  onLoadingMocCertificate(isLoading) {
+  onLoading(isLoading) {
     return;
   }
 
@@ -59,7 +54,6 @@ export class MocComponent implements OnInit {
   }
 
   uploadMocCertificateToCompany(url) {
-    console.log(this.company);
     if (!this.company || !url) {
       return;
     }
@@ -68,7 +62,6 @@ export class MocComponent implements OnInit {
       companyId: this.company ? this.company._id : '',
       docId: this.company.docs ? this.company.docs._id : ''
     }
-    console.log(value);
     this.isMocCertificateUploading = true;
     this.companyService.addDocToCompany(value).subscribe((data: DocResponse) => {
       this.isMocCertificateUploading = false;
@@ -80,8 +73,35 @@ export class MocComponent implements OnInit {
       }
     });
   }
+ 
+  uploadedCompletedBusinessExtract(response) {
+    const business_extract = response.secure_url;
+    this.uploadBusinessExtractToCompany(business_extract);
+  }
 
-  cancelMocCertificate() {
-    this.moc_certificate = '';
+  downloadBusinessExtract() {
+    if (!this.business_extract) {
+      return;
+    }
+    FileSaver.saveAs(this.business_extract, 'business_extract');
+  }
+
+  uploadBusinessExtractToCompany(url) {
+    if (!this.company || !url) {
+      return;
+    }
+    const value = {
+      business_extract: url,
+      companyId: this.company ? this.company._id : '',
+      docId: this.company.docs ? this.company.docs._id : ''
+    }
+    this.companyService.addDocToCompany(value).subscribe((data: DocResponse) => {
+      if (data.success) {
+        this.business_extract = data.doc.business_extract ? data.doc.business_extract : '';
+        this.toaster.success('Upload succeseful');
+      } else {
+        this.toaster.error(data.message ? data.message : 'Error while uploading');
+      }
+    });
   }
 }
