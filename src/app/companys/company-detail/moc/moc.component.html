@@ -30,28 +30,34 @@
         <div fxLayout="row" fxFlex="50" fxLayoutAlign="space-between">
             <div fxLayout="column" fxLayoutGap="20px">
                 <h6>
-                    1. <a (click)="downloadPDF()" class="link cursor-pointer">{{ 'MOC Certificate/វិញ្ញាបនប័ត្រចុះបញ្ជីពាណិជ្ជកម្ម' }}</a>
+                    1. <a (click)="downloadMocCertificate()" class="link cursor-pointer">{{ 'MOC Certificate/វិញ្ញាបនប័ត្រចុះបញ្ជីពាណិជ្ជកម្ម' }}</a>
                 </h6>
-                <div *ngIf="!pdf" fxLayoutGap="10px">
+                <div *ngIf="!moc_certificate" fxLayoutGap="10px">
                     <app-uploader
                         [allowedContentTypes]="['application/pdf']"
-                        (hasCompleted)="uploadedCompletedPDF($event)"
-                        (loading)="onLoadingPDF($event)">
+                        (hasCompleted)="uploadedCompletedMocCertificate($event)"
+                        (loading)="onLoadingMocCertificate($event)">
                     </app-uploader>
                 </div>
-                <div *ngIf="pdf">
-                    <pdf-viewer [src]="pdf"
-                      #pdfComponent
-                      [(page)]="currentPDFpage"
+                <div *ngIf="moc_certificate">
+                    <pdf-viewer [src]="moc_certificate"
                       [fit-to-page]="true"
-                      [show-all]="true"
+                      [show-all]="false"
                       [original-size]="false"
                       [autoresize]="true"
-                      [stick-to-page]="true"
-                      (after-load-complete)="pdfLoaded($event)"
-                      style="display: block;">
+                      [show-borders]="true"
+                      style="display: block;"
+                      (after-load-complete)="mocCertificateLoaded($event)">
                     </pdf-viewer>
                 </div>
+                <!-- <div *ngIf="moc_certificate">
+                    <button class="mr-2" [disabled]="isFetching" mat-raised-button color="warn" (click)="cancelMocCertificate()">
+                        Cancel
+                    </button>
+                    <button [disabled]="isUploading" color="primary" mat-raised-button (click)="uploadMocCertificateToCompany()">
+                        Save
+                    </button>
+                </div> -->
             </div>
             <div fxLayout="column" fxLayoutGap="20px">
                 <h6>

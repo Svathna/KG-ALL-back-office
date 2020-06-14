@@ -15,7 +15,7 @@
                   <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="30px">
                     <app-general [user]="company.user"></app-general>
                     <!-- Minstry of Commerce -->
-                    <app-moc (addMoc)="onAddMoc(event)" [moc]="company.MOC"></app-moc>
+                    <app-moc (addMoc)="onAddMoc(event)" [company]="company" [moc]="company.MOC"></app-moc>
                     <!-- <div *ngIf="!company.moc">
                       <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="10px">
                         <h4 class="pb-3 m-t-5 text-khmer-bold">ក្រសួងពាណិជ្ជកម្ម</h4>

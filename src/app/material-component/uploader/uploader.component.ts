@@ -2,6 +2,8 @@ import { Component, OnInit, EventEmitter, Output, Input, OnChanges} from '@angul
 import { ToastrService } from 'ngx-toastr';
 import { environment } from '../../../environments/environment';
 import { UploaderOptions, UploadFile, UploadInput, humanizeBytes, UploadOutput } from 'ngx-uploader';
+import { CompanyService } from '../../service/company.service';
+import { DocType } from '../../model/company.model';
 
 
 @Component({
@@ -17,8 +19,11 @@ export class UploaderComponent implements OnInit {
   humanizeBytes: Function;
   dragOver: boolean;
   isLoading = false;
+  
   @Input() allowedContentTypes: string[] = ['image/jpeg', 'image/png', 'image/gif'];
   @Input() multiple = false;
+  // @Input() isUploading: boolean;
+
   @Output() loading: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() hasCompleted: EventEmitter<any> = new EventEmitter<any>();
 
@@ -47,6 +52,11 @@ export class UploaderComponent implements OnInit {
       allowedContentTypes: this.allowedContentTypes,
     };
   }
+
+  // ngOnChanges(change) {
+  //   console.log(change);
+  //   this.isLoading = this.isUploading ? this.isLoading : this.isLoading;
+  // }
 
   onUploadOutput(output: UploadOutput): void {
     switch (output.type) {
@@ -81,11 +91,11 @@ export class UploaderComponent implements OnInit {
         if (responseStatus === 200) {
           // The file is downloaded
           this.hasCompleted.next(response);
-          this.toastrService.success('File uploaded!');
+          // this.toastrService.success('File uploaded!');
         } else {
           this.toastrService.error('Error uploading!', 'Please try again later');
         }
-        this.isLoading = false
+        // this.isLoading = false
         this.loading.next(false);
         break;
     }

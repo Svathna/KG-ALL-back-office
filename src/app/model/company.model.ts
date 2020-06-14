@@ -9,10 +9,20 @@ export enum DocType {
     OTHERS = 'others',
 }
 
+export interface OtherDocument {
+    docUrl: string;
+    title: string;
+    titleInKhmer: string;
+  }
+
 export interface Doc {
-    title: string,
-    file_url: string,
-    type: DocType,
+    _id: string;
+    moc_certificate: string;
+    business_extract: string;
+    vat_certificate: string;
+    patent: string;
+    gdt_card: string;
+    others: OtherDocument[];
 }
 
 export interface CompanyDetail {
@@ -22,7 +32,7 @@ export interface CompanyDetail {
     user?: User;
     MOC?: Moc;
     DOT?: Dot;
-    docs: Doc[],
+    docs: Doc,
     taxHistorys?: TaxHistory[];
 }
 
@@ -40,6 +50,12 @@ export interface CompanyResponse {
 
 export interface MocResponse {
     moc: Moc;
+    success: boolean;
+    message: string;
+}
+
+export interface DocResponse {
+    doc: Doc;
     success: boolean;
     message: string;
 }

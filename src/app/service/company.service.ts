@@ -35,6 +35,10 @@ export class CompanyService {
     return this.http.post(environment.apiURL + `/moc`, body);
   }
 
+  addDocToCompany(body) {
+    return this.http.post(environment.apiURL + `/doc`, body);
+  }
+
 //   openLoginModal() {
 //     this.loginModal = this.openModal(LoginComponent);
 // }
