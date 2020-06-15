@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { User } from '../../model/user.model';
 import { CompanyDetail } from '../../model/company.model';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
-import { RegisterCompanyModalComponent } from '../../modals/register-company-modal/register-company-modal.component';
 
 @Component({
   selector: 'company-card',
@@ -27,11 +26,13 @@ export class CompanyCardComponent implements OnInit {
 
   deleteCompany(event) {
     event.preventDefault();
+    event.stopPropagation();
     this.remove.emit(this.company);
   }
 
   editCompany(event) {
     event.preventDefault();
+    event.stopPropagation();
     this.edit.emit(this.company);
   }
 

@@ -1,30 +1,34 @@
 <div *ngIf="isFetching">
-    <mat-progress-bar mode="query"></mat-progress-bar>
+  <mat-progress-bar mode="query"></mat-progress-bar>
 </div>
-<mat-card *ngIf="!isFetching && company" class="mat-card h-100-p" fxLayout="column" fxLayoutAlign="start">
-        <div class="header mat-card-header text-center" fxLayout="column" fxLayoutAlign="center">
-            <h1>{{ company.nameInKhmer }}</h1>
-            <h1>{{ company.name }}</h1>
-        </div>
-        <div>
-            <mat-tab-group>
-                <mat-tab>
-                  <ng-template mat-tab-label>
-                    ពត៌មានទូទៅ
-                  </ng-template>
-                  <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="30px">
-                    <app-general [user]="company.user"></app-general>
-                    <!-- Minstry of Commerce -->
-                    <app-moc (addMoc)="onAddMoc(event)" (editMoc)="onEditMoc(event)" [company]="company" [moc]="company.MOC"></app-moc>
+<mat-card *ngIf="!isFetching && company" class="h-100-p" fxLayout="column" fxLayoutAlign="start">
+  <div class="header mat-card-header text-center" fxLayout="column" fxLayoutAlign="center">
+    <h1>{{ company.nameInKhmer }}</h1>
+    <h1>{{ company.name }}</h1>
+  </div>
+</mat-card>
 
-                  </div>
-                </mat-tab>
-                <mat-tab>
-                  <ng-template mat-tab-label>
-                    កាតព្វកិច្ចក្រុមហ៊ុន
-                  </ng-template>
-                  <h1>Terrible sushi restaurants</h1>
-                </mat-tab>
-              </mat-tab-group>
+<mat-card *ngIf="!isFetching && company" >
+  <div>
+    <mat-tab-group>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          ពត៌មានទូទៅ
+        </ng-template>
+        <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="30px">
+          <app-general [user]="company.user"></app-general>
+          <!-- Minstry of Commerce -->
+          <app-moc (addMoc)="onAddMoc(event)" (editMoc)="onEditMoc(event)" [company]="company" [moc]="company.MOC">
+          </app-moc>
+
         </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          កាតព្វកិច្ចក្រុមហ៊ុន
+        </ng-template>
+        <h1>Terrible sushi restaurants</h1>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
 </mat-card>

@@ -32,7 +32,10 @@ export class MocComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.notedDate = moment(this.moc.notedDate).format('DD-MM-YYYY');
+    if (this.moc) {
+      this.notedDate = moment(this.moc.notedDate).format('DD-MM-YYYY');
+    }
+    
     if (this.company.docs) {
       this.moc_certificate = this.company.docs.moc_certificate ? this.company.docs.moc_certificate : '';
       this.business_extract = this.company.docs.business_extract ? this.company.docs.business_extract : '';
