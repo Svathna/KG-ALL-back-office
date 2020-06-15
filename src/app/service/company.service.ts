@@ -35,6 +35,10 @@ export class CompanyService {
     return this.http.post(environment.apiURL + `/moc`, body);
   }
 
+  editMocToCompany(id: string, body) {
+    return this.http.patch(environment.apiURL + `/moc/${id}`, body);
+  }
+
   addDocToCompany(body) {
     return this.http.post(environment.apiURL + `/doc`, body);
   }

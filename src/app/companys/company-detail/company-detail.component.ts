@@ -58,6 +58,24 @@ export class CompanyDetailComponent implements OnInit, OnDestroy {
     });
   }
 
+  onEditMoc(event) {
+    this.dialogRef = this.dialog.open(AddMocModalComponent, {
+      width: "800px",
+      // height: "500px",
+      data: {
+        companyId: this.company._id,
+        moc: this.company.MOC ? this.company.MOC : '',
+      },
+    });
+
+    this.dialogRef.afterClosed().subscribe((data) => {
+      if (data && data.success) {
+        this.getCompanyDetail();
+      }
+    });
+
+  }
+
   ngOnDestroy() {
     this.routeSub.unsubscribe();
   }

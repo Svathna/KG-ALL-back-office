@@ -3,10 +3,13 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { ToastrService } from 'ngx-toastr';
 import { CompanyService } from '../../service/company.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MocResponse, CompanyType } from '../../model/company.model';
+import { MocResponse, CompanyType, Moc } from '../../model/company.model';
+import * as moment from 'moment';
+// import 'moment/locale/km';
 
 
-const COMPANY_TYPE_IN_KHMER = [
+export const COMPANY_TYPE_IN_KHMER = [
+  '',
   'សហគ្រាសឯកបុគ្គល',
   'ក្រុមហ៊ុនឯកជនទទួលខុសត្រូវមានកម្រិត',
   'ក្រុមហ៊ុនមហាជនទទួលខុសត្រូវមានកម្រិត',
@@ -25,6 +28,7 @@ export class AddMocModalComponent implements OnInit {
   companyId: string;
   companyTypeInKhmer = COMPANY_TYPE_IN_KHMER;
   companyType = CompanyType;
+  moc: Moc;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,7 +40,14 @@ export class AddMocModalComponent implements OnInit {
 
   ngOnInit() {
     this.companyId = this.data.companyId;
-    this.buildNewForm();
+    this.moc = this.data.moc;
+    console.log('Moc', this.moc);
+    console.log('Data', this.data)
+    if (this.moc) {
+      this.buildEditForm();
+    } else {
+      this.buildNewForm();
+    }
   }
 
   buildNewForm() {
@@ -45,9 +56,25 @@ export class AddMocModalComponent implements OnInit {
       notedDate: new FormControl('', [Validators.required]),
       capital: new FormControl('', [Validators.required, Validators.min(1)]),
       // dateOfBTV: new FormControl('', [Validators.required]),
-      type: new FormControl('', [Validators.required]),
+      companyType: new FormControl('', [Validators.required]),
       mocUsernameLogin: new FormControl('', [Validators.required]),
       mocPasswordLogin: new FormControl('', [Validators.required]),
+    });
+  }
+
+  buildEditForm() {
+    if (!this.moc) {
+      return;
+    }
+    const notedDate = moment(this.moc.notedDate);
+    this.mocForm = this.formBuilder.group({
+      mocNumber: new FormControl(this.moc.mocNumber, [Validators.required, Validators.min(1)]),
+      notedDate: new FormControl(notedDate.format('YYYY-MM-DD'), [Validators.required]),
+      capital: new FormControl(this.moc.capital, [Validators.required, Validators.min(1)]),
+      // dateOfBTV: new FormControl('', [Validators.required]),
+      companyType: new FormControl(this.moc.companyType, [Validators.required]),
+      mocUsernameLogin: new FormControl(this.moc.mocUsernameLogin, [Validators.required]),
+      mocPasswordLogin: new FormControl(this.moc.mocPasswordLogin, [Validators.required]),
     });
   }
 
@@ -71,6 +98,27 @@ export class AddMocModalComponent implements OnInit {
       this.isFetching = false;
       if (data && data.success) {
         this.toaster.success("Moc added");
+        this.dialogRef.close({ success: data.success });
+      } else {
+        this.toaster.error(data.message ? data.message : 'Server error')
+      }
+    });
+  }
+
+  update() {
+    if(this.mocForm.invalid && this.companyId) {
+      return;
+    }
+    console.log(this.mocForm.value);
+    const value = this.mocForm.value;
+    const companyId = this.companyId;
+    const mocId = this.moc._id;
+    Object.assign(value, {companyId});
+    this.isFetching = true;
+    this.companyService.editMocToCompany(mocId, value).subscribe((data: MocResponse) => {
+      this.isFetching = false;
+      if (data && data.success) {
+        this.toaster.success("Moc updated");
         this.dialogRef.close({ success: data.success });
       } else {
         this.toaster.error(data.message ? data.message : 'Server error')

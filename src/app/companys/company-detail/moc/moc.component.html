@@ -1,8 +1,11 @@
 <div fxLayout="column" fxLayoutGap="10px">
     <div class="pb-3" fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start center">
         <h4 class="m-t-5 text-khmer-bold">ក្រសួងពាណិជ្ជកម្ម</h4>
-        <a (click)="onAddMoc($event)" class="cursor-pointer link">
+        <a *ngIf="!moc" (click)="onAddMoc($event)" class="cursor-pointer link">
             បញ្ចូលពត៌មាន
+        </a>
+        <a *ngIf="moc" (click)="onEditMoc($event)" class="cursor-pointer link">
+            កែប្រែពត៌មាន
         </a>
     </div>
 
@@ -16,13 +19,13 @@
             <h6>ប្រភេទ :</h6>
             <h6>ថ្ងៃខែតម្កល់ប្រតិវេទប្រចាំឆ្នាំ :</h6>
         </div>
-        <div fxLayout="column" fxFlex="30" fxLayoutAlign="start" fxLayoutGap="18px">
+        <div fxLayout="column" fxFlex="30" fxLayoutAlign="start" fxLayoutGap="16px">
             <h5>{{ moc.mocUsernameLogin }}</h5>
             <h5>{{ moc.mocPasswordLogin }}</h5>
             <h5>{{ moc.mocNumber }}</h5>
-            <h5>{{ moc.notedDate}}</h5>
+            <h5>{{ notedDate}}</h5>
             <h5>{{ moc.capital }} <strong>រៀល</strong></h5>
-            <h5>{{ moc.type }}</h5>
+            <h5>{{ companyTypeInKhmer[moc.companyType] }}</h5>
             <h5>{{ moc.dateOfBTV ? moc.dateOfBTV : '?'}}</h5>
         </div>
 

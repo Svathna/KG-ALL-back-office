@@ -71,7 +71,7 @@ export interface Moc {
     notedDate: Date;
     capital: number;
     dateOfBTV: Date;
-    type: CompanyType;
+    companyType: CompanyType;
     mocUsernameLogin: string;
     mocPasswordLogin: string;
     _id: string;

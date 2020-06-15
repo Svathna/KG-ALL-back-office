@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { DocType, Moc, CompanyDetail, DocResponse } from '../../../model/company.model';
+import { DocType, Moc, CompanyDetail, DocResponse, CompanyType } from '../../../model/company.model';
 import { CompanyService } from '../../../service/company.service';
 import { ToastrService } from 'ngx-toastr';
+import { COMPANY_TYPE_IN_KHMER } from '../../../modals/add-moc-modal/add-moc-modal.component';
+import * as moment from 'moment';
 
 declare var require: any
 const FileSaver = require('file-saver');
@@ -15,11 +17,14 @@ export class MocComponent implements OnInit {
   @Input() moc: Moc;
   @Input() company: CompanyDetail;
 
+  @Output() addMoc = new EventEmitter<CompanyDetail>();
+  @Output() editMoc = new EventEmitter<CompanyDetail>();
+
   isMocCertificateUploading = false;
   moc_certificate = '';
   business_extract = '';
-
-  @Output() addMoc = new EventEmitter<CompanyDetail>();
+  companyTypeInKhmer = COMPANY_TYPE_IN_KHMER;
+  notedDate: any;
 
   constructor(
     private companyService: CompanyService,
@@ -27,6 +32,7 @@ export class MocComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.notedDate = moment(this.moc.notedDate).format('DD-MM-YYYY');
     if (this.company.docs) {
       this.moc_certificate = this.company.docs.moc_certificate ? this.company.docs.moc_certificate : '';
       this.business_extract = this.company.docs.business_extract ? this.company.docs.business_extract : '';
@@ -35,6 +41,10 @@ export class MocComponent implements OnInit {
 
   onAddMoc(event) {
     this.addMoc.emit(event);
+  }
+
+  onEditMoc(event) {
+    this.editMoc.emit(event)
   }
 
   uploadedCompletedMocCertificate(response) {
