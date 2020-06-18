@@ -13,7 +13,7 @@
                                 ចុះបញ្ជីពាណិជ្ជកម្មលេខ
                             </label>
                         </mat-label>
-                        <input formControlName="mocNumber" type="number" matInput placeholder="Placeholder">
+                        <input formControlName="mocNumber" type="number" matInput required>
                     </mat-form-field>
                 </p>
             </div>
@@ -25,7 +25,7 @@
                                 ចុះថ្ងៃទី
                             </label>
                         </mat-label>
-                        <input matInput formControlName="notedDate" type="date" placeholder="Placeholder">
+                        <input matInput formControlName="notedDate" type="date" required>
                     </mat-form-field>
                 </p>
             </div>
@@ -40,7 +40,7 @@
                                 ប្រភេទក្រុមហ៊ុន
                             </label>
                         </mat-label>
-                        <mat-select formControlName="companyType">
+                        <mat-select formControlName="companyType" required>
                             <mat-option [value]="companyType.SOLE_PROPRIETORSHIPS">{{ companyTypeInKhmer[1] }}</mat-option>
                             <mat-option [value]="companyType.PRIVATE_LIMITED_COMPANY">{{ companyTypeInKhmer[2] }}</mat-option>
                             <mat-option [value]="companyType.PUBLIC_LIMITED_COMPANY">{{ companyTypeInKhmer[3] }}</mat-option>
@@ -56,7 +56,7 @@
                                 ដើមទុនចុះបញ្ជី
                             </label>
                         </mat-label>
-                        <input formControlName="capital" type="number" matInput placeholder="Placeholder">
+                        <input formControlName="capital" type="number" matInput required>
                     </mat-form-field>
                 </p>
             </div>
@@ -71,7 +71,7 @@
                                 ឈ្មោះប្រើប្រាស់ប្រព័ន្ធពាណិជ្ជកម្ម
                             </label>
                         </mat-label>
-                        <input matInput formControlName="mocUsernameLogin" placeholder="Placeholder">
+                        <input matInput formControlName="mocUsernameLogin" required>
                     </mat-form-field>
                 </p>
             </div>
@@ -83,7 +83,7 @@
                                 លេខកូដប្រើប្រាស់ប្រព័ន្ធពាណិជ្ជកម្ម
                             </label>
                         </mat-label>
-                        <input matInput formControlName="mocPasswordLogin" placeholder="Placeholder" [type]="passwordVisible? 'text' : 'password'">
+                        <input matInput formControlName="mocPasswordLogin" [type]="passwordVisible? 'text' : 'password'" required>
                         <mat-icon class="cursor-pointer" (click)="passwordEyeOffOnn()" matSuffix>{{ passwordVisible? 'visibility' : 'visibility_off'}}</mat-icon>
                     </mat-form-field>
                 </p>
@@ -98,7 +98,7 @@
                                 ថ្ងៃខែតម្កល់ប្រតិវេទប្រចាំឆ្នាំ
                             </label>
                         </mat-label>
-                        <input matInput formControlName="annualTranscriptMaintenanceDate" type="date" placeholder="Placeholder">
+                        <input matInput formControlName="annualTranscriptMaintenanceDate" type="date" required>
                     </mat-form-field>
                 </p>
             </div>
