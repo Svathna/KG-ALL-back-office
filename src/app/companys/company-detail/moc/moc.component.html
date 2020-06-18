@@ -30,60 +30,10 @@
         </div>
 
         <div fxLayout="column" fxFlex="50" fxLayoutAlign="start" fxLayoutGap="20px">
-            <h6 fxFlex="30">ទាញយកឯកសារជា PDF :</h6>
-            <div fxLayout="row" fxLayoutAlign="space-between">
-                <div fxLayout="column" fxLayoutGap="20px">
-                    <h6>
-                        1. <a (click)="downloadMocCertificate()" class="link cursor-pointer">{{ 'MOC Certificate/វិញ្ញាបនប័ត្រចុះបញ្ជីពាណិជ្ជកម្ម' }}</a>
-                    </h6>
-                    <div *ngIf="!moc_certificate">
-                        <app-uploader
-                            [allowedContentTypes]="['application/pdf']"
-                            (hasCompleted)="uploadedCompletedMocCertificate($event)"
-                            (loading)="onLoading($event)">
-                        </app-uploader>
-                    </div>
-                    <div *ngIf="moc_certificate">
-                        <pdf-viewer [src]="moc_certificate"
-                          [fit-to-page]="true"
-                          [show-all]="false"
-                          [original-size]="false"
-                          [autoresize]="true"
-                          [show-borders]="true"
-                          style="display: block;">
-                        </pdf-viewer>
-                    </div>
-                    <!-- <div *ngIf="moc_certificate">
-                        <button class="mr-2" [disabled]="isFetching" mat-raised-button color="warn" (click)="cancelMocCertificate()">
-                            Cancel
-                        </button>
-                        <button [disabled]="isUploading" color="primary" mat-raised-button (click)="uploadMocCertificateToCompany()">
-                            Save
-                        </button>
-                    </div> -->
-                </div>
-                <div fxLayout="column" fxLayoutGap="20px">
-                    <h6>
-                        2. <a (click)="downloadBusinessExtract()" class="link cursor-pointer">{{ 'Business Extract File/សម្រង់ក្រុមហ៊ុន' }}</a>
-                    </h6>
-                    <div *ngIf="!business_extract">
-                        <app-uploader
-                            [allowedContentTypes]="['application/pdf']"
-                            (hasCompleted)="uploadedCompletedBusinessExtract($event)"
-                            (loading)="onLoading($event)">
-                        </app-uploader>
-                    </div>
-                    <div *ngIf="business_extract">
-                        <pdf-viewer [src]="business_extract"
-                          [fit-to-page]="true"
-                          [show-all]="false"
-                          [original-size]="false"
-                          [autoresize]="true"
-                          [show-borders]="true"
-                          style="display: block;">
-                        </pdf-viewer>
-                    </div>
-                </div>
+            <h6 fxFlex="30">ឯកសារជា PDF :</h6>
+            <div *ngIf="company" fxLayout="row" fxLayoutAlign="space-between">
+                <moc-certificate-uploader [company]="company"></moc-certificate-uploader>
+                <business-extract-uploader [company]="company"></business-extract-uploader>
             </div>
         </div>
     </div>

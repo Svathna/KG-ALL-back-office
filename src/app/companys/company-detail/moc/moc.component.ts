@@ -4,6 +4,7 @@ import { CompanyService } from '../../../service/company.service';
 import { ToastrService } from 'ngx-toastr';
 import { COMPANY_TYPE_IN_KHMER } from '../../../modals/add-moc-modal/add-moc-modal.component';
 import * as moment from 'moment';
+import { Subject } from 'rxjs';
 
 declare var require: any
 const FileSaver = require('file-saver');
@@ -20,11 +21,13 @@ export class MocComponent implements OnInit {
   @Output() addMoc = new EventEmitter<CompanyDetail>();
   @Output() editMoc = new EventEmitter<CompanyDetail>();
 
-  isMocCertificateUploading = false;
+  isUploading = false;
   moc_certificate = '';
   business_extract = '';
   companyTypeInKhmer = COMPANY_TYPE_IN_KHMER;
   notedDate: any;
+  uploaderClicked = false;
+  clickEventSubject: Subject<void> = new Subject<void>();
 
   constructor(
     private companyService: CompanyService,
@@ -56,7 +59,7 @@ export class MocComponent implements OnInit {
   }
 
   onLoading(isLoading) {
-    return;
+    this.isUploading = isLoading;
   }
 
   downloadMocCertificate() {
@@ -75,9 +78,9 @@ export class MocComponent implements OnInit {
       companyId: this.company ? this.company._id : '',
       docId: this.company.docs ? this.company.docs._id : ''
     }
-    this.isMocCertificateUploading = true;
+    this.isUploading = true;
     this.companyService.addDocToCompany(value).subscribe((data: DocResponse) => {
-      this.isMocCertificateUploading = false;
+      this.isUploading = false;
       if (data.success) {
         this.moc_certificate = data.doc.moc_certificate ? data.doc.moc_certificate : '';
         this.toaster.success('Upload succeseful');
@@ -108,7 +111,9 @@ export class MocComponent implements OnInit {
       companyId: this.company ? this.company._id : '',
       docId: this.company.docs ? this.company.docs._id : ''
     }
+    this.isUploading = true;
     this.companyService.addDocToCompany(value).subscribe((data: DocResponse) => {
+      this.isUploading = false;
       if (data.success) {
         this.business_extract = data.doc.business_extract ? data.doc.business_extract : '';
         this.toaster.success('Upload succeseful');
@@ -116,5 +121,15 @@ export class MocComponent implements OnInit {
         this.toaster.error(data.message ? data.message : 'Error while uploading');
       }
     });
+  }
+
+  uploadNewMocCertificate() {
+    this.clickEventSubject.next();
+  }
+
+  uploadNewBusinessExtract() {}
+
+  loadToPdfViewerCompleted() {
+    this.isUploading = false;
   }
 }

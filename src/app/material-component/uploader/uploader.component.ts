@@ -1,7 +1,8 @@
-import { Component, OnInit, EventEmitter, Output, Input, OnChanges} from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, OnChanges, ViewChild} from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from '../../../environments/environment';
 import { UploaderOptions, UploadFile, UploadInput, humanizeBytes, UploadOutput } from 'ngx-uploader';
+import { Observable, Subscription } from 'rxjs';
 
 
 @Component({
@@ -17,10 +18,12 @@ export class UploaderComponent implements OnInit {
   humanizeBytes: Function;
   dragOver: boolean;
   isLoading = false;
+  private eventsSubscription: Subscription;
   
   @Input() allowedContentTypes: string[] = ['image/jpeg', 'image/png', 'image/gif'];
   @Input() multiple = false;
-  // @Input() isUploading: boolean;
+  @Input() clickEvent: Observable<void>;
+  @Input() idInput: string;
 
   @Output() loading: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() hasCompleted: EventEmitter<any> = new EventEmitter<any>();
@@ -43,6 +46,10 @@ export class UploaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.eventsSubscription = this.clickEvent.subscribe(() => {
+      this.inputClicking();
+    });
+
     this.loading.next(false);
     this.options = {
       concurrency: 1,
@@ -88,13 +95,18 @@ export class UploaderComponent implements OnInit {
         } else {
           this.toastrService.error('Error uploading!', 'Please try again later');
         }
-        // this.isLoading = false
+        // reset file
+        this.files = [];
         this.loading.next(false);
         break;
     }
   }
 
   startUpload(): void {
+    // sanity check
+    if (this.files.length < 1) {
+      return;
+    }
     this.isLoading = true;
     this.loading.next(true);
     this.uploadInput.emit(this.event);
@@ -108,7 +120,14 @@ export class UploaderComponent implements OnInit {
     this.uploadInput.emit({ type: 'remove', id: id });
   }
 
-  removeAllFiles(): void {
+  removeAllFiles() {
     this.uploadInput.emit({ type: 'removeAll' });
+  }
+
+  inputClicking() {
+    if (!this.idInput) {
+      return;
+    }
+    document.getElementById(this.idInput).click();
   }
 }

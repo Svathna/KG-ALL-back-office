@@ -1,0 +1,43 @@
+<div fxLayout="column" fxLayoutGap="20px">
+    <h6>
+        2. {{ 'Business Extract File/សម្រង់ក្រុមហ៊ុន' }}
+    </h6>
+    <div [ngClass]="!business_extract ? '' : 'display-none'">
+        <app-uploader
+            idInput="business_extract_input"
+            [clickEvent]="clickEventSubject.asObservable()"
+            [allowedContentTypes]="['application/pdf']"
+            (hasCompleted)="uploadedCompleted($event)"
+            (loading)="onLoading($event)">
+        </app-uploader>
+    </div>
+    <div *ngIf="business_extract">
+        <div *ngIf="!isUploading" class="ml-3 mb-1" fxLayout="row" fxLayoutGap="10px">
+            <div class="cursor-pointer" (click)="download()" fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="3px">
+                <a class="link">
+                    Download
+                </a>
+                <mat-icon color="primary">cloud_download</mat-icon>
+            </div>
+
+            <div class="cursor-pointer" (click)="uploadNewPDF()" fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="3px">
+                <a class="link">
+                    Change PDF
+                </a>
+                <mat-icon color="primary">cloud_upload</mat-icon>
+            </div>
+        </div>
+        <div class="ml-3" *ngIf="isUploading">
+            <mat-progress-bar mode="query"></mat-progress-bar>
+        </div>
+        <pdf-viewer [src]="business_extract"
+          [fit-to-page]="true"
+          [show-all]="false"
+          [original-size]="false"
+          [autoresize]="true"
+          [show-borders]="true"
+          (after-load-complete)="loadToPdfViewerCompleted()"
+          style="display: block;">
+        </pdf-viewer>
+    </div>
+</div>

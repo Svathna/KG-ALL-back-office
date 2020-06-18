@@ -1,0 +1,43 @@
+<div fxLayout="column" fxLayoutGap="20px">
+    <h6>
+        1. {{ 'MOC Certificate/វិញ្ញាបនប័ត្រចុះបញ្ជីពាណិជ្ជកម្ម' }}
+    </h6>
+    <div [ngClass]="!moc_certificate ? '' : 'display-none'">
+        <app-uploader
+            idInput="moc_certificate_input"
+            [clickEvent]="clickEventSubject.asObservable()"
+            [allowedContentTypes]="['application/pdf']"
+            (hasCompleted)="uploadedCompleted($event)"
+            (loading)="onLoading($event)">
+        </app-uploader>
+    </div>
+    <div *ngIf="moc_certificate">
+        <div *ngIf="!isUploading" class="ml-3 mb-1" fxLayout="row" fxLayoutGap="10px">
+            <div class="cursor-pointer" (click)="download()" fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="3px">
+                <a class="link">
+                    Download
+                </a>
+                <mat-icon color="primary">cloud_download</mat-icon>
+            </div>
+
+            <div class="cursor-pointer" (click)="uploadNewPDF()" fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="3px">
+                <a class="link">
+                    Change PDF
+                </a>
+                <mat-icon color="primary">cloud_upload</mat-icon>
+            </div>
+        </div>
+        <div class="ml-3" *ngIf="isUploading">
+            <mat-progress-bar mode="query"></mat-progress-bar>
+        </div>
+        <pdf-viewer [src]="moc_certificate"
+          [fit-to-page]="true"
+          [show-all]="false"
+          [original-size]="false"
+          [autoresize]="true"
+          [show-borders]="true"
+          (after-load-complete)="loadToPdfViewerCompleted()"
+          style="display: block;">
+        </pdf-viewer>
+    </div>
+</div>

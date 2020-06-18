@@ -41,8 +41,6 @@ export class AddMocModalComponent implements OnInit {
   ngOnInit() {
     this.companyId = this.data.companyId;
     this.moc = this.data.moc;
-    console.log('Moc', this.moc);
-    console.log('Data', this.data)
     if (this.moc) {
       this.buildEditForm();
     } else {
@@ -109,7 +107,6 @@ export class AddMocModalComponent implements OnInit {
     if(this.mocForm.invalid && this.companyId) {
       return;
     }
-    console.log(this.mocForm.value);
     const value = this.mocForm.value;
     const companyId = this.companyId;
     const mocId = this.moc._id;

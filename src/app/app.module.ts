@@ -37,6 +37,8 @@ import { MatFormFieldModule } from '@angular/material';
 import { CompanyDetailComponent } from './companys/company-detail/company-detail.component';
 import { GeneralComponent } from './companys/company-detail/general/general.component';
 import { MocComponent } from './companys/company-detail/moc/moc.component';
+import { MocCertificateUploaderComponent } from './companys/company-detail/moc-certificate-uploader/moc-certificate-uploader.component';
+import { BusinessExtractUploaderComponent } from './companys/company-detail/business-extract-uploader/business-extract-uploader.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { MocComponent } from './companys/company-detail/moc/moc.component';
     CompanysComponent,
     CompanyDetailComponent,
     GeneralComponent,
-    MocComponent
+    MocComponent,
+    MocCertificateUploaderComponent,
+    BusinessExtractUploaderComponent
   ],
   imports: [
     BrowserModule,

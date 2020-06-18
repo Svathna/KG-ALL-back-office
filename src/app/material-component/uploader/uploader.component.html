@@ -1,5 +1,6 @@
-<label class="upload-button cursor-pointer">
+<label *ngIf="idInput" class="upload-button cursor-pointer">
   <input type="file"
+     [id]="idInput"
      accept="{{allowedContentTypes}}"
      class="file-input"
      ngFileSelect
