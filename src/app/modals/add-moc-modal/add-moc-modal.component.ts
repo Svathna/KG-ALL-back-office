@@ -53,7 +53,7 @@ export class AddMocModalComponent implements OnInit {
       mocNumber: new FormControl('', [Validators.required, Validators.min(1)]),
       notedDate: new FormControl('', [Validators.required]),
       capital: new FormControl('', [Validators.required, Validators.min(1)]),
-      // annualTranscriptMaintenanceDate: new FormControl('', [Validators.required]),
+      annualTranscriptMaintenanceDate: new FormControl('', [Validators.required]),
       companyType: new FormControl('', [Validators.required]),
       mocUsernameLogin: new FormControl('', [Validators.required]),
       mocPasswordLogin: new FormControl('', [Validators.required]),
@@ -65,11 +65,13 @@ export class AddMocModalComponent implements OnInit {
       return;
     }
     const notedDate = moment(this.moc.notedDate);
+    const annualTranscriptMaintenanceDate = moment(this.moc.annualTranscriptMaintenanceDate);
+    
     this.mocForm = this.formBuilder.group({
       mocNumber: new FormControl(this.moc.mocNumber, [Validators.required, Validators.min(1)]),
       notedDate: new FormControl(notedDate.format('YYYY-MM-DD'), [Validators.required]),
       capital: new FormControl(this.moc.capital, [Validators.required, Validators.min(1)]),
-      // annualTranscriptMaintenanceDate: new FormControl('', [Validators.required]),
+      annualTranscriptMaintenanceDate: new FormControl(annualTranscriptMaintenanceDate.format('YYYY-MM-DD'), [Validators.required]),
       companyType: new FormControl(this.moc.companyType, [Validators.required]),
       mocUsernameLogin: new FormControl(this.moc.mocUsernameLogin, [Validators.required]),
       mocPasswordLogin: new FormControl(this.moc.mocPasswordLogin, [Validators.required]),

@@ -26,6 +26,7 @@ export class MocComponent implements OnInit {
   business_extract = '';
   companyTypeInKhmer = COMPANY_TYPE_IN_KHMER;
   notedDate: any;
+  annualTranscriptMaintenanceDate: any;
   uploaderClicked = false;
   clickEventSubject: Subject<void> = new Subject<void>();
 
@@ -37,6 +38,7 @@ export class MocComponent implements OnInit {
   ngOnInit() {
     if (this.moc) {
       this.notedDate = moment(this.moc.notedDate).format('DD-MM-YYYY');
+      this.annualTranscriptMaintenanceDate = moment(this.moc.annualTranscriptMaintenanceDate).format('DD-MM-YYYY');
     }
     
     if (this.company.docs) {

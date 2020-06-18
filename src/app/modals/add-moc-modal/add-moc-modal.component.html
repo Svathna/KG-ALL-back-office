@@ -80,11 +80,25 @@
                     <mat-form-field appearance="outline">
                         <mat-label>
                             <label>
-                                លេខកូដសម្ងាត់
+                                លេខកូដប្រើប្រាស់ប្រព័ន្ធពាណិជ្ជកម្ម
                             </label>
                         </mat-label>
                         <input matInput formControlName="mocPasswordLogin" placeholder="Placeholder" [type]="passwordVisible? 'text' : 'password'">
                         <mat-icon class="cursor-pointer" (click)="passwordEyeOffOnn()" matSuffix>{{ passwordVisible? 'visibility' : 'visibility_off'}}</mat-icon>
+                    </mat-form-field>
+                </p>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between">
+            <div fxFlex="100">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            <label class="mt-1">
+                                ថ្ងៃខែតម្កល់ប្រតិវេទប្រចាំឆ្នាំ
+                            </label>
+                        </mat-label>
+                        <input matInput formControlName="annualTranscriptMaintenanceDate" type="date" placeholder="Placeholder">
                     </mat-form-field>
                 </p>
             </div>
