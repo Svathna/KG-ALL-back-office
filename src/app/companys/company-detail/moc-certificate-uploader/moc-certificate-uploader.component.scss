@@ -1,17 +1,21 @@
 a {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 pdf-viewer {
     // display: block;
-    height: 300px;
-    width: 230px;
+    height: 285px;
+    width: 210px;
+}
+
+::ng-deep .pdfViewer .page .textLayer {
+    border: 1px solid;
 }
 
 .display-none {
     display: none;
 }
 
-.w-230 {
-    width: 230px;
+.w-210 {
+    width: 210px;
 }

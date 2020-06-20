@@ -27,11 +27,11 @@
                 <mat-icon color="primary">cloud_upload</mat-icon>
             </div>
         </div>
-        <div class="w-230 ml-3 mb-1" *ngIf="isUploading">
+        <div class="w-210 ml-3 mb-1" *ngIf="isUploading">
             <mat-progress-bar mode="query"></mat-progress-bar>
         </div>
         <pdf-viewer [src]="moc_certificate"
-          [fit-to-page]="true"
+          [fit-to-page]="false"
           [show-all]="false"
           [original-size]="false"
           [autoresize]="true"

@@ -23,7 +23,9 @@
             </app-moc>
             <app-moc-docs fxFlex="50" [company]="company"></app-moc-docs>
           </div>
-
+          <div>
+            <app-dot (addDot)="onAddDot(event)" (editDot)="onEditDot(event)" [dot]="company.DOT"></app-dot>
+          </div>
         </div>
       </mat-tab>
       <mat-tab>

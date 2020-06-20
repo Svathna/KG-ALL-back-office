@@ -24,7 +24,7 @@ export class MocComponent implements OnChanges {
 
   constructor() {}
 
-  ngOnChanges(change) {
+  ngOnChanges() {
     if (this.moc) {
       this.notedDate = moment(this.moc.notedDate).format('DD-MM-YYYY');
       this.annualTranscriptMaintenanceDate = moment(this.moc.annualTranscriptMaintenanceDate).format('DD-MM-YYYY');

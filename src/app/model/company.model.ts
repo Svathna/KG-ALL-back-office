@@ -90,9 +90,9 @@ export enum CompanyType {
 // }
 
 export interface Dot {
-    dotNumber: number;
+    dotNumber: string;
     notedDate: Date;
-    dotBranch: string;
+    notedAtBranch: string;
     address: string;
     bankName: string;
     bankAccountName: string;

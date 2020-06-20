@@ -76,6 +76,14 @@ export class CompanyDetailComponent implements OnInit, OnDestroy {
 
   }
 
+  onAddDot(event) {
+    console.log('implement me');
+  }
+
+  onEditDot(event) {
+    console.log('implement me');
+  }
+
   ngOnDestroy() {
     this.routeSub.unsubscribe();
   }

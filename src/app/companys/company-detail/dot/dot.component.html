@@ -1,0 +1,48 @@
+<div fxLayout="column" fxLayoutGap="10px">
+    <div class="pb-3" fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start center">
+        <h4 class="m-t-5 text-khmer-bold">អគ្គនាយកដ្ឋានពន្ធដារ</h4>
+        <a *ngIf="!dot" (click)="onAddDot($event)" class="cursor-pointer link">
+            បញ្ចូលពត៌មាន
+        </a>
+        <a *ngIf="dot" (click)="onEditDot($event)" class="cursor-pointer link">
+            កែប្រែពត៌មាន
+        </a>
+    </div>
+
+    <div fxLayout="row" fxFlex="100">
+        <div fxLayout="column" fxFlex="20" fxLayoutAlign="start" fxLayoutGap="18px">
+            <h6>លេខអត្តសញ្ញាណសារពើពន្ធ :</h6>
+            <h6>ចុះថ្ងៃទី :</h6>
+            <h6>ចុះបញ្ជីនៅ :</h6>
+            <h6>អាសយដ្ឋាន :</h6>
+            <h6>ឈ្មោះធនាគារ :</h6>
+            <h6>ឈ្មោះគណនីធនាគារ :</h6>
+            <h6>លេខគណនីធនាគារ :</h6>
+            <h6>លេខកាតពន្ធដារ :</h6>
+            <h6>លេខទូរសព្ទភ្ជាប់ប្រព័ន្ធ :</h6>
+        </div>
+        <div *ngIf="dot" fxLayout="column" fxFlex="30" fxLayoutAlign="start" fxLayoutGap="16px">
+            <h5>{{ dot.dotNumber }}</h5>
+            <h5>{{ notedDate }}</h5>
+            <h5>{{ dot.notedAtBranch }}</h5>
+            <h5>{{ dot.address }}</h5>
+            <h5>{{ dot.bankName }}</h5>
+            <h5>{{ dot.bankAccountName }}</h5>
+            <h5>{{ dot.bankAccountNumber }}</h5>
+            <h5>{{ dot.taxationCardNumber }}</h5>
+            <h5>{{ dot.phoneNumber }}</h5>
+        </div>
+
+        <div *ngIf="!dot" fxLayout="column" fxFlex="30" fxLayoutAlign="start" fxLayoutGap="16px">
+            <h5>?</h5>
+            <h5>?</h5>
+            <h5>?</h5>
+            <h5>?</h5>
+            <h5>?</h5>
+            <h5>?</h5>
+            <h5>?</h5>
+            <h5>?</h5>
+            <h5>?</h5>
+        </div>
+    </div>
+</div>

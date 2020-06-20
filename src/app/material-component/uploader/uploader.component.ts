@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, Input, OnChanges, ViewChild} from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, OnChanges, ViewChild, OnDestroy} from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from '../../../environments/environment';
 import { UploaderOptions, UploadFile, UploadInput, humanizeBytes, UploadOutput } from 'ngx-uploader';
@@ -10,7 +10,7 @@ import { Observable, Subscription } from 'rxjs';
   templateUrl: './uploader.component.html',
   styleUrls: ['./uploader.component.scss']
 })
-export class UploaderComponent implements OnInit {
+export class UploaderComponent implements OnInit, OnDestroy {
   options: UploaderOptions;
   formData: FormData;
   files: UploadFile[];
@@ -129,5 +129,9 @@ export class UploaderComponent implements OnInit {
       return;
     }
     document.getElementById(this.idInput).click();
+  }
+
+  ngOnDestroy() {
+    this.eventsSubscription.unsubscribe();
   }
 }
