@@ -1,6 +1,6 @@
-<div fxLayout="column" fxLayoutGap="20px">
+<div fxLayout="column" fxLayoutGap="10px">
     <h6>
-        2. {{ 'Business Extract File/សម្រង់ក្រុមហ៊ុន' }}
+        2. Business Extract File/សម្រង់ក្រុមហ៊ុន
     </h6>
     <div [ngClass]="!business_extract ? '' : 'display-none'">
         <app-uploader
@@ -27,7 +27,7 @@
                 <mat-icon color="primary">cloud_upload</mat-icon>
             </div>
         </div>
-        <div class="w-230 ml-3" *ngIf="isUploading">
+        <div class="w-230 ml-3 mb-1" *ngIf="isUploading">
             <mat-progress-bar mode="query"></mat-progress-bar>
         </div>
         <pdf-viewer [src]="business_extract"

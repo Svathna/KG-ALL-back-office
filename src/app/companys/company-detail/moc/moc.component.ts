@@ -21,29 +21,16 @@ export class MocComponent implements OnInit {
   @Output() addMoc = new EventEmitter<CompanyDetail>();
   @Output() editMoc = new EventEmitter<CompanyDetail>();
 
-  isUploading = false;
-  moc_certificate = '';
-  business_extract = '';
   companyTypeInKhmer = COMPANY_TYPE_IN_KHMER;
   notedDate: any;
   annualTranscriptMaintenanceDate: any;
-  uploaderClicked = false;
-  clickEventSubject: Subject<void> = new Subject<void>();
 
-  constructor(
-    private companyService: CompanyService,
-    private toaster: ToastrService,
-  ) {}
+  constructor() {}
 
   ngOnInit() {
     if (this.moc) {
       this.notedDate = moment(this.moc.notedDate).format('DD-MM-YYYY');
       this.annualTranscriptMaintenanceDate = moment(this.moc.annualTranscriptMaintenanceDate).format('DD-MM-YYYY');
-    }
-    
-    if (this.company.docs) {
-      this.moc_certificate = this.company.docs.moc_certificate ? this.company.docs.moc_certificate : '';
-      this.business_extract = this.company.docs.business_extract ? this.company.docs.business_extract : '';
     }
   }
 
@@ -53,85 +40,5 @@ export class MocComponent implements OnInit {
 
   onEditMoc(event) {
     this.editMoc.emit(event)
-  }
-
-  uploadedCompletedMocCertificate(response) {
-    const moc_certificate = response.secure_url;
-    this.uploadMocCertificateToCompany(moc_certificate);
-  }
-
-  onLoading(isLoading) {
-    this.isUploading = isLoading;
-  }
-
-  downloadMocCertificate() {
-    if (!this.moc_certificate) {
-      return;
-    }
-    FileSaver.saveAs(this.moc_certificate, 'moc_certificate');
-  }
-
-  uploadMocCertificateToCompany(url) {
-    if (!this.company || !url) {
-      return;
-    }
-    const value = {
-      moc_certificate: url,
-      companyId: this.company ? this.company._id : '',
-      docId: this.company.docs ? this.company.docs._id : ''
-    }
-    this.isUploading = true;
-    this.companyService.addDocToCompany(value).subscribe((data: DocResponse) => {
-      this.isUploading = false;
-      if (data.success) {
-        this.moc_certificate = data.doc.moc_certificate ? data.doc.moc_certificate : '';
-        this.toaster.success('Upload succeseful');
-      } else {
-        this.toaster.error(data.message ? data.message : 'Error while uploading');
-      }
-    });
-  }
- 
-  uploadedCompletedBusinessExtract(response) {
-    const business_extract = response.secure_url;
-    this.uploadBusinessExtractToCompany(business_extract);
-  }
-
-  downloadBusinessExtract() {
-    if (!this.business_extract) {
-      return;
-    }
-    FileSaver.saveAs(this.business_extract, 'business_extract');
-  }
-
-  uploadBusinessExtractToCompany(url) {
-    if (!this.company || !url) {
-      return;
-    }
-    const value = {
-      business_extract: url,
-      companyId: this.company ? this.company._id : '',
-      docId: this.company.docs ? this.company.docs._id : ''
-    }
-    this.isUploading = true;
-    this.companyService.addDocToCompany(value).subscribe((data: DocResponse) => {
-      this.isUploading = false;
-      if (data.success) {
-        this.business_extract = data.doc.business_extract ? data.doc.business_extract : '';
-        this.toaster.success('Upload succeseful');
-      } else {
-        this.toaster.error(data.message ? data.message : 'Error while uploading');
-      }
-    });
-  }
-
-  uploadNewMocCertificate() {
-    this.clickEventSubject.next();
-  }
-
-  uploadNewBusinessExtract() {}
-
-  loadToPdfViewerCompleted() {
-    this.isUploading = false;
   }
 }
