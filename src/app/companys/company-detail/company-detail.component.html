@@ -21,13 +21,7 @@
           <div fxLayout="row" fxLayoutAlign="start">
             <app-moc fxFlex="50" (addMoc)="onAddMoc(event)" (editMoc)="onEditMoc(event)" [moc]="company.MOC">
             </app-moc>
-            <div fxLayout="column" fxFlex="50" fxLayoutAlign="start" fxLayoutGap="20px">
-              <h6>ឯកសារជា PDF :</h6>
-              <div *ngIf="company" fxLayout="row" fxLayoutAlign="space-between">
-                <moc-certificate-uploader [company]="company"></moc-certificate-uploader>
-                <business-extract-uploader [company]="company"></business-extract-uploader>
-              </div>
-            </div>
+            <app-moc-docs fxFlex="50" [company]="company"></app-moc-docs>
           </div>
 
         </div>
