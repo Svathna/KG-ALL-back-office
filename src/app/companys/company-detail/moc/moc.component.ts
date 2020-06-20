@@ -1,10 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { DocType, Moc, CompanyDetail, DocResponse, CompanyType } from '../../../model/company.model';
-import { CompanyService } from '../../../service/company.service';
-import { ToastrService } from 'ngx-toastr';
+import { Moc, CompanyDetail, CompanyType } from '../../../model/company.model';
 import { COMPANY_TYPE_IN_KHMER } from '../../../modals/add-moc-modal/add-moc-modal.component';
 import * as moment from 'moment';
-import { Subject } from 'rxjs';
 
 declare var require: any
 const FileSaver = require('file-saver');
