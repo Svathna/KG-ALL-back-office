@@ -8,7 +8,7 @@
   </div>
 </mat-card>
 
-<mat-card *ngIf="!isFetching && company" >
+<mat-card *ngIf="!isFetching && company">
   <div>
     <mat-tab-group>
       <mat-tab>
@@ -18,8 +18,17 @@
         <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="30px">
           <app-general [user]="company.user"></app-general>
           <!-- Minstry of Commerce -->
-          <app-moc (addMoc)="onAddMoc(event)" (editMoc)="onEditMoc(event)" [company]="company" [moc]="company.MOC">
-          </app-moc>
+          <div fxLayout="row" fxLayoutAlign="start">
+            <app-moc fxFlex="50" (addMoc)="onAddMoc(event)" (editMoc)="onEditMoc(event)" [moc]="company.MOC">
+            </app-moc>
+            <div fxLayout="column" fxFlex="50" fxLayoutAlign="start" fxLayoutGap="20px">
+              <h6 fxFlex="30">ឯកសារជា PDF :</h6>
+              <div *ngIf="company" fxLayout="row" fxLayoutAlign="space-between">
+                <moc-certificate-uploader [company]="company"></moc-certificate-uploader>
+                <business-extract-uploader [company]="company"></business-extract-uploader>
+              </div>
+            </div>
+          </div>
 
         </div>
       </mat-tab>

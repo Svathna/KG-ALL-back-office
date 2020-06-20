@@ -29,11 +29,11 @@ export class CompanyDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.getCompanyDetail()
+    this.getCompanyDetail(true);
   }
 
-  getCompanyDetail() {
-    this.isFetching = true;
+  getCompanyDetail(loading: boolean = false) {
+    this.isFetching = loading;
     this.companyService.getCompanyById(this.id).subscribe((data: CompanyResponse) => {
       this.isFetching = false;
       if (data && data.company) {

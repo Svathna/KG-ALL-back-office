@@ -10,7 +10,7 @@
     </div>
 
     <div fxLayout="row" fxFlex="100">
-        <div fxLayout="column" fxFlex="20" fxLayoutAlign="start" fxLayoutGap="18px">
+        <div fxLayout="column" fxFlex="40" fxLayoutAlign="start" fxLayoutGap="18px">
             <h6>ចុះបញ្ជីពាណិជ្ជកម្មលេខ :</h6>
             <h6>ចុះថ្ងៃទី :</h6>
             <h6>ដើមទុនចុះបញ្ជី :</h6>
@@ -19,10 +19,10 @@
             <h6>ឈ្មោះប្រើប្រាស់ប្រព័ន្ធពាណិជ្ជកម្ម :</h6>
             <h6>លេខកូដប្រើប្រាស់ប្រព័ន្ធពាណិជ្ជកម្ម :</h6>
         </div>
-        <div *ngIf="moc" fxLayout="column" fxFlex="30" fxLayoutAlign="start" fxLayoutGap="16px">
+        <div *ngIf="moc" fxLayout="column" fxFlex="60" fxLayoutAlign="start" fxLayoutGap="16px">
             <h5>{{ moc.mocNumber }}</h5>
             <h5>{{ notedDate }}</h5>
-            <h5>{{ moc.capital }} <strong>រៀល</strong></h5>
+            <h5>{{ moc.capital | number }} <strong>រៀល</strong></h5>
             <h5>{{ companyTypeInKhmer[moc.companyType] }}</h5>
             <h5>{{ annualTranscriptMaintenanceDate }}</h5>
             <h5>{{ moc.mocUsernameLogin }}</h5>
@@ -38,36 +38,5 @@
             <h5>?</h5>
             <h5>?</h5>
         </div>
-
-        <div fxLayout="column" fxFlex="50" fxLayoutAlign="start" fxLayoutGap="20px">
-            <h6 fxFlex="30">ឯកសារជា PDF :</h6>
-            <div *ngIf="company" fxLayout="row" fxLayoutAlign="space-between">
-                <moc-certificate-uploader [company]="company"></moc-certificate-uploader>
-                <business-extract-uploader [company]="company"></business-extract-uploader>
-            </div>
-        </div>
     </div>
-
-    <!-- <div *ngIf="!moc" fxLayout="row" fxFlex="100">
-        <div fxLayout="column" fxFlex="20" fxLayoutAlign="start" fxLayoutGap="10px">
-            <h6>ចុះបញ្ជីពាណិជ្ជកម្មលេខ :</h6>
-            <h6>ចុះថ្ងៃទី :</h6>
-            <h6>ដើមទុនចុះបញ្ជី :</h6>
-            <h6>ប្រភេទ :</h6>
-            <h6>ថ្ងៃខែតម្កល់ប្រតិវេទប្រចាំឆ្នាំ :</h6>
-            <h6>ឈ្មោះប្រើប្រាស់ប្រព័ន្ធពាណិជ្ជកម្ម :</h6>
-            <h6>លេខកូដសម្ងាត់ :</h6>
-            <h6 fxFlex="30">ទាញយកឯកសារជា PDF :</h6>
-        </div>
-        <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="10px">
-            <h5>?</h5>
-            <h5>?</h5>
-            <h5>?</h5>
-            <h5>?</h5>
-            <h5>?</h5>
-            <h5>?</h5>
-            <h5>?</h5>
-            <h5>?</h5>
-        </div>
-    </div> -->
 </div>
