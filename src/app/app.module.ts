@@ -39,6 +39,8 @@ import { GeneralComponent } from './companys/company-detail/general/general.comp
 import { MocComponent } from './companys/company-detail/moc/moc.component';
 import { MocCertificateUploaderComponent } from './companys/company-detail/moc-certificate-uploader/moc-certificate-uploader.component';
 import { BusinessExtractUploaderComponent } from './companys/company-detail/business-extract-uploader/business-extract-uploader.component';
+import { DotComponent } from './companys/company-detail/dot/dot.component';
+import { MocDocsComponent } from './companys/company-detail/moc-docs/moc-docs.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { BusinessExtractUploaderComponent } from './companys/company-detail/busi
     GeneralComponent,
     MocComponent,
     MocCertificateUploaderComponent,
-    BusinessExtractUploaderComponent
+    BusinessExtractUploaderComponent,
+    DotComponent,
+    MocDocsComponent
   ],
   imports: [
     BrowserModule,
