@@ -25,6 +25,9 @@
           </div>
           <div>
             <app-dot (addDot)="onAddDot(event)" (editDot)="onEditDot(event)" [dot]="company.DOT"></app-dot>
+            <div class="mt-3">
+              <app-dot-docs [company]="company"></app-dot-docs>
+            </div>
           </div>
         </div>
       </mat-tab>

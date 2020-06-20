@@ -1,0 +1,8 @@
+<div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="20px">
+    <h6>ឯកសារជា PDF :</h6>
+    <div *ngIf="company" fxLayout="row" fxLayoutAlign="space-evenly">
+      <moc-certificate-uploader [company]="company"></moc-certificate-uploader>
+      <moc-certificate-uploader [company]="company"></moc-certificate-uploader>
+      <business-extract-uploader [company]="company"></business-extract-uploader>
+    </div>
+</div>
