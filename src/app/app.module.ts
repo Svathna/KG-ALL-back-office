@@ -42,6 +42,7 @@ import { BusinessExtractUploaderComponent } from './companys/company-detail/busi
 import { DotComponent } from './companys/company-detail/dot/dot.component';
 import { MocDocsComponent } from './companys/company-detail/moc-docs/moc-docs.component';
 import { DotDocsComponent } from './companys/company-detail/dot-docs/dot-docs.component';
+import { DocUploaderComponent } from './companys/company-detail/doc-uploader/doc-uploader.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { DotDocsComponent } from './companys/company-detail/dot-docs/dot-docs.co
     BusinessExtractUploaderComponent,
     DotComponent,
     MocDocsComponent,
-    DotDocsComponent
+    DotDocsComponent,
+    DocUploaderComponent
   ],
   imports: [
     BrowserModule,
