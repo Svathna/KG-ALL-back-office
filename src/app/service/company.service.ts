@@ -39,6 +39,14 @@ export class CompanyService {
     return this.http.patch(environment.apiURL + `/moc/${id}`, body);
   }
 
+  addDotToCompany(body) {
+    return this.http.post(environment.apiURL + `/dot`, body);
+  }
+
+  editDotToCompany(id: string, body) {
+    return this.http.patch(environment.apiURL + `/dot/${id}`, body);
+  }
+
   addDocToCompany(body) {
     return this.http.post(environment.apiURL + `/doc`, body);
   }

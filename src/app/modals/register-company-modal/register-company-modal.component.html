@@ -12,7 +12,7 @@
                         <mat-label>
                             Company name
                         </mat-label>
-                        <input formControlName="name" matInput placeholder="Placeholder">
+                        <input formControlName="name" matInput>
                     </mat-form-field>
                 </p>
             </div>
@@ -24,7 +24,7 @@
                                 ឈ្មោះក្រុមហ៊ុន
                             </label>
                         </mat-label>
-                        <input matInput formControlName="nameInKhmer" placeholder="Placeholder">
+                        <input matInput formControlName="nameInKhmer">
                     </mat-form-field>
                 </p>
             </div>
@@ -36,7 +36,7 @@
                 <p>
                     <mat-form-field appearance="outline">
                         <mat-label>Fullname</mat-label>
-                        <input matInput formControlName="fullName" placeholder="Placeholder">
+                        <input matInput formControlName="fullName">
                     </mat-form-field>
                 </p>
             </div>
@@ -44,7 +44,7 @@
                 <p>
                     <mat-form-field appearance="outline">
                         <mat-label>Phone number</mat-label>
-                        <input matInput formControlName="phoneNumber" placeholder="Placeholder" type="tel">
+                        <input matInput formControlName="phoneNumber" type="tel">
                     </mat-form-field>
                 </p>
             </div>
@@ -56,7 +56,7 @@
                 <p>
                     <mat-form-field appearance="outline">
                         <mat-label>Username</mat-label>
-                        <input matInput formControlName="userName" placeholder="Placeholder">
+                        <input matInput formControlName="userName">
                     </mat-form-field>
                 </p>
             </div>
@@ -64,7 +64,7 @@
                 <p>
                     <mat-form-field appearance="outline">
                         <mat-label>Password</mat-label>
-                        <input matInput formControlName="password" placeholder="Placeholder" [type]="passwordVisible? 'text' : 'password'">
+                        <input matInput formControlName="password" [type]="passwordVisible? 'text' : 'password'">
                         <mat-icon class="cursor-pointer" (click)="passwordEyeOffOnn()" matSuffix>{{ passwordVisible? 'visibility' : 'visibility_off'}}</mat-icon>
                     </mat-form-field>
                 </p>

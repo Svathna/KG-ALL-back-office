@@ -4,6 +4,7 @@ import { CompanyService } from '../../service/company.service';
 import { CompanyDetail, CompanyResponse } from '../../model/company.model';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { AddMocModalComponent } from '../../modals/add-moc-modal/add-moc-modal.component';
+import { AddDotModalComponent } from '../../modals/add-dot-modal/add-dot-modal.component';
 
 @Component({
   selector: 'app-company-detail',
@@ -73,15 +74,39 @@ export class CompanyDetailComponent implements OnInit, OnDestroy {
         this.getCompanyDetail();
       }
     });
-
   }
 
   onAddDot(event) {
-    console.log('implement me');
+    this.dialogRef = this.dialog.open(AddDotModalComponent, {
+      width: "800px",
+      // height: "500px",
+      data: {
+        companyId: this.company._id
+      },
+    });
+
+    this.dialogRef.afterClosed().subscribe((data) => {
+      if (data && data.success) {
+        this.getCompanyDetail();
+      }
+    });
   }
 
   onEditDot(event) {
-    console.log('implement me');
+    this.dialogRef = this.dialog.open(AddDotModalComponent, {
+      width: "800px",
+      // height: "500px",
+      data: {
+        companyId: this.company._id,
+        dot: this.company.DOT ? this.company.DOT : '',
+      },
+    });
+
+    this.dialogRef.afterClosed().subscribe((data) => {
+      if (data && data.success) {
+        this.getCompanyDetail();
+      }
+    });
   }
 
   ngOnDestroy() {

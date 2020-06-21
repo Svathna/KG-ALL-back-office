@@ -98,7 +98,7 @@ export interface Dot {
     bankAccountName: string;
     bankAccountNumber: number;
     taxationCardNumber: string;
-    phoneNumber: string;
+    phoneNumber: number;
     _id: string;
 }
 

@@ -1,0 +1,141 @@
+<div class="mb-3" *ngIf="isFetching">
+    <mat-progress-bar mode="query"></mat-progress-bar>
+</div>
+
+<form [formGroup]="dotForm">
+    <div fxLayout="column">
+        <div class="mt-2" fxLayout="row" fxLayoutAlign="space-between">
+            <div fxFlex="48">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            <label class="mt-1">
+                                លេខអត្តសញ្ញាណសារពើពន្ធ
+                            </label>
+                        </mat-label>
+                        <input formControlName="dotNumber" type="text" matInput required>
+                    </mat-form-field>
+                </p>
+            </div>
+            <div fxFlex="48">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            <label class="mt-1">
+                                ចុះថ្ងៃទី
+                            </label>
+                        </mat-label>
+                        <input matInput formControlName="notedDate" type="date" required>
+                    </mat-form-field>
+                </p>
+            </div>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="space-between">
+            <div fxFlex="48">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            <label class="mt-1">
+                                ចុះបញ្ជីនៅ
+                            </label>
+                        </mat-label>
+                        <input matInput formControlName="notedAtBranch" type="text" required>
+                    </mat-form-field>
+                </p>
+            </div>
+            <div fxFlex="48">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            <label class="mt-1">
+                                អាសយដ្ឋាន
+                            </label>
+                        </mat-label>
+                        <input formControlName="address" type="text" matInput required>
+                    </mat-form-field>
+                </p>
+            </div>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="space-between">
+            <div fxFlex="48">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            <label>
+                                ឈ្មោះធនាគារ
+                            </label>
+                        </mat-label>
+                        <input matInput formControlName="bankName" type="text" required>
+                    </mat-form-field>
+                </p>
+            </div>
+            <div fxFlex="48">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            <label>
+                                ឈ្មោះគណនីធនាគារ
+                            </label>
+                        </mat-label>
+                        <input matInput formControlName="bankAccountName" type="text" required>
+                    </mat-form-field>
+                </p>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between">
+            <div fxFlex="48">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            <label>
+                                លេខគណនីធនាគារ
+                            </label>
+                        </mat-label>
+                        <input matInput formControlName="bankAccountNumber" pattern="[0-9]*" type="text" required>
+                    </mat-form-field>
+                </p>
+            </div>
+            <div fxFlex="48">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            <label>
+                                លេខកាតពន្ធដារ
+                            </label>
+                        </mat-label>
+                        <input matInput formControlName="taxationCardNumber" type="text" required>
+                    </mat-form-field>
+                </p>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between">
+            <div fxFlex="100">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            <label class="mt-1">
+                                លេខទូរសព្ទភ្ជាប់ប្រព័ន្ធ
+                            </label>
+                        </mat-label>
+                        <input matInput formControlName="phoneNumber" type="tel" minlength="9" required>
+                    </mat-form-field>
+                </p>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between">
+            <div fxFlex fxLayoutAlign="end">
+                <button class="mr-2" [disabled]="isFetching" mat-raised-button (click)="cancel()">
+                    Cancel
+                </button>
+                <button *ngIf="!dot" [disabled]="dotForm.invalid || isFetching" color="primary" mat-raised-button (click)="save()">
+                    Save
+                </button>
+                <button *ngIf="dot" [disabled]="dotForm.invalid || isFetching" color="primary" mat-raised-button (click)="update()">
+                    Update
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

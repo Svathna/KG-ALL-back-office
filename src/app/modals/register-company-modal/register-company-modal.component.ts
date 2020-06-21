@@ -38,7 +38,7 @@ export class RegisterCompanyModalComponent implements OnInit {
       name: new FormControl('', [Validators.required]),
       nameInKhmer: new FormControl('', [Validators.required]),
       fullName: new FormControl('', [Validators.required]),
-      phoneNumber: new FormControl('', [Validators.required, Validators.minLength(9)]),
+      phoneNumber: new FormControl('0', [Validators.required, Validators.minLength(9)]),
       userName: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)])
     });

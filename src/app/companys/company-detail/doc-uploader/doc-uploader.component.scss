@@ -8,6 +8,10 @@ pdf-viewer {
     width: 210px;
 }
 
+::ng-deep .pdfViewer .page .textLayer {
+    border: 1px solid;
+}
+
 .display-none {
     display: none;
 }

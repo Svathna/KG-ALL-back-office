@@ -7,12 +7,14 @@ import { DemoMaterialModule } from '../demo-material-module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RemoveCompanyConfirmModalComponent } from './remove-company-confirm-modal/remove-company-confirm-modal.component';
 import { AddMocModalComponent } from './add-moc-modal/add-moc-modal.component';
+import { AddDotModalComponent } from './add-dot-modal/add-dot-modal.component';
 
 @NgModule({
   declarations: [
     RegisterCompanyModalComponent,
     RemoveCompanyConfirmModalComponent,
-    AddMocModalComponent
+    AddMocModalComponent,
+    AddDotModalComponent
   ],
   imports: [
     CommonModule,
@@ -22,9 +24,11 @@ import { AddMocModalComponent } from './add-moc-modal/add-moc-modal.component';
     FlexLayoutModule
   ],
   exports: [RegisterCompanyModalComponent],
-  entryComponents: [RegisterCompanyModalComponent,
+  entryComponents: [
+    RegisterCompanyModalComponent,
     RemoveCompanyConfirmModalComponent,
-    AddMocModalComponent
+    AddMocModalComponent,
+    AddDotModalComponent,
   ],
 })
 export class ModalsModule { }
