@@ -11,30 +11,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MaterialRoutes } from './material.routing';
-import { ButtonsComponent } from './buttons/buttons.component';
-
-import { GridComponent } from './grid/grid.component';
-import { ListsComponent } from './lists/lists.component';
-import { MenuComponent } from './menu/menu.component';
-import { TabsComponent } from './tabs/tabs.component';
-import { StepperComponent } from './stepper/stepper.component';
-import { ExpansionComponent } from './expansion/expansion.component';
-import { ChipsComponent } from './chips/chips.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
-import { ProgressSnipperComponent } from './progress-snipper/progress-snipper.component';
-import { ProgressComponent } from './progress/progress.component';
-import {
-  DialogComponent,
-  DialogOverviewExampleDialogComponent
-} from './dialog/dialog.component';
-import { TooltipComponent } from './tooltip/tooltip.component';
-import { SnackbarComponent } from './snackbar/snackbar.component';
-import { SliderComponent } from './slider/slider.component';
-import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
-import { TableComponent } from './table/table.component';
-import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { TreesComponent } from './trees/trees.component';
-import { SimpleFormComponent } from './simple-form/simple-form.component';
 import { CompanyCardComponent } from './company-card/company-card.component';
 import { UploaderComponent } from './uploader/uploader.component';
 import { DragDropUploaderComponent } from './drag-drop-uploader/drag-drop-uploader.component';
@@ -49,31 +25,9 @@ import { DragDropUploaderComponent } from './drag-drop-uploader/drag-drop-upload
     ReactiveFormsModule,
     FlexLayoutModule,
     CdkTableModule,
-    Ng2SmartTableModule,
   ],
   providers: [],
-  entryComponents: [DialogOverviewExampleDialogComponent],
   declarations: [
-    ButtonsComponent,
-    GridComponent,
-    ListsComponent,
-    MenuComponent,
-    TabsComponent,
-    StepperComponent,
-    ExpansionComponent,
-    ChipsComponent,
-    ToolbarComponent,
-    ProgressSnipperComponent,
-    ProgressComponent,
-    DialogComponent,
-    DialogOverviewExampleDialogComponent,
-    TooltipComponent,
-    SnackbarComponent,
-    SliderComponent,
-    SlideToggleComponent,
-    TableComponent,
-    TreesComponent,
-    SimpleFormComponent,
     CompanyCardComponent,
     UploaderComponent,
     DragDropUploaderComponent
