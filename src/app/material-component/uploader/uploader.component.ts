@@ -34,7 +34,7 @@ export class UploaderComponent implements OnInit, OnDestroy {
     method: 'POST',
     data: {
       upload_preset: environment.cloudinaryPreset,
-     }
+    },
   };
 
   constructor(

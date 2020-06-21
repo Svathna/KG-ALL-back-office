@@ -55,7 +55,7 @@ export class DocUploaderComponent implements OnInit {
         }
         break;
       case this.isPatent:
-        this.title = "ប័ណ្ណប៉ាតង់/Vat certificate";
+        this.title = "ប័ណ្ណប៉ាតង់/Patent";
         this.docName = "patent";
         if (this.company.docs) {
           this.docUrl = this.company.docs.patent? this.company.docs.patent: "";
@@ -74,8 +74,8 @@ export class DocUploaderComponent implements OnInit {
   }
 
   uploadedCompleted(response) {
-    const moc_certificate = response.secure_url;
-    this.uploadToCompany(moc_certificate);
+    const url = response.secure_url;
+    this.uploadToCompany(url);
   }
 
   onLoading(isLoading) {
@@ -104,24 +104,14 @@ export class DocUploaderComponent implements OnInit {
         Object.assign(value, {business_extract});
         return value;
       case this.isVatCertificate:
-        console.log('yahhhh');
-        if (this.company.docs) {
-          this.docUrl = this.company.docs.vat_certificate? this.company.docs.vat_certificate: "";
-        }
         const vat_certificate = url;
         Object.assign(value, {vat_certificate});
         return value;
       case this.isPatent:
-        if (this.company.docs) {
-          this.docUrl = this.company.docs.patent? this.company.docs.patent: "";
-        }
         const patent = url;
         Object.assign(value, {patent});
         return value;
       case this.isGdtCard:
-        if (this.company.docs) {
-          this.docUrl = this.company.docs.gdt_card? this.company.docs.gdt_card: "";
-        }
         const gdt_card = url;
         Object.assign(value, {gdt_card});
         return value;
