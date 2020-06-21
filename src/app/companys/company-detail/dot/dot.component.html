@@ -23,7 +23,7 @@
         </div>
         <div *ngIf="dot" fxLayout="column" fxFlex="30" fxLayoutAlign="start" fxLayoutGap="16px">
             <h5>{{ dot.dotNumber }}</h5>
-            <h5>{{ notedDate }}</h5>
+            <h5>{{ moment(dot.notedDate).format('DD-MM-YYYY') }}</h5>
             <h5>{{ dot.notedAtBranch }}</h5>
             <h5>{{ dot.address }}</h5>
             <h5>{{ dot.bankName }}</h5>

@@ -1,4 +1,4 @@
-import { Component, OnChanges, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Dot } from '../../../model/company.model';
 import * as moment from 'moment';
 
@@ -7,22 +7,16 @@ import * as moment from 'moment';
   templateUrl: './dot.component.html',
   styleUrls: ['./dot.component.scss']
 })
-export class DotComponent implements OnChanges {
+export class DotComponent {
 
   @Input() dot: Dot;
 
   @Output() addDot = new EventEmitter<any>();
   @Output() editDot = new EventEmitter<any>();
 
-  notedDate: any;
+  moment: any = moment;
 
   constructor() {}
-
-  ngOnChanges() {
-    if (this.dot) {
-      this.notedDate = moment(this.dot.notedDate).format('DD-MM-YYYY');
-    }
-  }
 
   onAddDot(event) {
     this.addDot.emit(event);
