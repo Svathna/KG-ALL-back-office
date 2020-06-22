@@ -6,6 +6,7 @@ import { AdminGuard } from './admin.guard';
 import { SecureInnerPagesGuardGuard } from './secure-inner-pages-guard.guard';
 import { CompanysComponent } from './companys/companys.component';
 import { CompanyDetailComponent } from './companys/company-detail/company-detail.component';
+import { RequestsComponent } from './requests/requests.component';
 
 
 export const AppRoutes: Routes = [
@@ -28,6 +29,10 @@ export const AppRoutes: Routes = [
         path: 'company-detail/:id',
         component: CompanyDetailComponent,
         canActivate: [AdminGuard],
+      },
+      {
+        path: 'request',
+        component: RequestsComponent
       },
       {
         path: '',

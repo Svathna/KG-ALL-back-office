@@ -43,6 +43,7 @@ import { DotComponent } from './companys/company-detail/dot/dot.component';
 import { MocDocsComponent } from './companys/company-detail/moc-docs/moc-docs.component';
 import { DotDocsComponent } from './companys/company-detail/dot-docs/dot-docs.component';
 import { DocUploaderComponent } from './companys/company-detail/doc-uploader/doc-uploader.component';
+import { RequestsComponent } from './requests/requests.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { DocUploaderComponent } from './companys/company-detail/doc-uploader/doc
     DotComponent,
     MocDocsComponent,
     DotDocsComponent,
-    DocUploaderComponent
+    DocUploaderComponent,
+    RequestsComponent
   ],
   imports: [
     BrowserModule,
