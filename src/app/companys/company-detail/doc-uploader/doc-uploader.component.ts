@@ -136,9 +136,7 @@ export class DocUploaderComponent implements OnInit {
       .subscribe((data: DocResponse) => {
         this.isUploading = false;
         if (data.success) {
-          this.docUrl = data.doc.moc_certificate
-            ? data.doc.moc_certificate
-            : "";
+          this.docUrl = url;
           this.toaster.success("Upload succeseful");
         } else {
           this.toaster.error(

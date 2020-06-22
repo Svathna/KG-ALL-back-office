@@ -1,6 +1,6 @@
 import { Component, OnInit, Optional, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { Dot, DocResponse } from '../../model/company.model';
+import { Dot, DotResponse } from '../../model/company.model';
 import { CompanyService } from '../../service/company.service';
 import { ToastrService } from 'ngx-toastr';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -81,7 +81,7 @@ export class AddDotModalComponent implements OnInit {
     const companyId = this.companyId;
     Object.assign(value, {companyId});
     this.isFetching = true;
-    this.companyService.addDotToCompany(value).subscribe((data: DocResponse) => {
+    this.companyService.addDotToCompany(value).subscribe((data: DotResponse) => {
       this.isFetching = false;
       if (data && data.success) {
         this.toaster.success("Information added");
@@ -101,7 +101,7 @@ export class AddDotModalComponent implements OnInit {
     const dotId = this.dot._id;
     Object.assign(value, {companyId});
     this.isFetching = true;
-    this.companyService.editDotToCompany(dotId, value).subscribe((data: DocResponse) => {
+    this.companyService.editDotToCompany(dotId, value).subscribe((data: DotResponse) => {
       this.isFetching = false;
       if (data && data.success) {
         this.toaster.success("Information updated");
