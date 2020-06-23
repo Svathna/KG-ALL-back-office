@@ -19,6 +19,10 @@ export class CompanyService {
     return this.http.get(environment.apiURL + `/request`);
   }
 
+  changeRequestStutus(id: string, body) {
+    return this.http.patch(environment.apiURL + `/request/${id}`, body);
+  }
+
   getCompanyById(id: string) {
     return this.http.get(environment.apiURL + `/company/${id}`);
   }

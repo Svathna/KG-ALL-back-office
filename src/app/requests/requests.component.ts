@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyService } from '../service/company.service';
-import { Request, RequestsResponse } from '../model/request.model';
+import { Request, RequestsResponse, RequestStatus, RequestResponse } from '../model/request.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-requests',
@@ -13,6 +14,7 @@ export class RequestsComponent implements OnInit {
 
   constructor(
     private companyService: CompanyService,
+    private toaster: ToastrService,
   ) { }
 
   ngOnInit() {
@@ -30,12 +32,38 @@ export class RequestsComponent implements OnInit {
     });
   }
 
-  acceptRequest(event) {
-    console.log(event);
+  acceptRequest(id: string) {
+    if (!id) {
+      return;
+    }
+    this.isFetching = true;
+    const status = RequestStatus.ACCEPTED;
+    this.companyService.changeRequestStutus(id, { status }).subscribe((data: RequestResponse)=> {
+      if (data && data.success) {
+        this.fetchRequests();
+        this.toaster.success('Acept request success');
+      } else {
+        this.isFetching = false;
+        this.toaster.error('Acept request failed');
+      }
+    });
   }
 
-  rejectRequest(event) {
-    console.log(event);
+  rejectRequest(id: string) {
+    if (!id) {
+      return;
+    }
+    this.isFetching = true;
+    const status = RequestStatus.REJECTED;
+    this.companyService.changeRequestStutus(id, { status }).subscribe((data: RequestResponse)=> {
+      if (data && data.success) {
+        this.fetchRequests();
+        this.toaster.success('Reject request success');
+      } else {
+        this.isFetching = false;
+        this.toaster.error('Reject request failed');
+      }
+    });
   }
 
 }
