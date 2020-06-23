@@ -22,7 +22,7 @@ export class UploaderComponent implements OnInit, OnDestroy {
   
   @Input() allowedContentTypes: string[] = ['image/jpeg', 'image/png', 'image/gif'];
   @Input() multiple = false;
-  @Input() clickEvent: Observable<void>;
+  @Input() clickEvent?: Observable<void>;
   @Input() idInput: string;
 
   @Output() loading: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -46,9 +46,11 @@ export class UploaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.eventsSubscription = this.clickEvent.subscribe(() => {
-      this.inputClicking();
-    });
+    if (this.clickEvent) {
+      this.eventsSubscription = this.clickEvent.subscribe(() => {
+        this.inputClicking();
+      });
+    }
 
     this.loading.next(false);
     this.options = {
@@ -132,6 +134,8 @@ export class UploaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.eventsSubscription.unsubscribe();
+    if (this.clickEvent) {
+      this.eventsSubscription.unsubscribe();
+    }
   }
 }
