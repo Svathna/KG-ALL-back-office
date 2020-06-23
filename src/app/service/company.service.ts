@@ -15,6 +15,10 @@ export class CompanyService {
     return this.http.get(environment.apiURL + '/company');
   }
 
+  getAllRequests() {
+    return this.http.get(environment.apiURL + `/request`);
+  }
+
   getCompanyById(id: string) {
     return this.http.get(environment.apiURL + `/company/${id}`);
   }

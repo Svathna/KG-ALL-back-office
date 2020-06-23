@@ -1,0 +1,22 @@
+<mat-card class="request-card cursor-pointer" fxLayout="column" fxLayoutAlign="start none">
+    <div *ngIf="request" class="mat-card-header p-b-5" fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="column" fxFlex fxLayoutAlign="start">
+            <h5 class="khmer-title text-bold">{{ request.company.nameInKhmer }}</h5>
+            <h5 class="text-bold m-0">{{ request.company.name }}</h5>
+        </div>
+    </div>
+
+    <mat-card-content fxFlex="100" fxLayout="column" fxLayoutAlign="space-between">
+        <div *ngIf="request" class="text-white" fxLayout="column" fxLayoutAlign="start none" fxLayoutGap="10px">
+            <h6 class="mb-4">{{ request.description }}</h6>
+        </div>
+        <div fxFlex fxLayout="row" fxLayoutAlign="end end">
+            <button class="mr-2" color="warn"  mat-raised-button (click)="rejectRequest($event)">
+                reject
+            </button>
+            <button color="primary" mat-raised-button (click)="acceptRequest($event)">
+                accept
+            </button>
+        </div>
+    </mat-card-content>
+</mat-card>

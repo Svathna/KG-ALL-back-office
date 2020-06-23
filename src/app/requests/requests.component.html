@@ -1,1 +1,15 @@
-<p>requests works!</p>
+<div *ngIf="isFetching">
+    <mat-progress-bar mode="query"></mat-progress-bar>
+</div>
+
+<div *ngIf="!isFetching" fxLayout="row wrap" fxLayoutAlign="start" fxLayoutGap="20px">
+    <div *ngFor="let request of requests">
+        <div>
+            <request-card
+                (accept)="acceptRequest($event)"
+                (reject)="rejectRequest($event)"
+                [request]="request">
+            </request-card>
+        </div>
+    </div>
+</div>

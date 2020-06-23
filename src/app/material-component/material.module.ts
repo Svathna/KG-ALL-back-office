@@ -14,6 +14,7 @@ import { MaterialRoutes } from './material.routing';
 import { CompanyCardComponent } from './company-card/company-card.component';
 import { UploaderComponent } from './uploader/uploader.component';
 import { DragDropUploaderComponent } from './drag-drop-uploader/drag-drop-uploader.component';
+import { RequestCardComponent } from './request-card/request-card.component';
 
 @NgModule({
   imports: [
@@ -30,8 +31,9 @@ import { DragDropUploaderComponent } from './drag-drop-uploader/drag-drop-upload
   declarations: [
     CompanyCardComponent,
     UploaderComponent,
-    DragDropUploaderComponent
+    DragDropUploaderComponent,
+    RequestCardComponent
   ],
-  exports: [CompanyCardComponent, UploaderComponent, DragDropUploaderComponent]
+  exports: [CompanyCardComponent, UploaderComponent, DragDropUploaderComponent, RequestCardComponent]
 })
 export class MaterialComponentsModule {}
