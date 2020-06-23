@@ -26,7 +26,13 @@
                 </p>
             </div>
             <div fxFlex="48">
-                
+                <h5 class="pb-2">Input PDF</h5>
+                <app-uploader
+                    idInput="other_doc"
+                    [allowedContentTypes]="['application/pdf']"
+                    (hasCompleted)="uploadedCompleted($event)"
+                    (loading)="onLoading($event)">
+                </app-uploader>
             </div>
         </div>
         <div fxFlex fxLayoutAlign="end">

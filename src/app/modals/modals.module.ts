@@ -9,6 +9,7 @@ import { RemoveCompanyConfirmModalComponent } from './remove-company-confirm-mod
 import { AddMocModalComponent } from './add-moc-modal/add-moc-modal.component';
 import { AddDotModalComponent } from './add-dot-modal/add-dot-modal.component';
 import { UploadDocModalComponent } from './upload-doc-modal/upload-doc-modal.component';
+import { MaterialComponentsModule } from '../material-component/material.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { UploadDocModalComponent } from './upload-doc-modal/upload-doc-modal.com
     FormsModule,
     ReactiveFormsModule,
     DemoMaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MaterialComponentsModule
   ],
   exports: [RegisterCompanyModalComponent],
   entryComponents: [
