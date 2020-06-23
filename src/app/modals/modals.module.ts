@@ -10,6 +10,7 @@ import { AddMocModalComponent } from './add-moc-modal/add-moc-modal.component';
 import { AddDotModalComponent } from './add-dot-modal/add-dot-modal.component';
 import { UploadDocModalComponent } from './upload-doc-modal/upload-doc-modal.component';
 import { MaterialComponentsModule } from '../material-component/material.module';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MaterialComponentsModule } from '../material-component/material.module'
     FormsModule,
     ReactiveFormsModule,
     DemoMaterialModule,
+    PdfViewerModule,
     FlexLayoutModule,
     MaterialComponentsModule
   ],

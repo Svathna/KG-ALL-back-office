@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { OtherDocument, DocResponse } from '../../model/company.model';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @Component({
   selector: 'app-upload-doc-modal',
@@ -43,7 +44,9 @@ export class UploadDocModalComponent implements OnInit {
   }
 
   uploadedCompleted(response) {
-    const url = response.secure_url;
+    this.docUrl = response.secure_url;
+    this.docForm.controls['docUrl'].setValue(this.docUrl);
+    console.log(this.docForm.value);
   }
 
   onLoading(isLoading) {
@@ -59,7 +62,7 @@ export class UploadDocModalComponent implements OnInit {
   }
 
   cancel() {
-    console.log('yiii');
+    this.dialogRef.close();
   }
 
 }

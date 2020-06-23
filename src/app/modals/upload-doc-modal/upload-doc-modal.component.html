@@ -1,4 +1,4 @@
-<div class="mb-3" *ngIf="isFetching">
+<div class="mb-3" *ngIf="isFetching || isUploading">
     <mat-progress-bar mode="query"></mat-progress-bar>
 </div>
 
@@ -26,16 +26,35 @@
                 </p>
             </div>
             <div fxFlex="48">
-                <h5 class="pb-2">Input PDF</h5>
-                <app-uploader
-                    idInput="other_doc"
-                    [allowedContentTypes]="['application/pdf']"
-                    (hasCompleted)="uploadedCompleted($event)"
-                    (loading)="onLoading($event)">
-                </app-uploader>
+                <div fxLayout="row" fxLayoutGap="20px">
+                    <div>
+                        <h5 class="pb-2">Input PDF</h5>
+                        <div>
+                            <app-uploader
+                                idInput="other_doc"
+                                [isUploading]="false"
+                                [allowedContentTypes]="['application/pdf']"
+                                (hasCompleted)="uploadedCompleted($event)"
+                                (loading)="onLoading($event)">
+                            </app-uploader>
+                        </div>
+                    </div>
+                    <div *ngIf="docUrl">
+                        <pdf-viewer
+                            [src]="docUrl"
+                            [fit-to-page]="false"
+                            [show-all]="false"
+                            [original-size]="false"
+                            [autoresize]="true"                            [show-borders]="true"
+                            (after-load-complete)="loadToPdfViewerCompleted()"
+                            style="display: block;">
+                        </pdf-viewer>
+                    </div>
+                </div>
+                
             </div>
         </div>
-        <div fxFlex fxLayoutAlign="end">
+        <div class="mt-4" fxFlex fxLayoutAlign="end">
             <button class="mr-2" [disabled]="isFetching" mat-raised-button (click)="cancel()">
                 Cancel
             </button>

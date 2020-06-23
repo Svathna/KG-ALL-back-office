@@ -24,6 +24,7 @@ export class UploaderComponent implements OnInit, OnDestroy {
   @Input() multiple = false;
   @Input() clickEvent?: Observable<void>;
   @Input() idInput: string;
+  @Input() isUploading?: boolean = true;
 
   @Output() loading: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() hasCompleted: EventEmitter<any> = new EventEmitter<any>();
@@ -109,7 +110,7 @@ export class UploaderComponent implements OnInit, OnDestroy {
     if (this.files.length < 1) {
       return;
     }
-    this.isLoading = true;
+    this.isLoading = this.isUploading;
     this.loading.next(true);
     this.uploadInput.emit(this.event);
   }
