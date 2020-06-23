@@ -30,8 +30,8 @@ export class RequestsComponent implements OnInit {
     this.fetchRequests();
   }
 
-  fetchRequests() {
-    this.isFetching = true;
+  fetchRequests(loading: boolean = true) {
+    this.isFetching = loading;
     this.companyService.getAllRequests().subscribe((data: RequestsResponse) => {
       this.isFetching = false;
       if (data && data.requests) {
@@ -41,8 +41,8 @@ export class RequestsComponent implements OnInit {
     });
   }
 
-  acceptRequest(event) {
-    const { requestId, companyId } = event;
+  onAcceptRequest(event) {
+    const { requestId, companyId, docId } = event;
     if (!(requestId && companyId)) {
       return;
     }
@@ -50,26 +50,28 @@ export class RequestsComponent implements OnInit {
     this.dialogRef = this.dialog.open(UploadDocModalComponent, {
       width: "800px",
       // height: "500px",
-      data: { companyId }
+      data: { companyId, docId }
     });
 
-    // this.dialogRef.afterClosed().subscribe((data) => {
-    //   if (data && data.success) {
-    //     this.fetchCompanys();
-    //   }
-    // });
+    this.dialogRef.afterClosed().subscribe((data) => {
+      if (data && data.success) {
+        this.acceptRequest(requestId);
+      }
+    });
+  }
 
-    // this.isFetching = true;
-    // const status = RequestStatus.ACCEPTED;
-    // this.companyService.changeRequestStutus(id, { status }).subscribe((data: RequestResponse)=> {
-    //   if (data && data.success) {
-    //     this.fetchRequests();
-    //     this.toaster.success('Acept request success');
-    //   } else {
-    //     this.isFetching = false;
-    //     this.toaster.error('Acept request failed');
-    //   }
-    // });
+  acceptRequest(id: string) {
+    this.isFetching = true;
+    const status = RequestStatus.ACCEPTED;
+    this.companyService.changeRequestStutus(id, { status }).subscribe((data: RequestResponse)=> {
+      if (data && data.success) {
+        this.fetchRequests(false);
+        this.toaster.success('Success');
+      } else {
+        this.isFetching = false;
+        this.toaster.error('Failed');
+      }
+    });
   }
 
   rejectRequest(id: string) {

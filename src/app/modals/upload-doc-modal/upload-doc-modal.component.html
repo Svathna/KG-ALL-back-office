@@ -7,25 +7,6 @@
         <h3>Upload document</h3>
         <div class="mt-2" fxLayout="row" fxLayoutAlign="space-between">
             <div fxFlex="48">
-                <p>
-                    <mat-form-field appearance="outline">
-                        <mat-label>
-                            Document title
-                        </mat-label>
-                        <input formControlName="title" matInput>
-                    </mat-form-field>
-                </p><p>
-                    <mat-form-field appearance="outline">
-                        <mat-label>
-                            <label>
-                                ឈ្មោះឯកសារ
-                            </label>
-                        </mat-label>
-                        <input matInput formControlName="titleInKhmer">
-                    </mat-form-field>
-                </p>
-            </div>
-            <div fxFlex="48">
                 <div fxLayout="row" fxLayoutGap="20px">
                     <div>
                         <h5 class="pb-2">Input PDF</h5>
@@ -51,7 +32,25 @@
                         </pdf-viewer>
                     </div>
                 </div>
-                
+            </div>
+            <div fxFlex="48">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            Document title
+                        </mat-label>
+                        <input [attr.disabled]="isFetching" formControlName="title" matInput>
+                    </mat-form-field>
+                </p><p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            <label>
+                                ឈ្មោះឯកសារ
+                            </label>
+                        </mat-label>
+                        <input [attr.disabled]="isFetching" matInput formControlName="titleInKhmer">
+                    </mat-form-field>
+                </p>
             </div>
         </div>
         <div class="mt-4" fxFlex fxLayoutAlign="end">

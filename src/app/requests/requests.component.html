@@ -2,14 +2,18 @@
     <mat-progress-bar mode="query"></mat-progress-bar>
 </div>
 
-<div *ngIf="!isFetching" fxLayout="row wrap" fxLayoutAlign="start" fxLayoutGap="20px">
+<div *ngIf="!isFetching || requests.length > 0" fxLayout="row wrap" fxLayoutAlign="start" fxLayoutGap="20px">
     <div *ngFor="let request of requests">
         <div>
             <request-card
-                (accept)="acceptRequest($event)"
+                (accept)="onAcceptRequest($event)"
                 (reject)="rejectRequest($event)"
                 [request]="request">
             </request-card>
         </div>
     </div>
+</div>
+
+<div *ngIf="requests.length === 0">
+    <h2>There is no any request</h2>
 </div>

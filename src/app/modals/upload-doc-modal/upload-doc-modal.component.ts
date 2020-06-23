@@ -18,6 +18,7 @@ export class UploadDocModalComponent implements OnInit {
   isFetching = false;
   docUrl: string;
   companyId: string;
+  docId: string = '';
 
   constructor(
     private companyService: CompanyService,
@@ -31,6 +32,7 @@ export class UploadDocModalComponent implements OnInit {
     console.log(this.data);
     if (this.data) {
       this.companyId = this.data.companyId ? this.data.companyId : '';
+      this.docId = this.data.docId ? this.data.docId : '';
     }
     this.buildDocForm();
   }
@@ -40,6 +42,8 @@ export class UploadDocModalComponent implements OnInit {
       docUrl: new FormControl('', [Validators.required]),
       title: new FormControl('', [Validators.required]),
       titleInKhmer: new FormControl('', [Validators.required]),
+      companyId: new FormControl(this.companyId, [Validators.required]),
+      docId: new FormControl(this.docId),
     });
   }
 
@@ -58,7 +62,19 @@ export class UploadDocModalComponent implements OnInit {
   }
 
   save() {
-    console.log('yoo');
+    if (this.docForm.invalid) {
+      return;
+    }
+    this.isFetching = true;
+    const value = this.docForm.value;
+    this.companyService.addDocToCompany(value).subscribe((data: DocResponse) => {
+      this.isFetching = false;
+      if (data && data.success) {
+        this.dialogRef.close({ success: data.success });
+      } else {
+        this.dialogRef.close();
+      }
+    });
   }
 
   cancel() {

@@ -24,7 +24,8 @@ export class RequestCardComponent implements OnInit {
     }
     const requestId = this.request._id;
     const companyId = this.request.company._id;
-    this.accept.emit({ requestId, companyId });
+    const docId = this.request.company.docs ? this.request.company.docs : ''; 
+    this.accept.emit({ requestId, companyId, docId});
   }
 
   rejectRequest(event) {
