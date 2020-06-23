@@ -8,13 +8,15 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RemoveCompanyConfirmModalComponent } from './remove-company-confirm-modal/remove-company-confirm-modal.component';
 import { AddMocModalComponent } from './add-moc-modal/add-moc-modal.component';
 import { AddDotModalComponent } from './add-dot-modal/add-dot-modal.component';
+import { UploadDocModalComponent } from './upload-doc-modal/upload-doc-modal.component';
 
 @NgModule({
   declarations: [
     RegisterCompanyModalComponent,
     RemoveCompanyConfirmModalComponent,
     AddMocModalComponent,
-    AddDotModalComponent
+    AddDotModalComponent,
+    UploadDocModalComponent,
   ],
   imports: [
     CommonModule,
@@ -29,6 +31,7 @@ import { AddDotModalComponent } from './add-dot-modal/add-dot-modal.component';
     RemoveCompanyConfirmModalComponent,
     AddMocModalComponent,
     AddDotModalComponent,
+    UploadDocModalComponent,
   ],
 })
 export class ModalsModule { }

@@ -9,7 +9,7 @@ import { Request } from "../../model/request.model";
 export class RequestCardComponent implements OnInit {
   @Input() request: Request;
 
-  @Output() accept = new EventEmitter<string>();
+  @Output() accept = new EventEmitter<Object>();
   @Output() reject = new EventEmitter<string>();
 
   constructor() {}
@@ -19,7 +19,12 @@ export class RequestCardComponent implements OnInit {
   acceptRequest(event) {
     event.preventDefault();
     event.stopPropagation();
-    this.accept.emit(this.request._id);
+    if (!(this.request && this.request.company)) {
+      return;
+    }
+    const requestId = this.request._id;
+    const companyId = this.request.company._id;
+    this.accept.emit({ requestId, companyId });
   }
 
   rejectRequest(event) {

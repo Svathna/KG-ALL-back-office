@@ -1,0 +1,41 @@
+<div class="mb-3" *ngIf="isFetching">
+    <mat-progress-bar mode="query"></mat-progress-bar>
+</div>
+
+<form [formGroup]="docForm">
+    <div fxLayout="column">
+        <h3>Upload document</h3>
+        <div class="mt-2" fxLayout="row" fxLayoutAlign="space-between">
+            <div fxFlex="48">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            Document title
+                        </mat-label>
+                        <input formControlName="title" matInput>
+                    </mat-form-field>
+                </p><p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            <label>
+                                ឈ្មោះឯកសារ
+                            </label>
+                        </mat-label>
+                        <input matInput formControlName="titleInKhmer">
+                    </mat-form-field>
+                </p>
+            </div>
+            <div fxFlex="48">
+                
+            </div>
+        </div>
+        <div fxFlex fxLayoutAlign="end">
+            <button class="mr-2" [disabled]="isFetching" mat-raised-button (click)="cancel()">
+                Cancel
+            </button>
+            <button [disabled]="docForm.invalid || isFetching || isUploading" color="primary" mat-raised-button (click)="save()">
+                Save
+            </button>
+        </div>
+    </div>
+</form>

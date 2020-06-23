@@ -15,7 +15,7 @@ export interface OtherDocument {
     docUrl: string;
     title: string;
     titleInKhmer: string;
-  }
+}
 
 export interface Doc {
     _id: string;
