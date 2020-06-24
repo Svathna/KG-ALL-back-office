@@ -1,6 +1,6 @@
 <div fxLayout="column" fxLayoutGap="10px">
     <h6>
-        1. {{ title }}
+        {{ docNo !== 0 ? docNo + '.' : '' }} {{ title }}
     </h6>
     <div [ngClass]="!docUrl ? '' : 'display-none'">
         <app-uploader

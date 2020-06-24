@@ -19,6 +19,7 @@ export class DocUploaderComponent implements OnInit {
   @Input() isPatent: boolean = false;
   @Input() isGdtCard: boolean = false;
   @Input() company: CompanyDetail;
+  @Input() docNo?: number = 0;
 
   isUploading = false;
   docUrl = '';

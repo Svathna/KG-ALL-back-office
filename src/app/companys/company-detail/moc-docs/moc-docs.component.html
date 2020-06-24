@@ -1,7 +1,7 @@
 <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="20px">
     <h6>ឯកសារជា PDF :</h6>
     <div *ngIf="company" fxLayout="row" fxLayoutAlign="space-between">
-      <doc-uploader [company]="company" [isMocCertificate]="true"></doc-uploader>
-      <doc-uploader [company]="company" [isBusinessExtract]="true"></doc-uploader>
+      <doc-uploader [company]="company" docNo="1" [isMocCertificate]="true"></doc-uploader>
+      <doc-uploader [company]="company" docNo="2" [isBusinessExtract]="true"></doc-uploader>
     </div>
 </div>
