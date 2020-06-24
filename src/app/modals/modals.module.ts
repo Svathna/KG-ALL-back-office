@@ -11,6 +11,7 @@ import { AddDotModalComponent } from './add-dot-modal/add-dot-modal.component';
 import { UploadDocModalComponent } from './upload-doc-modal/upload-doc-modal.component';
 import { MaterialComponentsModule } from '../material-component/material.module';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { RejectRequestConfirmModalComponent } from './reject-request-confirm-modal/reject-request-confirm-modal.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     AddMocModalComponent,
     AddDotModalComponent,
     UploadDocModalComponent,
+    RejectRequestConfirmModalComponent,
   ],
   imports: [
     CommonModule,
@@ -36,6 +38,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     AddMocModalComponent,
     AddDotModalComponent,
     UploadDocModalComponent,
+    RejectRequestConfirmModalComponent,
   ],
 })
 export class ModalsModule { }

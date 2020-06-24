@@ -1,0 +1,15 @@
+<div class="mb-3" *ngIf="isFetching">
+    <mat-progress-bar mode="query"></mat-progress-bar>
+</div>
+
+<div class="container h-100-p" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+        <h4 class="text-center">Are you sure to reject this request?</h4>
+        <div class="mat-card-content" fxLayout="row" fxLayoutAlign="center end" fxLayoutGap="20px">
+            <button [disabled]="isFetching" color="warn" mat-raised-button (click)="confirmRemove()">
+                Yes
+            </button>
+            <button [disabled]="isFetching" color="primary" mat-raised-button (click)="cancelRemove()">
+                No
+            </button>
+        </div>
+</div>

@@ -9,6 +9,7 @@ import {
 import { ToastrService } from "ngx-toastr";
 import { MatDialogRef, MatDialog } from "@angular/material/dialog";
 import { UploadDocModalComponent } from "../modals/upload-doc-modal/upload-doc-modal.component";
+import { RejectRequestConfirmModalComponent } from "../modals/reject-request-confirm-modal/reject-request-confirm-modal.component";
 
 @Component({
   selector: "app-requests",
@@ -78,18 +79,15 @@ export class RequestsComponent implements OnInit {
     if (!id) {
       return;
     }
-    this.isFetching = true;
-    const status = RequestStatus.REJECTED;
-    this.companyService
-      .changeRequestStutus(id, { status })
-      .subscribe((data: RequestResponse) => {
-        if (data && data.success) {
-          this.fetchRequests();
-          this.toaster.success("Reject request success");
-        } else {
-          this.isFetching = false;
-          this.toaster.error("Reject request failed");
-        }
-      });
+
+    this.dialogRef = this.dialog.open(RejectRequestConfirmModalComponent, {
+      data: { id }
+    });
+
+    this.dialogRef.afterClosed().subscribe((data) => {
+      if (data && data.success) {
+        this.fetchRequests();
+      }
+    });
   }
 }
