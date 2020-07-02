@@ -49,6 +49,10 @@ Global Styles
     height: 100%;
 }
 
+.no-border {
+    border: 0 !important;
+}
+
 body {
     font-family: $bodyfont;
     margin: 0;

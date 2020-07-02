@@ -1,0 +1,34 @@
+<div fxLayout="column" fxLayoutGap="10px">
+    <div class="pb-3" fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start center">
+        <h4 class="m-t-5 text-khmer-bold">ក្រសួងពាណិជ្ជកម្ម</h4>
+    </div>
+    <div class="pb-3 text-khmer-bold">
+        <h5>1. ពន្ធប្រចាំខែក្នុងឆ្នាំ {{ currentDate | date: 'yyyy'}}</h5>
+        <!-- Table section  -->
+        <div class="mt-2">
+            <table class="simple w-100-p text-center">
+                <thead>
+                    <tr fxLayout="row" fxLayoutAlign="start center">
+                        <th fxFlex="20">ខែ</th>
+                        <th fxFlex="20">ចំណូល</th>
+                        <th fxFlex="20">ចំណាយ</th>
+                        <th fxFlex="20">ប្រាក់ពន្ធបានបង់</th>
+                        <th fxFlex="20" class="no-border">ផ្សេងៗ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <div *ngFor="let month of monthArray; let lastIndex = last">
+                        <tr fxLayout="row" (click)="addTax()" [ngClass]="lastIndex ? 'no-border' : ''" fxLayoutAlign="start center">
+                            <div></div>
+                            <td fxFlex="20">{{ month }}</td>
+                            <td fxFlex="20"></td>
+                            <td fxFlex="20"></td>
+                            <td fxFlex="20"></td>
+                            <td fxFlex="20" class="no-border"></td>
+                        </tr>
+                    </div>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
