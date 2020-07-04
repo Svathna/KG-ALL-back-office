@@ -111,7 +111,7 @@ export interface Dot {
 }
 
 export interface TaxHistory {
-    taxPerMonths: TaxPerMonth[];
-    taxPerYears: TaxPerYear[];
+    taxPerMonths?: TaxPerMonth[];
+    taxPerYears?: TaxPerYear[];
     _id: string;
 }

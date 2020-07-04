@@ -59,16 +59,8 @@ export class CompanyService {
     return this.http.post(environment.apiURL + `/doc`, body);
   }
 
-//   openLoginModal() {
-//     this.loginModal = this.openModal(LoginComponent);
-// }
-
-//   openModal(portalComponent) {
-//     const modal = this.matDialog.open(AuthModalComponent, {
-//         width: '1000px',
-//     });
-
-//     return modal;
-//   }
+  addTaxHistory(id: number, body) {
+    return this.http.post(environment.apiURL + `/tax/taxPerMonth/${id}`, body);
+  }
 
 }

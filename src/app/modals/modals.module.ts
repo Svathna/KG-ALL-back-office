@@ -12,6 +12,7 @@ import { UploadDocModalComponent } from './upload-doc-modal/upload-doc-modal.com
 import { MaterialComponentsModule } from '../material-component/material.module';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { RejectRequestConfirmModalComponent } from './reject-request-confirm-modal/reject-request-confirm-modal.component';
+import { AddTaxPerMonthModalComponent } from './add-tax-per-month-modal/add-tax-per-month-modal.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { RejectRequestConfirmModalComponent } from './reject-request-confirm-mod
     AddDotModalComponent,
     UploadDocModalComponent,
     RejectRequestConfirmModalComponent,
+    AddTaxPerMonthModalComponent,
   ],
   imports: [
     CommonModule,
@@ -39,6 +41,7 @@ import { RejectRequestConfirmModalComponent } from './reject-request-confirm-mod
     AddDotModalComponent,
     UploadDocModalComponent,
     RejectRequestConfirmModalComponent,
+    AddTaxPerMonthModalComponent,
   ],
 })
 export class ModalsModule { }

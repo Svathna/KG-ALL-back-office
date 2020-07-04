@@ -1,0 +1,82 @@
+<div class="mb-3" *ngIf="isFetching">
+    <mat-progress-bar mode="query"></mat-progress-bar>
+</div>
+
+<form [formGroup]="taxPerMonthForm">
+    <div>
+        <h4>ពន្ធប្រចាំខែ {{monthArray[month -1]}}</h4>
+    </div>
+    <div fxLayout="column">
+        <div class="mt-2" fxLayout="row">
+            <div fxFlex="100">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            <label class="mt-1">
+                                ចំណូល (រៀល)
+                            </label>
+                        </mat-label>
+                        <input formControlName="revenue" type="number" matInput required>
+                    </mat-form-field>
+                </p>
+            </div>
+        </div>
+
+        <div fxLayout="row">
+            <div fxFlex="100">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            <label class="mt-1">
+                                ចំណាយ (រៀល)
+                            </label>
+                        </mat-label>
+                        <input formControlName="spending" type="number" matInput required>
+                    </mat-form-field>
+                </p>
+            </div>
+        </div>
+
+        <div fxLayout="row">
+            <div fxFlex="100">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            <label>
+                                ប្រាក់ពន្ធបង់រួច (រៀល)
+                            </label>
+                        </mat-label>
+                        <input formControlName="taxPaidAmount" type="number" matInput required>
+                    </mat-form-field>
+                </p>
+            </div>
+        </div>
+        <div fxLayout="row">
+            <div fxFlex="100">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            <label>
+                                ផ្សេងៗ
+                            </label>
+                        </mat-label>
+                        <input formControlName="others" type="text" matInput>
+                    </mat-form-field>
+                </p>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between">
+            <div fxFlex fxLayoutAlign="end">
+                <button class="mr-2" [disabled]="isFetching" mat-raised-button (click)="cancel()">
+                    Cancel
+                </button>
+                <button [disabled]="taxPerMonthForm.invalid || isFetching" color="primary" mat-raised-button (click)="save()">
+                    Save
+                </button>
+                <!-- <button *ngIf="moc" [disabled]="mocForm.invalid || isFetching" color="primary" mat-raised-button (click)="update()">
+                    Update
+                </button> -->
+            </div>
+        </div>
+    </div>
+</form>

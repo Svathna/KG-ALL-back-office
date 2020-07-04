@@ -17,8 +17,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <div *ngFor="let month of monthArray; let lastIndex = last">
-                        <tr fxLayout="row" (click)="addTax()" [ngClass]="lastIndex ? 'no-border' : ''" fxLayoutAlign="start center">
+                    <div *ngFor="let month of monthArray; let lastIndex = last; let index = index">
+                        <tr fxLayout="row" (click)="addTax(index)" [ngClass]="lastIndex ? 'no-border' : ''" fxLayoutAlign="start center">
                             <div></div>
                             <td fxFlex="20">{{ month }}</td>
                             <td fxFlex="20"></td>

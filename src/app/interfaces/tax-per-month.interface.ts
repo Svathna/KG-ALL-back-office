@@ -1,8 +1,16 @@
+import { TaxHistory } from "../model/company.model";
+
+export interface TaxHistoryResponse {
+    taxHistory: TaxHistory;
+    success: boolean;
+    message: string;
+}
+
 export class TaxPerMonth {
-    year: number;
+    year?: string;
     month: number;
-    revenue: number;
-    spending: number;
-    taxPaidAmout: number;
-    others: string;
+    revenue?: number;
+    spending?: number;
+    taxPaidAmount?: number;
+    others?: string;
 }

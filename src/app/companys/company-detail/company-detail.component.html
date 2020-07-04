@@ -35,8 +35,8 @@
         <ng-template mat-tab-label>
           ស្ថានភាពក្រុមហ៊ុន
         </ng-template>
-        <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="30px">
-          <app-tax-history></app-tax-history>
+        <div *ngIf="company" fxLayout="column" fxLayoutAlign="start" fxLayoutGap="30px">
+          <app-tax-history [companyId]="company._id" [taxHistory]="company.taxHistory ? company.taxHistory : ''"></app-tax-history>
         </div>
       </mat-tab>
     </mat-tab-group>

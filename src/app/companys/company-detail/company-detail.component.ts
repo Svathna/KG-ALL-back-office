@@ -39,6 +39,7 @@ export class CompanyDetailComponent implements OnInit, OnDestroy {
       this.isFetching = false;
       if (data && data.company) {
         this.company = data.company;
+        console.log(this.company)
       }
     });
   }
