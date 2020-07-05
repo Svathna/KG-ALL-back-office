@@ -70,12 +70,12 @@
                 <button class="mr-2" [disabled]="isFetching" mat-raised-button (click)="cancel()">
                     Cancel
                 </button>
-                <button [disabled]="taxPerMonthForm.invalid || isFetching" color="primary" mat-raised-button (click)="save()">
+                <button *ngIf="!isEdition" [disabled]="taxPerMonthForm.invalid || isFetching" color="primary" mat-raised-button (click)="save()">
                     Save
                 </button>
-                <!-- <button *ngIf="moc" [disabled]="mocForm.invalid || isFetching" color="primary" mat-raised-button (click)="update()">
+                <button *ngIf="isEdition" [disabled]="taxPerMonthForm.invalid || isFetching" color="primary" mat-raised-button (click)="update()">
                     Update
-                </button> -->
+                </button>
             </div>
         </div>
     </div>

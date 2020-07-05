@@ -59,8 +59,16 @@ export class CompanyService {
     return this.http.post(environment.apiURL + `/doc`, body);
   }
 
-  addTaxHistory(id: number, body) {
+  addTaxPerMonth(id: string, body) {
     return this.http.post(environment.apiURL + `/tax/taxPerMonth/${id}`, body);
+  }
+
+  updateTaxPerMonth(id: string, body) {
+    return this.http.patch(environment.apiURL + `/tax/taxPerMonth/${id}`, body);
+  }
+
+  getTaxHistory(id: string) {
+    return this.http.get(environment.apiURL + `/tax/${id}`);
   }
 
 }

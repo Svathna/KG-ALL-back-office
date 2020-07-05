@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddTaxPerMonthModalComponent } from '../../../modals/add-tax-per-month-modal/add-tax-per-month-modal.component';
-import { TaxPerMonth } from '../../../interfaces/tax-per-month.interface';
+import { TaxPerMonth, TaxHistoryResponse } from '../../../interfaces/tax-per-month.interface';
 import { TaxPerMonthsService } from '../../../service/tax-per-months.service';
 import { TaxHistory } from '../../../model/company.model';
+import { CompanyService } from '../../../service/company.service';
 
 export const MONTHS = [
   'មករា',
@@ -38,13 +39,23 @@ export class TaxHistoryComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private taxPerMonthService: TaxPerMonthsService,
+    private companyService: CompanyService,
   ) { }
 
   ngOnInit() {
     this.buildTaxPerMonths();
   }
 
-  addTax(index: number) {
+  onRowClick(index: number) {
+    if (this.taxPerMonths[index].revenue) {
+      console.log('yaaaa');
+      this.editTaxPerMonth(index);
+    } else {
+      this.addNewTaxPerMonth(index);
+    }
+  }
+
+  addNewTaxPerMonth(index: number) {
     this.dialogRef = this.dialog.open(AddTaxPerMonthModalComponent, {
       width: '500px',
       data: {
@@ -52,15 +63,58 @@ export class TaxHistoryComponent implements OnInit {
         month: index + 1,
       },
     });
+
+    this.dialogRef.afterClosed().subscribe((data) => {
+      if (data && data.taxHistory) {
+        this.taxHistory = data.taxHistory;
+        this.buildTaxPerMonths();
+        // this.fetchTaxhistory();
+      }
+    });
+  }
+
+  editTaxPerMonth(index: number) {
+    this.dialogRef = this.dialog.open(AddTaxPerMonthModalComponent, {
+      width: '500px',
+      data: {
+        // companyId: this.companyId,
+        month: index + 1,
+        taxPerMonth: this.taxPerMonths[index],
+        taxHistoryId: this.taxHistory._id,
+      },
+    });
+
+    this.dialogRef.afterClosed().subscribe((data) => {
+      if (data && data.taxHistory) {
+        this.taxHistory = data.taxHistory;
+        this.buildTaxPerMonths();
+        // this.fetchTaxhistory();
+      }
+    });
+  }
+
+  async fetchTaxhistory() {
+    if (!this.taxHistory) {
+      return;
+    } 
+    this.isFetching = true;
+    await this.companyService.getTaxHistory(this.taxHistory._id).subscribe((data: TaxHistoryResponse) => {
+      this.isFetching = false;
+      if (data && data.taxHistory) {
+        this.taxHistory = data.taxHistory;
+        this.buildTaxPerMonths();
+      }
+    });
   }
 
   async buildTaxPerMonths(){
+    let taxPerMonths: TaxPerMonth[];
     if (!this.taxHistory.taxPerMonths) {
-      return;
+      taxPerMonths = [];
     }
     console.log(this.taxPerMonths);
     this.isFetching = true;
-    const arrayData: TaxPerMonth[] = await this.taxPerMonthService.buildTaxPerMonths(this.taxHistory.taxPerMonths);
+    const arrayData: TaxPerMonth[] = await this.taxPerMonthService.buildTaxPerMonths(taxPerMonths ? taxPerMonths : this.taxHistory.taxPerMonths);
     this.taxPerMonths = [...arrayData];
     this.isFetching = false;
     console.log(this.taxPerMonths);

@@ -3,7 +3,7 @@ import { CompanyService } from '../../service/company.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { TaxHistoryResponse } from '../../interfaces/tax-per-month.interface';
+import { TaxHistoryResponse, TaxPerMonth } from '../../interfaces/tax-per-month.interface';
 import { ToastrService } from 'ngx-toastr';
 import { MONTHS } from '../../companys/company-detail/tax-history/tax-history.component';
 
@@ -18,6 +18,8 @@ export class AddTaxPerMonthModalComponent implements OnInit {
   taxPerMonthForm: FormGroup;
   isFetching = false;
   monthArray = MONTHS;
+  taxPerMonth: TaxPerMonth;
+  isEdition = false;
 
   constructor(
     private companyService: CompanyService,
@@ -30,8 +32,14 @@ export class AddTaxPerMonthModalComponent implements OnInit {
   ngOnInit() {
     if (this.data && this.data.month) {
       this.month = this.data.month;
+      if (this.data.taxPerMonth) {
+        this.taxPerMonth = this.data.taxPerMonth;
+        this.isEdition = true;
+        this.buildEditForm();
+      } else {
+        this.buildNewForm();
+      }
     }
-    this.buildNewForm();
   }
 
   buildNewForm() {
@@ -45,6 +53,17 @@ export class AddTaxPerMonthModalComponent implements OnInit {
     });
   }
 
+  buildEditForm() {
+    this.taxPerMonthForm = this.formBuilder.group({
+      year: new FormControl(moment(this.currentYear).format('YYYY')),
+      month: new FormControl(this.month),
+      revenue: new FormControl(this.taxPerMonth.revenue, [Validators.required]),
+      spending: new FormControl(this.taxPerMonth.spending, [Validators.required]),
+      taxPaidAmount: new FormControl(this.taxPerMonth.taxPaidAmount, [Validators.required]),
+      others: new FormControl(this.taxPerMonth.others,),
+    });
+  }
+
   save() {
     const { companyId } = this.data;
     if (this.taxPerMonthForm.invalid) {
@@ -53,7 +72,28 @@ export class AddTaxPerMonthModalComponent implements OnInit {
     this.isFetching = true;
     const value = this.taxPerMonthForm.value;
     console.log(value);
-    this.companyService.addTaxHistory(companyId, value).subscribe((data: TaxHistoryResponse) => {
+    this.companyService.addTaxPerMonth(companyId, value).subscribe((data: TaxHistoryResponse) => {
+      this.isFetching = false;
+      if (data && data.taxHistory) {
+        console.log(data.taxHistory);
+        this.toastr.success('Success');
+        this.dialogRef.close({ taxHistory: data.taxHistory });
+      } else {
+        this.toastr.error('Failed');
+        this.dialogRef.close();
+      }
+    });
+  }
+
+  update() {
+    const { taxHistoryId } = this.data;
+    if (this.taxPerMonthForm.invalid) {
+      return;
+    }
+    this.isFetching = true;
+    const value = this.taxPerMonthForm.value;
+    console.log(value);
+    this.companyService.updateTaxPerMonth(taxHistoryId, value).subscribe((data: TaxHistoryResponse) => {
       this.isFetching = false;
       if (data && data.taxHistory) {
         console.log(data.taxHistory);

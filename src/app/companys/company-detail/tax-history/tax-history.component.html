@@ -1,3 +1,7 @@
+<div *ngIf="isFetching">
+    <mat-progress-bar mode="query"></mat-progress-bar>
+</div>
+
 <div fxLayout="column" fxLayoutGap="10px">
     <div class="pb-3" fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start center">
         <h4 class="m-t-5 text-khmer-bold">ក្រសួងពាណិជ្ជកម្ម</h4>
@@ -9,22 +13,62 @@
             <table class="simple w-100-p text-center">
                 <thead>
                     <tr fxLayout="row" fxLayoutAlign="start center">
-                        <th fxFlex="20">ខែ</th>
-                        <th fxFlex="20">ចំណូល</th>
-                        <th fxFlex="20">ចំណាយ</th>
-                        <th fxFlex="20">ប្រាក់ពន្ធបានបង់</th>
-                        <th fxFlex="20" class="no-border">ផ្សេងៗ</th>
+                        <th fxFlex="20">
+                            <h4>
+                                ខែ
+                            </h4>
+                        </th>
+                        <th fxFlex="20">
+                            <h4>
+                                ចំណូល (រៀល)
+                            </h4>
+                        </th>
+                        <th fxFlex="20">
+                            <h4>
+                                ចំណាយ (រៀល)
+                            </h4>
+                        </th>
+                        <th fxFlex="20">
+                            <h4>
+                                ប្រាក់ពន្ធបានបង់ (រៀល)
+                            </h4>
+                        </th>
+                        <th fxFlex="20" class="no-border">
+                            <h4>
+                                ផ្សេងៗ
+                            </h4>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <div *ngFor="let month of monthArray; let lastIndex = last; let index = index">
-                        <tr fxLayout="row" (click)="addTax(index)" [ngClass]="lastIndex ? 'no-border' : ''" fxLayoutAlign="start center">
+                    <div *ngIf="!isFetching && taxPerMonths.length > 0">
+                        <tr *ngFor="let item of taxPerMonths; let lastIndex = last; let index = index" fxLayout="row" (click)="onRowClick(index)" [ngClass]="lastIndex ? 'no-border' : ''" fxLayoutAlign="start center">
                             <div></div>
-                            <td fxFlex="20">{{ month }}</td>
-                            <td fxFlex="20"></td>
-                            <td fxFlex="20"></td>
-                            <td fxFlex="20"></td>
-                            <td fxFlex="20" class="no-border"></td>
+                            <td fxFlex="20">
+                                <h5>
+                                    {{ monthArray[item.month - 1] }}
+                                </h5>
+                            </td>
+                            <td fxFlex="20">
+                                <h5>
+                                    {{ item.revenue | number }}
+                                </h5>
+                            </td>
+                            <td fxFlex="20">
+                                <h5>
+                                    {{ item.spending | number }}
+                                </h5>
+                            </td>
+                            <td fxFlex="20">
+                                <h5>
+                                    {{ item.taxPaidAmount | number }}
+                                </h5>
+                            </td>
+                            <td fxFlex="20" class="no-border">
+                                <h5>
+                                    {{ item.others ? item.others : '' }}
+                                </h5>
+                            </td>
                         </tr>
                     </div>
                 </tbody>
