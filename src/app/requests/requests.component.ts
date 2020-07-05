@@ -37,7 +37,6 @@ export class RequestsComponent implements OnInit {
       this.isFetching = false;
       if (data && data.requests) {
         this.requests = data.requests;
-        console.log(this.requests);
       }
     });
   }

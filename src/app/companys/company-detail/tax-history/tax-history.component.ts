@@ -48,7 +48,6 @@ export class TaxHistoryComponent implements OnInit {
 
   onRowClick(index: number) {
     if (this.taxPerMonths[index].revenue) {
-      console.log('yaaaa');
       this.editTaxPerMonth(index);
     } else {
       this.addNewTaxPerMonth(index);
@@ -68,7 +67,6 @@ export class TaxHistoryComponent implements OnInit {
       if (data && data.taxHistory) {
         this.taxHistory = data.taxHistory;
         this.buildTaxPerMonths();
-        // this.fetchTaxhistory();
       }
     });
   }
@@ -77,7 +75,6 @@ export class TaxHistoryComponent implements OnInit {
     this.dialogRef = this.dialog.open(AddTaxPerMonthModalComponent, {
       width: '500px',
       data: {
-        // companyId: this.companyId,
         month: index + 1,
         taxPerMonth: this.taxPerMonths[index],
         taxHistoryId: this.taxHistory._id,
@@ -88,7 +85,6 @@ export class TaxHistoryComponent implements OnInit {
       if (data && data.taxHistory) {
         this.taxHistory = data.taxHistory;
         this.buildTaxPerMonths();
-        // this.fetchTaxhistory();
       }
     });
   }
@@ -112,11 +108,9 @@ export class TaxHistoryComponent implements OnInit {
     if (!this.taxHistory.taxPerMonths) {
       taxPerMonths = [];
     }
-    console.log(this.taxPerMonths);
     this.isFetching = true;
     const arrayData: TaxPerMonth[] = await this.taxPerMonthService.buildTaxPerMonths(taxPerMonths ? taxPerMonths : this.taxHistory.taxPerMonths);
     this.taxPerMonths = [...arrayData];
     this.isFetching = false;
-    console.log(this.taxPerMonths);
   }
 }

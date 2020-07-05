@@ -71,11 +71,9 @@ export class AddTaxPerMonthModalComponent implements OnInit {
     }
     this.isFetching = true;
     const value = this.taxPerMonthForm.value;
-    console.log(value);
     this.companyService.addTaxPerMonth(companyId, value).subscribe((data: TaxHistoryResponse) => {
       this.isFetching = false;
       if (data && data.taxHistory) {
-        console.log(data.taxHistory);
         this.toastr.success('Success');
         this.dialogRef.close({ taxHistory: data.taxHistory });
       } else {
@@ -92,11 +90,9 @@ export class AddTaxPerMonthModalComponent implements OnInit {
     }
     this.isFetching = true;
     const value = this.taxPerMonthForm.value;
-    console.log(value);
     this.companyService.updateTaxPerMonth(taxHistoryId, value).subscribe((data: TaxHistoryResponse) => {
       this.isFetching = false;
       if (data && data.taxHistory) {
-        console.log(data.taxHistory);
         this.toastr.success('Success');
         this.dialogRef.close({ taxHistory: data.taxHistory });
       } else {

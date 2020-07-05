@@ -29,7 +29,6 @@ export class UploadDocModalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.data);
     if (this.data) {
       this.companyId = this.data.companyId ? this.data.companyId : '';
       this.docId = this.data.docId ? this.data.docId : '';
@@ -50,7 +49,6 @@ export class UploadDocModalComponent implements OnInit {
   uploadedCompleted(response) {
     this.docUrl = response.secure_url;
     this.docForm.controls['docUrl'].setValue(this.docUrl);
-    console.log(this.docForm.value);
   }
 
   onLoading(isLoading) {
