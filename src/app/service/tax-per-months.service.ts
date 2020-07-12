@@ -5,7 +5,7 @@ import * as moment from 'moment';
 @Injectable({
   providedIn: 'root'
 })
-export class TaxPerMonthsService {
+export class TaxHistoryService {
   currentDate = new Date();
 
   constructor() { }

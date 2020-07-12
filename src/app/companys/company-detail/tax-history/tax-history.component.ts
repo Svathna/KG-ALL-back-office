@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TaxPerMonth, TaxHistoryResponse } from '../../../interfaces/tax-per-month.interface';
-import { TaxPerMonthsService } from '../../../service/tax-per-months.service';
+import { TaxHistoryService } from '../../../service/tax-per-months.service';
 import { TaxHistory } from '../../../model/company.model';
 import { CompanyService } from '../../../service/company.service';
 import { ExportAsService, ExportAsConfig } from 'ngx-export-as';
@@ -47,7 +47,7 @@ export class TaxHistoryComponent implements OnInit {
   taxPerMonths: TaxPerMonth[] = [];
 
   constructor(
-    private taxPerMonthService: TaxPerMonthsService,
+    private taxPerMonthService: TaxHistoryService,
     private companyService: CompanyService,
     private exportAsService: ExportAsService,
   ) { }
