@@ -47,6 +47,7 @@ import { DocUploaderComponent } from './companys/company-detail/doc-uploader/doc
 import { RequestsComponent } from './requests/requests.component';
 import { TaxHistoryComponent } from './companys/company-detail/tax-history/tax-history.component';
 import { TaxPerMonthComponent } from './companys/company-detail/tax-history/tax-per-month/tax-per-month.component';
+import { TaxPerYearComponent } from './companys/tax-per-year/tax-per-year.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { TaxPerMonthComponent } from './companys/company-detail/tax-history/tax-
     RequestsComponent,
     TaxHistoryComponent,
     TaxPerMonthComponent,
+    TaxPerYearComponent,
   ],
   imports: [
     BrowserModule,

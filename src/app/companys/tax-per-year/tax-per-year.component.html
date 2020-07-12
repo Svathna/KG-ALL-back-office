@@ -1,0 +1,38 @@
+<div class="mt-2 ml-3">
+    <table class="simple w-100-p text-center">
+        <thead>
+            <tr fxLayout="row" fxLayoutAlign="start center">
+                <th fxFlex="20">
+                    <h4>
+                        ឆ្នាំ
+                    </h4>
+                </th>
+                <th fxFlex="16">
+                    <h4>
+                        {{ currentDate | date: 'yyyy' }}
+                    </h4>
+                </th>
+                <th fxFlex="16">
+                    <h4>
+                        {{ (currentDate | date: 'yyyy') - 1 }}
+                    </h4>
+                </th>
+                <th fxFlex="16">
+                    <h4>
+                        {{ (currentDate | date: 'yyyy') - 2 }}
+                    </h4>
+                </th>
+                <th fxFlex="16">
+                    <h4>
+                        {{ (currentDate | date: 'yyyy') - 3 }}
+                    </h4>
+                </th>
+                <th fxFlex="16" class="no-border">
+                    <h4>
+                        {{ (currentDate | date: 'yyyy') - 4 }}
+                    </h4>
+                </th>
+            </tr>
+        </thead>
+    </table>
+</div>

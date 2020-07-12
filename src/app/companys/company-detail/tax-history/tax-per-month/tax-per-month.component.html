@@ -32,7 +32,6 @@
         <tbody>
             <div *ngIf="!isFetching && taxPerMonths.length > 0">
                 <tr *ngFor="let item of taxPerMonths; let lastIndex = last; let index = index" fxLayout="row" (click)="onRowClick(index)" [ngClass]="lastIndex ? 'no-border' : ''" fxLayoutAlign="start center">
-                    <div></div>
                     <td fxFlex="20">
                         <h5>
                             {{ monthArray[item.month - 1] }}
