@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { TaxPerYear } from '../../interfaces/tax-per-year.interface';
+import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'tax-per-year',
@@ -6,12 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tax-per-year.component.scss']
 })
 export class TaxPerYearComponent implements OnInit {
+  @Input() companyId: string;
+  @Input() taxHistoryId: string;
+  @Input() taxPerYears: TaxPerYear[] = [];
 
   currentDate = new Date();
+  dialogRef: MatDialogRef<any>;
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog,
+  ) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  onRowClick(index: number) {
+    console.log(index);
   }
 
 }

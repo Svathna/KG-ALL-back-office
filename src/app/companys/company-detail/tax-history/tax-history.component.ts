@@ -4,6 +4,7 @@ import { TaxHistoryService } from '../../../service/tax-per-months.service';
 import { TaxHistory } from '../../../model/company.model';
 import { CompanyService } from '../../../service/company.service';
 import { ExportAsService, ExportAsConfig } from 'ngx-export-as';
+import { TaxPerYear } from '../../../interfaces/tax-per-year.interface';
 
 export const MONTHS = [
   'មករា',
@@ -45,15 +46,17 @@ export class TaxHistoryComponent implements OnInit {
   monthArray = MONTHS;
   isFetching = false;
   taxPerMonths: TaxPerMonth[] = [];
+  taxPerYears: TaxPerYear[] = [];
 
   constructor(
-    private taxPerMonthService: TaxHistoryService,
+    private taxHistoryService: TaxHistoryService,
     private companyService: CompanyService,
     private exportAsService: ExportAsService,
   ) { }
 
   ngOnInit() {
     this.buildTaxPerMonths();
+    this.buildTaxPerYears();
   }
 
   exportPdf() {
@@ -82,18 +85,26 @@ export class TaxHistoryComponent implements OnInit {
       if (data && data.taxHistory) {
         this.taxHistory = data.taxHistory;
         this.buildTaxPerMonths();
+        this.buildTaxPerYears();
       }
     });
   }
 
-  async buildTaxPerMonths(){
+  async buildTaxPerMonths() {
     let taxPerMonths: TaxPerMonth[];
     if (!this.taxHistory.taxPerMonths) {
       taxPerMonths = [];
     }
-    this.isFetching = true;
-    const arrayData: TaxPerMonth[] = await this.taxPerMonthService.buildTaxPerMonths(taxPerMonths ? taxPerMonths : this.taxHistory.taxPerMonths);
+    const arrayData: TaxPerMonth[] = await this.taxHistoryService.buildTaxPerMonths(taxPerMonths ? taxPerMonths : this.taxHistory.taxPerMonths);
     this.taxPerMonths = [...arrayData];
-    this.isFetching = false;
+  }
+
+  async buildTaxPerYears() {
+    let taxPerYears: TaxPerYear[];
+    if (!this.taxHistory.taxPerYears) {
+      taxPerYears = [];
+    }
+    this.taxPerYears = await this.taxHistoryService.builTaxPerYears(taxPerYears ? taxPerYears : this.taxHistory.taxPerYears);
+    console.log(this.taxPerYears);
   }
 }

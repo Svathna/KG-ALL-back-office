@@ -1,4 +1,4 @@
 export interface TaxPerYear {
-    taxPaidAmout: number;
-    year: number;
+    taxPaidAmount?: number;
+    year: string;
 }

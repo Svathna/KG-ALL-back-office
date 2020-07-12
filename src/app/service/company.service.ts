@@ -71,4 +71,8 @@ export class CompanyService {
     return this.http.get(environment.apiURL + `/tax/${id}`);
   }
 
+  addTaxPerYear(id: string, body) {
+    return this.http.post(environment.apiURL + `/tax/taxPerYear/${id}`, body);
+  }
+
 }

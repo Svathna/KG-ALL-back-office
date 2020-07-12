@@ -19,7 +19,6 @@ export class TaxPerMonthComponent {
 
   monthArray = MONTHS;
   dialogRef: MatDialogRef<any>;
-  isFetching = false;
 
   constructor(
     private dialog: MatDialog,
