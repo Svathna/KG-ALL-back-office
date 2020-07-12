@@ -18,6 +18,7 @@ import { DemoMaterialModule } from './demo-material-module';
 import { ToastrModule } from 'ngx-toastr';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { ExportAsModule } from 'ngx-export-as';
 
 import { SharedModule } from './shared/shared.module';
 import { SpinnerComponent } from './shared/spinner.component';
@@ -77,6 +78,7 @@ import { TaxHistoryComponent } from './companys/company-detail/tax-history/tax-h
     DemoMaterialModule,
     ToastrModule.forRoot(),
     FlexLayoutModule,
+    ExportAsModule,
     MaterialComponentsModule,
     HttpClientModule,
     SharedModule,

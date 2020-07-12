@@ -45,6 +45,7 @@
     "ng2-completer": "^3.0.3",
     "ng2-pdf-viewer": "^6.3.0",
     "ng2-smart-table": "^1.5.0",
+    "ngx-export-as": "^1.4.2",
     "ngx-show-hide-password": "^2.1.0",
     "ngx-toastr": "^11.2.1",
     "ngx-uploader": "^8.0.0",
