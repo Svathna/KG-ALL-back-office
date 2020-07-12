@@ -46,6 +46,7 @@ import { DotDocsComponent } from './companys/company-detail/dot-docs/dot-docs.co
 import { DocUploaderComponent } from './companys/company-detail/doc-uploader/doc-uploader.component';
 import { RequestsComponent } from './requests/requests.component';
 import { TaxHistoryComponent } from './companys/company-detail/tax-history/tax-history.component';
+import { TaxPerMonthComponent } from './companys/company-detail/tax-history/tax-per-month/tax-per-month.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { TaxHistoryComponent } from './companys/company-detail/tax-history/tax-h
     DocUploaderComponent,
     RequestsComponent,
     TaxHistoryComponent,
+    TaxPerMonthComponent,
   ],
   imports: [
     BrowserModule,

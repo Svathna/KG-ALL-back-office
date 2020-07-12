@@ -1,37 +1,3 @@
 .table-wrapper {
     max-width: 1000px;
 }
-
-table {
-    &.simple {
-        max-width: 1000px;
-        border: 1px solid #000000;
-
-        thead {
-            tr {
-                height: 50px;
-                border-bottom: 1px solid #000000;
-
-                th {
-                    color: #3069bb;
-                    border-right: 1px solid #000000;
-                }
-            }
-        }
-        tbody {
-            tr {
-                height: 44px;
-                border-bottom: 1px solid #000000;
-
-                &:hover {
-                    background-color: #eef5f9;
-                }
-
-                td {
-                    height: 26px;
-                    border-right: 1px solid #000000;
-                }
-            }
-        }
-    }
-}

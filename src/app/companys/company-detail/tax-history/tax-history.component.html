@@ -6,73 +6,12 @@
     <div class="pb-3" fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start center">
         <h4 class="m-t-5 text-khmer-bold">ក្រសួងពាណិជ្ជកម្ម</h4>
     </div>
-    <div id="tax_per_month_table" class="pb-3 text-khmer-bold">
-        <h5>1. ពន្ធប្រចាំខែក្នុងឆ្នាំ {{ currentDate | date: 'yyyy'}}</h5>
-        <!-- Table section  -->
-        <div class="table-wrapper mt-2 ml-3">
-            <table class="simple w-100-p text-center">
-                <thead>
-                    <tr fxLayout="row" fxLayoutAlign="start center">
-                        <th fxFlex="20">
-                            <h4>
-                                ខែ
-                            </h4>
-                        </th>
-                        <th fxFlex="20">
-                            <h4>
-                                ចំណូល (រៀល)
-                            </h4>
-                        </th>
-                        <th fxFlex="20">
-                            <h4>
-                                ចំណាយ (រៀល)
-                            </h4>
-                        </th>
-                        <th fxFlex="20">
-                            <h4>
-                                ប្រាក់ពន្ធបានបង់ (រៀល)
-                            </h4>
-                        </th>
-                        <th fxFlex="20" class="no-border">
-                            <h4>
-                                ផ្សេងៗ
-                            </h4>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <div *ngIf="!isFetching && taxPerMonths.length > 0">
-                        <tr *ngFor="let item of taxPerMonths; let lastIndex = last; let index = index" fxLayout="row" (click)="onRowClick(index)" [ngClass]="lastIndex ? 'no-border' : ''" fxLayoutAlign="start center">
-                            <div></div>
-                            <td fxFlex="20">
-                                <h5>
-                                    {{ monthArray[item.month - 1] }}
-                                </h5>
-                            </td>
-                            <td fxFlex="20">
-                                <h5>
-                                    {{ item.revenue | number }}
-                                </h5>
-                            </td>
-                            <td fxFlex="20">
-                                <h5>
-                                    {{ item.spending | number }}
-                                </h5>
-                            </td>
-                            <td fxFlex="20">
-                                <h5>
-                                    {{ item.taxPaidAmount | number }}
-                                </h5>
-                            </td>
-                            <td fxFlex="20" class="no-border">
-                                <h5>
-                                    {{ item.others ? item.others : '' }}
-                                </h5>
-                            </td>
-                        </tr>
-                    </div>
-                </tbody>
-            </table>
+    <div class="pb-3 text-khmer-bold">
+        <div class="table-wrapper">
+            <div id="tax_per_month_table">
+                <h5>1. ពន្ធប្រចាំខែក្នុងឆ្នាំ {{ currentDate | date: 'yyyy'}}</h5>
+                <tax-per-month [companyId]="companyId" [taxHistoryId]="taxHistory._id" [taxPerMonths]="taxPerMonths" (updated)="onTaxPerMonthUpdated($event)"></tax-per-month>
+            </div>
             <div class="mt-3">
                 <div *ngIf="taxPerMonths.length > 0" fxFlex fxLayoutAlign="end">
                     <button [disabled]="isFetching" color="primary" mat-raised-button (click)="exportPdf()">
@@ -82,4 +21,5 @@
             </div>
         </div>
     </div>
+    
 </div>
