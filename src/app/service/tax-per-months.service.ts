@@ -10,7 +10,7 @@ export class TaxHistoryService {
 
   constructor() { }
 
-  async buildTaxPerMonths(arrayData: TaxPerMonth[]) {
+  buildTaxPerMonths(arrayData: TaxPerMonth[]) {
     const currentYear = moment(this.currentDate).format('YYYY');
 
     let taxPerMonths: TaxPerMonth[] = [];
@@ -36,4 +36,6 @@ export class TaxHistoryService {
 
     return taxPerMonths;
   }
+
+
 }
