@@ -3,6 +3,14 @@ import { TaxPerMonth } from '../interfaces/tax-per-month.interface';
 import * as moment from 'moment';
 import { TaxPerYear } from '../interfaces/tax-per-year.interface';
 
+export interface TaxPerYearsValue {
+  taxPaidAmountLastYear: number,
+  taxPaidAmountLastTwoYear?: number,
+  taxPaidAmountLastThreeYear?: number,
+  taxPaidAmountLastFourYear?: number,
+  taxPaidAmountLastFiveYear?: number,
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -43,7 +51,7 @@ export class TaxHistoryService {
 
     let taxPerYears: TaxPerYear[] = [];
 
-    for (let index = 0; index < 5; index++) {
+    for (let index = 1; index < 6; index++) {
       
       const existingData = arrayData.filter((data: TaxPerYear) => {
         return data.year === (currentYear - index).toString();
@@ -64,4 +72,51 @@ export class TaxHistoryService {
     return taxPerYears;
   }
 
+  buildTaxPerYearsValue(taxPerYearsValue: TaxPerYearsValue) {
+    const currentYear = parseInt(moment(this.currentDate).format('YYYY'));
+    let taxPerYears: TaxPerYear[] = [];
+
+    console.log(taxPerYearsValue);
+    if (!taxPerYearsValue.taxPaidAmountLastYear) {
+      return taxPerYears;
+    }
+
+    if (taxPerYearsValue.taxPaidAmountLastYear) {
+      taxPerYears.push({
+        year: (currentYear - 1).toString(),
+        taxPaidAmount: taxPerYearsValue.taxPaidAmountLastYear,
+      });
+    } 
+
+    if (taxPerYearsValue.taxPaidAmountLastTwoYear) {
+      taxPerYears.push({
+        year: (currentYear - 2).toString(),
+        taxPaidAmount: taxPerYearsValue.taxPaidAmountLastTwoYear,
+      });
+    }
+
+    if (taxPerYearsValue.taxPaidAmountLastThreeYear) {
+      taxPerYears.push({
+        year: (currentYear - 3).toString(),
+        taxPaidAmount: taxPerYearsValue.taxPaidAmountLastThreeYear,
+      });
+    }
+
+    if (taxPerYearsValue.taxPaidAmountLastFourYear) {
+      taxPerYears.push({
+        year: (currentYear - 4).toString(),
+        taxPaidAmount: taxPerYearsValue.taxPaidAmountLastFourYear,
+      });
+    }
+
+    if (taxPerYearsValue.taxPaidAmountLastFiveYear) {
+      taxPerYears.push({
+        year: (currentYear - 5).toString(),
+        taxPaidAmount: taxPerYearsValue.taxPaidAmountLastFiveYear,
+      });
+    }
+    // return back
+    console.log(taxPerYears);
+    return taxPerYears;
+  }
 }

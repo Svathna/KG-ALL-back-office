@@ -13,6 +13,7 @@ import { MaterialComponentsModule } from '../material-component/material.module'
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { RejectRequestConfirmModalComponent } from './reject-request-confirm-modal/reject-request-confirm-modal.component';
 import { AddTaxPerMonthModalComponent } from './add-tax-per-month-modal/add-tax-per-month-modal.component';
+import { AddTaxPerYearModalComponent } from './add-tax-per-year-modal/add-tax-per-year-modal.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AddTaxPerMonthModalComponent } from './add-tax-per-month-modal/add-tax-
     UploadDocModalComponent,
     RejectRequestConfirmModalComponent,
     AddTaxPerMonthModalComponent,
+    AddTaxPerYearModalComponent,
   ],
   imports: [
     CommonModule,
@@ -42,6 +44,7 @@ import { AddTaxPerMonthModalComponent } from './add-tax-per-month-modal/add-tax-
     UploadDocModalComponent,
     RejectRequestConfirmModalComponent,
     AddTaxPerMonthModalComponent,
+    AddTaxPerYearModalComponent,
   ],
 })
 export class ModalsModule { }

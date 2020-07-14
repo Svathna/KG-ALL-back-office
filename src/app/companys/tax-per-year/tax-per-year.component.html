@@ -9,11 +9,6 @@
                 </th>
                 <th fxFlex="16">
                     <h4>
-                        {{ currentDate | date: 'yyyy' }}
-                    </h4>
-                </th>
-                <th fxFlex="16">
-                    <h4>
                         {{ (currentDate | date: 'yyyy') - 1 }}
                     </h4>
                 </th>
@@ -27,9 +22,14 @@
                         {{ (currentDate | date: 'yyyy') - 3 }}
                     </h4>
                 </th>
-                <th fxFlex="16" class="no-border">
+                <th fxFlex="16">
                     <h4>
                         {{ (currentDate | date: 'yyyy') - 4 }}
+                    </h4>
+                </th>
+                <th fxFlex="16" class="no-border">
+                    <h4>
+                        {{ (currentDate | date: 'yyyy') - 5 }}
                     </h4>
                 </th>
             </tr>
