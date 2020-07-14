@@ -33,7 +33,11 @@ export class AddTaxPerYearModalComponent implements OnInit {
   ngOnInit() {
     if (this.data && this.data.taxPerYears) {
       this.taxPerYears = this.data.taxPerYears;
-      this.buildNewForm();
+      if (this.taxPerYears.length > 0) {
+        this.buildEditForm();
+      } else {
+        this.buildNewForm();
+      }
     }
   }
 
@@ -44,6 +48,16 @@ export class AddTaxPerYearModalComponent implements OnInit {
       taxPaidAmountLastThreeYear: new FormControl(),
       taxPaidAmountLastFourYear: new FormControl(),
       taxPaidAmountLastFiveYear: new FormControl(),
+    });
+  }
+
+  buildEditForm() {
+    this.taxPerYearForm = this.formBuilder.group({
+      taxPaidAmountLastYear: new FormControl(this.taxPerYears[0].taxPaidAmount, [Validators.required]),
+      taxPaidAmountLastTwoYear: new FormControl(this.taxPerYears[1].taxPaidAmount),
+      taxPaidAmountLastThreeYear: new FormControl(this.taxPerYears[2].taxPaidAmount),
+      taxPaidAmountLastFourYear: new FormControl(this.taxPerYears[3].taxPaidAmount),
+      taxPaidAmountLastFiveYear: new FormControl(this.taxPerYears[4].taxPaidAmount),
     });
   }
 
@@ -77,6 +91,10 @@ export class AddTaxPerYearModalComponent implements OnInit {
         this.dialogRef.close();
       }
     });
+  }
+
+  cancel() {
+    this.dialogRef.close();
   }
 
 }

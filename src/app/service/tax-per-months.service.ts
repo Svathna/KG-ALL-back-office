@@ -76,7 +76,6 @@ export class TaxHistoryService {
     const currentYear = parseInt(moment(this.currentDate).format('YYYY'));
     let taxPerYears: TaxPerYear[] = [];
 
-    console.log(taxPerYearsValue);
     if (!taxPerYearsValue.taxPaidAmountLastYear) {
       return taxPerYears;
     }
@@ -116,7 +115,6 @@ export class TaxHistoryService {
       });
     }
     // return back
-    console.log(taxPerYears);
     return taxPerYears;
   }
 }

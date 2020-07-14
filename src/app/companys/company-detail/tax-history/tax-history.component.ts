@@ -105,6 +105,5 @@ export class TaxHistoryComponent implements OnInit {
       taxPerYears = [];
     }
     this.taxPerYears = await this.taxHistoryService.builTaxPerYears(taxPerYears ? taxPerYears : this.taxHistory.taxPerYears);
-    console.log(this.taxPerYears);
   }
 }

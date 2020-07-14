@@ -26,7 +26,7 @@
             <h5>
                 2. ពន្ធប្រចាំឆ្នាំ (5ឆ្នាំចុងក្រោយ)
             </h5>
-            <tax-per-year [companyId]="companyId" [taxHistoryId]="taxHistory._id"  [taxPerYears]="taxPerYears"></tax-per-year>
+            <tax-per-year [companyId]="companyId" [taxHistoryId]="taxHistory._id"  [taxPerYears]="taxPerYears" (updated)="onTaxPerMonthUpdated($event)"></tax-per-year>
         </div>
     </div>
 </div>

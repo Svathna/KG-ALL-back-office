@@ -36,14 +36,13 @@
         </thead>
         <tbody>
             <div *ngIf="taxPerYears.length > 0">
-                <tr fxLayoutAlign="start center">
+                <tr class="cursor-pointer" fxLayoutAlign="start center" (click)="onRowClick()">
                     <td fxFlex="20">
                         <h5>
-                            ប្រាក់ពន្ធបានបង់
+                            ប្រាក់ពន្ធបានបង់ (រៀល)
                         </h5>
                     </td>
                     <td *ngFor="let item of taxPerYears; let lastIndex = last" 
-                        (click)="onRowClick(item.year)"
                         fxFlex="16"
                         [ngClass]="lastIndex ? 'no-border' : ''">
                         <h5>

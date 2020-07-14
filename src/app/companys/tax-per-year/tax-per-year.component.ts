@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TaxPerYear } from '../../interfaces/tax-per-year.interface';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { AddTaxPerYearModalComponent } from '../../modals/add-tax-per-year-modal/add-tax-per-year-modal.component';
@@ -9,7 +9,7 @@ import { TaxHistoryResponse } from '../../interfaces/tax-per-month.interface';
   templateUrl: './tax-per-year.component.html',
   styleUrls: ['./tax-per-year.component.scss']
 })
-export class TaxPerYearComponent implements OnInit {
+export class TaxPerYearComponent {
   @Input() companyId: string;
   @Input() taxHistoryId: string;
   @Input() taxPerYears: TaxPerYear[] = [];
@@ -23,14 +23,11 @@ export class TaxPerYearComponent implements OnInit {
     private dialog: MatDialog,
   ) { }
 
-  ngOnInit() { }
-
-  onRowClick(year: string) {   
-    console.log(typeof(year));
-    this.addNewTaxPerYear(year);
+  onRowClick() {   
+    this.addNewTaxPerYear();
   }
 
-  addNewTaxPerYear(year: string) {
+  addNewTaxPerYear() {
     this.dialogRef = this.dialog.open(AddTaxPerYearModalComponent, {
       width: '500px',
       data: {
@@ -39,11 +36,11 @@ export class TaxPerYearComponent implements OnInit {
       },
     });
 
-    // this.dialogRef.afterClosed().subscribe((data: TaxHistoryResponse) => {
-    //   if (data && data.taxHistory) {
-    //     this.updated.emit(data.taxHistory);
-    //   }
-    // });
+    this.dialogRef.afterClosed().subscribe((data: TaxHistoryResponse) => {
+      if (data && data.taxHistory) {
+        this.updated.emit(data.taxHistory);
+      }
+    });
   }
 
 }
