@@ -6,6 +6,8 @@ export interface Request {
     status: RequestStatus;
     type: RequestType;
     company: CompanyDetail;
+    createdAt: string;
+    updatedAt: string;
 }
 
 export interface RequestsResponse {

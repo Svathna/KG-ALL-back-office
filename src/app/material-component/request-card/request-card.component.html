@@ -10,13 +10,16 @@
         <div *ngIf="request" class="text-white" fxLayout="column" fxLayoutAlign="start none" fxLayoutGap="10px">
             <h6 class="mb-4">{{ request.description }}</h6>
         </div>
-        <div fxFlex fxLayout="row" fxLayoutAlign="end end">
-            <button class="mr-2" color="warn"  mat-raised-button (click)="rejectRequest($event)">
-                reject
-            </button>
-            <button color="primary" mat-raised-button (click)="acceptRequest($event)">
-                accept
-            </button>
+        <div fxFlex fxLayout="row" fxLayoutAlign="space-between end">
+            <span class="text-white date-text">date: {{ request.createdAt | date }}</span>
+            <div fxFlex fxLayout="row" fxLayoutAlign="end end">
+                <button class="mr-2" color="warn"  mat-raised-button (click)="rejectRequest($event)">
+                    reject
+                </button>
+                <button color="primary" mat-raised-button (click)="acceptRequest($event)">
+                    accept
+                </button>
+            </div>
         </div>
     </mat-card-content>
 </mat-card>
