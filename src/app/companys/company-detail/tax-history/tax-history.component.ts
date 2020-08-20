@@ -5,6 +5,7 @@ import { TaxHistory } from '../../../model/company.model';
 import { CompanyService } from '../../../service/company.service';
 import { ExportAsService, ExportAsConfig } from 'ngx-export-as';
 import { TaxPerYear } from '../../../interfaces/tax-per-year.interface';
+import { ToastrService } from 'ngx-toastr';
 
 export const MONTHS = [
   'មករា',
@@ -52,6 +53,7 @@ export class TaxHistoryComponent implements OnInit {
     private taxHistoryService: TaxHistoryService,
     private companyService: CompanyService,
     private exportAsService: ExportAsService,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit() {
@@ -73,6 +75,21 @@ export class TaxHistoryComponent implements OnInit {
   onTaxPerMonthUpdated(taxHistory: TaxHistory) {
     this.taxHistory = taxHistory;
     this.fetchTaxhistory();
+  }
+
+  onTaxPerMonthRemoved(index: number) {
+    console.log(index);
+    this.isFetching = true;
+    const value = { month: index + 1 };
+    this.companyService.removeTaxPerMonth(this.taxHistory._id, value).subscribe((data: any) => {
+      this.isFetching = false;
+      if (data && data.success) {
+        this.fetchTaxhistory();
+        this.toastr.success('Removed success');
+      } else {
+        this.toastr.error('Failed!');
+      }
+    })
   }
 
   async fetchTaxhistory() {

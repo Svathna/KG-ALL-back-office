@@ -5,6 +5,7 @@
   justify-content: center;
   width: 100%;
   min-height: 100vh;
+  background-image: url("assets/images/background/home_page.jpg");
 }
 
 .authentication-box {

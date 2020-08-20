@@ -22,10 +22,12 @@
                         ប្រាក់ពន្ធបានបង់ (រៀល)
                     </h4>
                 </th>
-                <th fxFlex="20" class="no-border">
+                <th fxFlex="15">
                     <h4>
                         ផ្សេងៗ
                     </h4>
+                </th>
+                <th fxFlex="5" class="no-border">
                 </th>
             </tr>
         </thead>
@@ -56,9 +58,17 @@
                             {{ item.taxPaidAmount | number }}
                         </h5>
                     </td>
-                    <td fxFlex="20" class="no-border">
+                    <td fxFlex="15">
                         <h5>
                             {{ item.others ? item.others : '' }}
+                        </h5>
+                    </td>
+                    <td fxFlex="5" class="no-border" (click)="$event.stopPropagation()">
+                        <h5 *ngIf="item.revenue">
+                            <mat-icon (click)="removeTax(index)" class="delete-icon">delete</mat-icon>
+                        </h5>
+                        <h5 *ngIf="!item.revenue">
+                            <mat-icon *ngIf="currentMonth >= item.month" (click)="addNewRow(index)">add_circle</mat-icon>
                         </h5>
                     </td>
                 </tr>

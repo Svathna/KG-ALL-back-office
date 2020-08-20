@@ -10,7 +10,8 @@
         <div class="table-wrapper">
             <div id="tax_per_month_table">
                 <h5>1. ពន្ធប្រចាំខែក្នុងឆ្នាំ {{ currentDate | date: 'yyyy'}}</h5>
-                <tax-per-month [companyId]="companyId" [taxHistoryId]="taxHistory._id" [taxPerMonths]="taxPerMonths" (updated)="onTaxPerMonthUpdated($event)"></tax-per-month>
+                <tax-per-month [companyId]="companyId" [taxHistoryId]="taxHistory._id" [taxPerMonths]="taxPerMonths"
+                    (updated)="onTaxPerMonthUpdated($event)" (removed)="onTaxPerMonthRemoved($event)"></tax-per-month>
             </div>
             <!-- <div class="mt-3">
                 <div *ngIf="taxPerMonths.length > 0" fxFlex fxLayoutAlign="end">

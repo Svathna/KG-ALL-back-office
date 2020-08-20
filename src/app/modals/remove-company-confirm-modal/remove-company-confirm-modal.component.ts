@@ -10,31 +10,41 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class RemoveCompanyConfirmModalComponent implements OnInit {
   isFetching = false;
+  content: string;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<RemoveCompanyConfirmModalComponent>,
     private companyService: CompanyService,
     private toaster: ToastrService
-  ) { }
+  ) {
+      if (this.data && this.data.content) {
+        console.log(this.data);
+        this.content = this.data.content;
+    }
+  }
 
   ngOnInit() {
+    console.log(this.data);
   }
 
   confirmRemove() {
-    if (this.data && this.data.id) {
-      const id = this.data.id;
-      this.isFetching = true;
-      this.companyService.removeCompany(id).subscribe((data: any) => {
-        this.isFetching = false;
-        if (data && data.success) {
-          this.toaster.success("Company removed");
-          this.dialogRef.close({ success: data.success });
-        } else {
-          this.toaster.error(data.message ? data.message : 'Server error');
-        }
-      });
-    }
+    this.dialogRef.close({
+        success: true,
+    });
+    // if (this.data) {
+    //   const id = this.data.id;
+    //   this.isFetching = true;
+    //   this.companyService.removeCompany(id).subscribe((data: any) => {
+    //     this.isFetching = false;
+    //     if (data && data.success) {
+    //       this.toaster.success("Company removed");
+    //       this.dialogRef.close({ success: data.success });
+    //     } else {
+    //       this.toaster.error(data.message ? data.message : 'Server error');
+    //     }
+    //   });
+    // }
   }
 
   cancelRemove() {
