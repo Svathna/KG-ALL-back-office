@@ -3,7 +3,12 @@
 </div>
 <!-- filter -->
 <div class="mt-3 ml-3">
-    <span class="span">Filter by request status</span>
+    <div>
+        <span class="span">
+            Filter by request status
+        </span>
+        <!-- <mat-icon>filter_list</mat-icon> -->
+    </div>
     <h5>
         <mat-button-toggle-group name="fontStyle" aria-label="Font Style" value="pending">
             <mat-button-toggle (click)="filterRequestByStatus('pending')" value="pending">Pending</mat-button-toggle>
@@ -15,18 +20,18 @@
 <!-- search input -->
 <div class="ml-3 search-wrapper">
     <form>
-        <mat-form-field>
-          <input type="text"
-                 placeholder="Search by company name"
-                 aria-label="Number"
-                 matInput
-                 [formControl]="myControl"
-                 [matAutocomplete]="auto">
-          <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-              {{option}}
-            </mat-option>
-          </mat-autocomplete>
+        <mat-form-field appearance="outline">
+            <mat-label>Search by company name</mat-label>
+            <input type="text"
+                matInput
+                [formControl]="myControl"
+                [matAutocomplete]="auto">
+            <mat-icon matSuffix>search</mat-icon>
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{option}}
+                </mat-option>
+            </mat-autocomplete>
         </mat-form-field>
       </form>
 </div>

@@ -7,6 +7,7 @@ import { SecureInnerPagesGuardGuard } from './secure-inner-pages-guard.guard';
 import { CompanysComponent } from './companys/companys.component';
 import { CompanyDetailComponent } from './companys/company-detail/company-detail.component';
 import { RequestsComponent } from './requests/requests.component';
+import { ServiceComponent } from './service/service.component';
 
 
 export const AppRoutes: Routes = [
@@ -33,6 +34,10 @@ export const AppRoutes: Routes = [
       {
         path: 'request',
         component: RequestsComponent
+      },
+      {
+        path: 'service',
+        component: ServiceComponent
       },
       {
         path: '',

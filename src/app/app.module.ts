@@ -48,6 +48,7 @@ import { RequestsComponent } from './requests/requests.component';
 import { TaxHistoryComponent } from './companys/company-detail/tax-history/tax-history.component';
 import { TaxPerMonthComponent } from './companys/company-detail/tax-history/tax-per-month/tax-per-month.component';
 import { TaxPerYearComponent } from './companys/tax-per-year/tax-per-year.component';
+import { ServiceComponent } from './service/service.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { TaxPerYearComponent } from './companys/tax-per-year/tax-per-year.compon
     TaxHistoryComponent,
     TaxPerMonthComponent,
     TaxPerYearComponent,
+    ServiceComponent,
   ],
   imports: [
     BrowserModule,

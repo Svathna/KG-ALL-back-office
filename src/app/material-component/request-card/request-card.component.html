@@ -1,5 +1,12 @@
 <mat-card class="request-card" fxLayout="column" fxLayoutAlign="start none">
-    <div *ngIf="request" class="mat-card-header p-b-5" fxLayout="row" fxLayoutAlign="space-between center">
+    <div *ngIf="request && request.status === 'pending'" class="mat-card-header p-b-5" fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="column" fxFlex fxLayoutAlign="start">
+            <h5 class="khmer-title text-bold">{{ request.company.nameInKhmer }}</h5>
+            <h5 class="text-bold m-0">{{ request.company.name }}</h5>
+        </div>
+    </div>
+    <!-- status !== 'pending' -->
+    <div *ngIf="request && request.status !== 'pending'" class="mat-card-header p-b-5" [ngClass]="request.status === 'accepted' ? 'bg-success' : 'bg-warning'" fxLayout="row" fxLayoutAlign="space-between center">
         <div fxLayout="column" fxFlex fxLayoutAlign="start">
             <h5 class="khmer-title text-bold">{{ request.company.nameInKhmer }}</h5>
             <h5 class="text-bold m-0">{{ request.company.name }}</h5>
@@ -11,8 +18,9 @@
             <h6 class="mb-4">{{ request.description }}</h6>
         </div>
         <div fxFlex fxLayout="row" fxLayoutAlign="space-between end">
-            <span class="text-white date-text">date: {{ request.createdAt | date }}</span>
-            <div fxFlex fxLayout="row" fxLayoutAlign="end end">
+            <span *ngIf="request.status === 'pending'" class="text-white date-text">date: {{ request.createdAt | date }}</span>
+            <span *ngIf="request.status !== 'pending'" class="text-white date-text">date: {{ (request.updatedAt ? request.updatedAt : request.createdAt) | date }}</span>
+            <div *ngIf="request.status === 'pending'" fxFlex fxLayout="row" fxLayoutAlign="end end">
                 <button class="mr-2" color="warn"  mat-raised-button (click)="rejectRequest($event)">
                     reject
                 </button>

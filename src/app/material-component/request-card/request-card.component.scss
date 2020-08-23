@@ -12,7 +12,7 @@
     }
 
     .accepted {
-        background-color: green;
+        background-color: #008e00;
     }
 
     .rejected {
@@ -21,14 +21,6 @@
 
     mat-card-content {
         padding: 10px !important;
-    }
-
-    .accept {
-        color: #fff;
-    }
-    
-    .reject {
-        color: #CC0000;
     }
 
     .date-text {
