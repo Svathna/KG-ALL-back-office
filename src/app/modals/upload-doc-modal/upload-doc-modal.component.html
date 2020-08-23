@@ -26,7 +26,8 @@
                             [fit-to-page]="false"
                             [show-all]="false"
                             [original-size]="false"
-                            [autoresize]="true"                            [show-borders]="true"
+                            [autoresize]="true" 
+                            [show-borders]="true"
                             (after-load-complete)="loadToPdfViewerCompleted()"
                             style="display: block;">
                         </pdf-viewer>
@@ -45,7 +46,7 @@
                     <mat-form-field appearance="outline">
                         <mat-label>
                             <label>
-                                ឈ្មោះឯកសារ
+                                Document title in khmer
                             </label>
                         </mat-label>
                         <input [attr.disabled]="isFetching" matInput formControlName="titleInKhmer">

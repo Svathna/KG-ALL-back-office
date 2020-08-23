@@ -7,7 +7,7 @@ import { SecureInnerPagesGuardGuard } from './secure-inner-pages-guard.guard';
 import { CompanysComponent } from './companys/companys.component';
 import { CompanyDetailComponent } from './companys/company-detail/company-detail.component';
 import { RequestsComponent } from './requests/requests.component';
-import { ServiceComponent } from './service/service.component';
+import { ServiceComponent } from './service-page/service.component';
 
 
 export const AppRoutes: Routes = [

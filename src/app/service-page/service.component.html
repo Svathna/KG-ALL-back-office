@@ -1,0 +1,143 @@
+<div *ngIf="isFetching">
+    <mat-progress-bar mode="query"></mat-progress-bar>
+</div>
+
+<!-- Service Price form -->
+<mat-card>
+    <div class="ml-3">
+        <form fxLayout="column">
+            <h4>Monthly Tax Declaration Service</h4>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+                <mat-form-field appearance="outline" fxFlex="49">
+                    <mat-label>Service price less than 50 invoices</mat-label>
+                    <mat-label></mat-label>
+                    <input type="number" matInput>
+                </mat-form-field>
+                <mat-form-field appearance="outline" fxFlex="49">
+                    <mat-label>Service price more than 50 invoices</mat-label>
+                    <mat-label></mat-label>
+                    <input type="number" matInput>
+                </mat-form-field>
+            </div>
+
+            <h4 class="mt-3">Annual Tax Return Preparation Service</h4>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+                <mat-form-field appearance="outline" fxFlex="49">
+                    <mat-label>Salary tax price</mat-label>
+                    <mat-label></mat-label>
+                    <input type="number" matInput>
+                </mat-form-field>
+                <mat-form-field appearance="outline" fxFlex="49">
+                    <mat-label>Patent tax price</mat-label>
+                    <mat-label></mat-label>
+                    <input type="number" matInput>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+                <mat-form-field appearance="outline" fxFlex="49">
+                    <mat-label>Trademark tax price</mat-label>
+                    <mat-label></mat-label>
+                    <input type="number" matInput>
+                </mat-form-field>
+                <mat-form-field appearance="outline" fxFlex="49">
+                    <mat-label>Property tax price</mat-label>
+                    <mat-label></mat-label>
+                    <input type="number" matInput>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" fxFlex="49">
+                    <mat-label>Transportation tax price</mat-label>
+                    <mat-label></mat-label>
+                    <input type="number" matInput>
+                </mat-form-field>
+            </div>
+            <div>
+                <div fxFlex="49">
+                    <div *ngIf="isUploading">
+                        <mat-progress-bar mode="query"></mat-progress-bar>
+                    </div>
+                    <div class="mt-3" fxLayout="row" fxLayoutAlign="space-between">
+                        <div>
+                            <h5 class="pb-2">Input PDF for details services price</h5>
+                            <div>
+                                <app-uploader
+                                    idInput="other_doc"
+                                    [isUploading]="false"
+                                    [allowedContentTypes]="['application/pdf']"
+                                    (hasCompleted)="uploadedCompleted($event)"
+                                    (loading)="onLoading($event)">
+                                </app-uploader>
+                            </div>
+                        </div>
+                        <div *ngIf="docUrl">
+                            <pdf-viewer
+                                [src]="docUrl"
+                                [fit-to-page]="false"
+                                [show-all]="false"
+                                [original-size]="false"
+                                [autoresize]="true" 
+                                [show-borders]="true"
+                                (after-load-complete)="loadToPdfViewerCompleted()"
+                                style="display: block;">
+                            </pdf-viewer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- button section -->
+            <div fxFlex fxLayoutAlign="end">
+                <button class="mr-2" [disabled]="isFetching" mat-raised-button>
+                    Cancel
+                </button>
+                <button [disabled]="true" color="primary" mat-raised-button>
+                    Save
+                </button>
+            </div>
+        </form>
+    </div>
+</mat-card>
+
+<!-- <mat-card>
+    <div class="ml-3 w-50-p">
+        <form>
+            <h4>Monthly Tax Declaration Service</h4>
+            <mat-form-field appearance="outline">
+                <mat-label>Service price less than 50 invoices</mat-label>
+                <mat-label></mat-label>
+                <input type="number" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Service price more than 50 invoices</mat-label>
+                <mat-label></mat-label>
+                <input type="number" matInput>
+            </mat-form-field>
+            <h4 class="mt-3">Annual Tax Return Preparation Service</h4>
+            <mat-form-field appearance="outline">
+                <mat-label>Salary tax price</mat-label>
+                <mat-label></mat-label>
+                <input type="number" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Patent tax price</mat-label>
+                <mat-label></mat-label>
+                <input type="number" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Trademark tax price</mat-label>
+                <mat-label></mat-label>
+                <input type="number" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Property tax price</mat-label>
+                <mat-label></mat-label>
+                <input type="number" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Transportation tax price</mat-label>
+                <mat-label></mat-label>
+                <input type="number" matInput>
+            </mat-form-field>
+        </form>
+    </div>
+</mat-card> -->
