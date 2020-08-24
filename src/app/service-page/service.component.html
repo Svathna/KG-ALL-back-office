@@ -3,53 +3,53 @@
 </div>
 
 <!-- Service Price form -->
-<mat-card>
+<mat-card *ngIf="serviceForm">
     <div class="ml-3">
-        <form fxLayout="column">
-            <h4>Monthly Tax Declaration Service</h4>
+        <form fxLayout="column" [formGroup]="serviceForm">
+            <h4>Monthly Tax Declaration Service ($)</h4>
             <div fxLayout="row" fxLayoutAlign="space-between">
                 <mat-form-field appearance="outline" fxFlex="49">
                     <mat-label>Service price less than 50 invoices</mat-label>
                     <mat-label></mat-label>
-                    <input type="number" matInput>
+                    <input type="number" matInput formControlName="moreThanThresholdPrice" required>
                 </mat-form-field>
                 <mat-form-field appearance="outline" fxFlex="49">
                     <mat-label>Service price more than 50 invoices</mat-label>
                     <mat-label></mat-label>
-                    <input type="number" matInput>
+                    <input type="number" matInput formControlName="lessThanThresholdPrice" required>
                 </mat-form-field>
             </div>
 
-            <h4 class="mt-3">Annual Tax Return Preparation Service</h4>
+            <h4 class="mt-3">Annual Tax Return Preparation Service ($)</h4>
             <div fxLayout="row" fxLayoutAlign="space-between">
                 <mat-form-field appearance="outline" fxFlex="49">
                     <mat-label>Salary tax price</mat-label>
                     <mat-label></mat-label>
-                    <input type="number" matInput>
+                    <input type="number" matInput formControlName="salaryTaxPrice" required>
                 </mat-form-field>
                 <mat-form-field appearance="outline" fxFlex="49">
                     <mat-label>Patent tax price</mat-label>
                     <mat-label></mat-label>
-                    <input type="number" matInput>
+                    <input type="number" matInput formControlName="patentTaxPrice" required>
                 </mat-form-field>
             </div>
             <div fxLayout="row" fxLayoutAlign="space-between">
                 <mat-form-field appearance="outline" fxFlex="49">
                     <mat-label>Trademark tax price</mat-label>
                     <mat-label></mat-label>
-                    <input type="number" matInput>
+                    <input type="number" matInput formControlName="trademarkTaxPrice" required>
                 </mat-form-field>
                 <mat-form-field appearance="outline" fxFlex="49">
                     <mat-label>Property tax price</mat-label>
                     <mat-label></mat-label>
-                    <input type="number" matInput>
+                    <input type="number" matInput formControlName="propertyTaxPrice" required>
                 </mat-form-field>
             </div>
             <div>
                 <mat-form-field appearance="outline" fxFlex="49">
                     <mat-label>Transportation tax price</mat-label>
                     <mat-label></mat-label>
-                    <input type="number" matInput>
+                    <input type="number" matInput formControlName="transportationTaxPrice" required>
                 </mat-form-field>
             </div>
             <div>
@@ -59,7 +59,7 @@
                     </div>
                     <div class="mt-3" fxLayout="row" fxLayoutAlign="space-between">
                         <div>
-                            <h5 class="pb-2">Input PDF for details services price</h5>
+                            <h5 class="pb-2">Input PDF for details services price *</h5>
                             <div>
                                 <app-uploader
                                     idInput="other_doc"
@@ -86,12 +86,20 @@
                 </div>
             </div>
             <!-- button section -->
-            <div fxFlex fxLayoutAlign="end">
-                <button class="mr-2" [disabled]="isFetching" mat-raised-button>
-                    Cancel
+            <div *ngIf="!isEditForm" fxFlex fxLayoutAlign="end">
+                <button class="mr-2" [disabled]="isFetching" (click)="reset()" mat-raised-button>
+                    Reset
                 </button>
-                <button [disabled]="true" color="primary" mat-raised-button>
+                <button [disabled]="serviceForm.invalid || isFetching" color="primary" (click)="save()" mat-raised-button>
                     Save
+                </button>
+            </div>
+            <div *ngIf="isEditForm" fxFlex fxLayoutAlign="end">
+                <button class="mr-2" [disabled]="isFetching" (click)="resetToPrevious()" mat-raised-button>
+                    Reset to previous
+                </button>
+                <button [disabled]="serviceForm.invalid || isFetching" color="primary" (click)="update()" mat-raised-button>
+                    Update
                 </button>
             </div>
         </form>

@@ -80,4 +80,17 @@ export class CompanyService {
     return this.http.patch(environment.apiURL + `/tax/taxPerMonth/remove/${id}`, body);
   }
 
+  // service
+  createService(body) {
+    return this.http.post(environment.apiURL + `/service`, body);
+  }
+
+  getService() {
+    return this.http.get(environment.apiURL + `/service`);
+  }
+
+  updateService(serviceId, body) {
+    return this.http.patch(environment.apiURL + `/service/${serviceId}`, body);
+  }
+
 }
