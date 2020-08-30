@@ -12,6 +12,9 @@ import { RegisterCompanyModalComponent } from "../modals/register-company-modal/
 import { RemoveCompanyConfirmModalComponent } from "../modals/remove-company-confirm-modal/remove-company-confirm-modal.component";
 import { Router } from "@angular/router";
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
+import { FormControl } from '@angular/forms';
+import { startWith, map } from 'rxjs/operators';
 
 const COMPANY_DETAIL_TESTING: Company = {
   name: "Computer Science Co,LTD",
@@ -36,18 +39,47 @@ export class CompanysComponent implements OnInit {
   companyTesting = COMPANY_DETAIL_TESTING;
   userTesting = USER_TESTING;
   companys: CompanyDetail[] = [];
+  companysFiltered: CompanyDetail[] = [];
   isFetching = false;
   dialogRef: MatDialogRef<any>;
+  filteredOptions: Observable<string[]>;
+  options: string[] = [];
+  searchControl = new FormControl();
 
   constructor(
     private companyService: CompanyService,
     private dialog: MatDialog,
     private router: Router,
     private toaster: ToastrService,
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.fetchCompanys();
+  }
+
+  filterSearch() {
+    this.filteredOptions = this.searchControl.valueChanges.pipe(
+      startWith(''),
+      map((value) => {
+        return this._filter(value)
+      })
+    );
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    // filter request
+    if (this.companys.length > 0) {
+      this.companysFiltered = this.companys.filter((co) => {
+        return co.name.toLowerCase().includes(filterValue) || co.nameInKhmer.toLowerCase().includes(filterValue);
+      });
+    }
+
+    return this.options.filter((option) =>
+      option.toLowerCase().includes(filterValue)
+    );
   }
 
   fetchCompanys() {
@@ -56,6 +88,9 @@ export class CompanysComponent implements OnInit {
       this.isFetching = false;
       if (data.success) {
         this.companys = data.companys;
+        this.companysFiltered = this.companys;
+        this.options = this.companys.map((company) => company.name);
+        this.filterSearch();
       }
     });
   }

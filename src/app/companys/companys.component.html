@@ -2,6 +2,25 @@
     <mat-progress-bar mode="query"></mat-progress-bar>
 </div>
 
+<!-- search input -->
+<div class="ml-3 search-wrapper">
+    <form>
+        <mat-form-field appearance="outline">
+            <mat-label>Search by company name</mat-label>
+            <input type="text"
+                matInput
+                [formControl]="searchControl"
+                [matAutocomplete]="auto">
+            <mat-icon matSuffix>search</mat-icon>
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{option}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+      </form>
+</div>
+
 <div *ngIf="!isFetching" fxLayout="row wrap" fxLayoutAlign="start" fxLayoutGap="20px">
     <div>
         <mat-card (click)="registerCompany()" class="add-card cursor-pointer" fxLayout="column" fxLayoutAlign="center center">
@@ -12,7 +31,7 @@
         </mat-card>
     </div>
 
-    <div *ngFor="let company of companys">
+    <div *ngFor="let company of companysFiltered">
         <company-card *ngIf="company.user"
             (click)="goToCompanyDetail(company._id)"
             (remove)="removeCompany($event)"

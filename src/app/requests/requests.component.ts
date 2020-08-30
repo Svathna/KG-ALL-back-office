@@ -56,9 +56,8 @@ export class RequestsComponent implements OnInit {
     // filter request
     if (this.requests.length > 0) {
       this.requestsFiltered = this.requests.filter((request) => {
-        return request.company.name.toLowerCase().includes(filterValue);
+        return request.company.name.toLowerCase().includes(filterValue) || request.company.nameInKhmer.toLowerCase().includes(filterValue);
       });
-      console.log(this.requests);
     }
 
     return this.options.filter((option) =>
@@ -73,7 +72,6 @@ export class RequestsComponent implements OnInit {
       if (data && data.requests) {
         this.requests = data.requests;
         this.requestsFiltered = this.requests;
-        console.log(this.requestsFiltered);
       }
     });
   }
