@@ -1,12 +1,12 @@
 <mat-card class="request-card" fxLayout="column" fxLayoutAlign="start none">
-    <div *ngIf="request && request.status === 'pending'" class="mat-card-header p-b-5" fxLayout="row" fxLayoutAlign="space-between center">
+    <div *ngIf="request && request.status === 'pending'" class="bg-warning mat-card-header p-b-5" fxLayout="row" fxLayoutAlign="space-between center">
         <div fxLayout="column" fxFlex fxLayoutAlign="start">
             <h5 class="khmer-title text-bold">{{ request.company.nameInKhmer }}</h5>
             <h5 class="text-bold m-0">{{ request.company.name }}</h5>
         </div>
     </div>
     <!-- status !== 'pending' -->
-    <div *ngIf="request && request.status !== 'pending'" class="mat-card-header p-b-5" [ngClass]="request.status === 'accepted' ? 'bg-success' : 'bg-warning'" fxLayout="row" fxLayoutAlign="space-between center">
+    <div *ngIf="request && request.status !== 'pending'" class="mat-card-header p-b-5" [ngClass]="request.status === 'accepted' ? 'bg-primary' : 'bg-danger'" fxLayout="row" fxLayoutAlign="space-between center">
         <div fxLayout="column" fxFlex fxLayoutAlign="start">
             <h5 class="khmer-title text-bold">{{ request.company.nameInKhmer }}</h5>
             <h5 class="text-bold m-0">{{ request.company.name }}</h5>
