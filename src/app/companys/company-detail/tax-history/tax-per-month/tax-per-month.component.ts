@@ -47,6 +47,9 @@ export class TaxPerMonthComponent {
 
   addNewRow(index: number) {
     if (!index) {
+      if (index === 0) {
+        this.onRowClick(index);
+      }
       return;
     }
     this.onRowClick(index);
