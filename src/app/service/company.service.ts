@@ -16,7 +16,7 @@ export class CompanyService {
   }
 
   getAllRequests(body) {
-    return this.http.post(environment.apiURL + `/request`, body);
+    return this.http.post(environment.apiURL + `/request/alls`, body);
   }
 
   changeRequestStutus(id: string, body) {
