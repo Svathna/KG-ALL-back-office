@@ -8,6 +8,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
+    "install": "npm i",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -59,7 +60,8 @@
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.0.0-rc.0",
     "subsink": "^1.0.1",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.9.1",
+    "@angular-devkit/build-angular": "~0.801.0"
   },
   "devDependencies": {
     "@angular/compiler-cli": "8.1.0",
