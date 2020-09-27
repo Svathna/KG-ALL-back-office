@@ -22,7 +22,7 @@
         <div *ngIf="moc" fxLayout="column" fxFlex="60" fxLayoutAlign="start" fxLayoutGap="16px">
             <h5>{{ moc.mocNumber }}</h5>
             <h5>{{ moment(moc.notedDate).format('DD-MM-YYYY') }}</h5>
-            <h5>{{ moc.capital | number }} <strong>រៀល</strong></h5>
+            <h5>{{ moc.capital | number }} <strong>៛</strong></h5>
             <h5>{{ companyTypeInKhmer[moc.companyType] }}</h5>
             <h5>{{ moment(moc.annualTranscriptMaintenanceDate).format('DD-MM-YYYY') }}</h5>
             <h5>{{ moc.mocUsernameLogin }}</h5>

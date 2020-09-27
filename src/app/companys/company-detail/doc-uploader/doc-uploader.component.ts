@@ -63,7 +63,7 @@ export class DocUploaderComponent implements OnInit {
         }
         break;
       case this.isGdtCard:
-        this.title = "កាតពន្ធដារ/GTD card";
+        this.title = "កាតពន្ធដារ/GDT card";
         this.docName = "gdt_card";
         if (this.company.docs) {
           this.docUrl = this.company.docs.gdt_card? this.company.docs.gdt_card: "";

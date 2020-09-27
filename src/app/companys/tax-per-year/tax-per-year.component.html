@@ -2,35 +2,35 @@
     <table class="simple w-100-p text-center">
         <thead>
             <tr fxLayout="row" fxLayoutAlign="start center">
-                <th fxFlex="20">
-                    <h4>
-                        ឆ្នាំ
-                    </h4>
+                <th fxFlex="20" class="text-white">
+                    <h5>
+                        Year
+                    </h5>
                 </th>
-                <th fxFlex="16">
-                    <h4>
+                <th fxFlex="16" class="text-white">
+                    <h5>
                         {{ (currentDate | date: 'yyyy') - 1 }}
-                    </h4>
+                    </h5>
                 </th>
-                <th fxFlex="16">
-                    <h4>
+                <th fxFlex="16" class="text-white">
+                    <h5>
                         {{ (currentDate | date: 'yyyy') - 2 }}
-                    </h4>
+                    </h5>
                 </th>
-                <th fxFlex="16">
-                    <h4>
+                <th fxFlex="16" class="text-white">
+                    <h5>
                         {{ (currentDate | date: 'yyyy') - 3 }}
-                    </h4>
+                    </h5>
                 </th>
-                <th fxFlex="16">
-                    <h4>
+                <th fxFlex="16" class="text-white">
+                    <h5>
                         {{ (currentDate | date: 'yyyy') - 4 }}
-                    </h4>
+                    </h5>
                 </th>
-                <th fxFlex="16" class="no-border">
-                    <h4>
+                <th fxFlex="16" class="no-border text-white">
+                    <h5>
                         {{ (currentDate | date: 'yyyy') - 5 }}
-                    </h4>
+                    </h5>
                 </th>
             </tr>
         </thead>
@@ -39,7 +39,7 @@
                 <tr class="cursor-pointer" fxLayoutAlign="start center" (click)="onRowClick()">
                     <td fxFlex="20">
                         <h5>
-                            ប្រាក់ពន្ធបានបង់ (រៀល)
+                            Taxes paid (៛)
                         </h5>
                     </td>
                     <td *ngFor="let item of taxPerYears; let lastIndex = last" 
