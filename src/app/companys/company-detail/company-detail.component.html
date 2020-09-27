@@ -1,49 +1,55 @@
 <div *ngIf="isFetching">
-  <mat-progress-bar mode="query"></mat-progress-bar>
+	<mat-progress-bar mode="query"></mat-progress-bar>
 </div>
 <mat-card *ngIf="!isFetching && company" class="h-100-p" fxLayout="column" fxLayoutAlign="start">
-  <div class="header mat-card-header text-center" fxLayout="column" fxLayoutAlign="center">
-    <h1>{{ company.nameInKhmer }}</h1>
-    <h1>{{ company.name }}</h1>
-  </div>
+	<div class="header mat-card-header text-center" fxLayout="column" fxLayoutAlign="center">
+		<h1>{{ company.nameInKhmer }}</h1>
+		<h1>{{ company.name }}</h1>
+	</div>
 </mat-card>
 
 <mat-card *ngIf="!isFetching && company">
-  <div>
-    <mat-tab-group>
-      <mat-tab>
-        <ng-template mat-tab-label>
-          ពត៌មានទូទៅ
-        </ng-template>
-        <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="30px">
-          <app-general [user]="company.user"></app-general>
-          <!-- Minstry of Commerce -->
-          <div fxLayout="row" fxLayoutAlign="start">
-            <app-moc fxFlex="50" (addMoc)="onAddMoc(event)" (editMoc)="onEditMoc(event)" [moc]="company.MOC">
-            </app-moc>
-            <app-moc-docs fxFlex="50" [company]="company"></app-moc-docs>
-          </div>
-          <div>
-            <app-dot (addDot)="onAddDot(event)" (editDot)="onEditDot(event)" [dot]="company.DOT"></app-dot>
-            <div class="mt-3">
-              <app-dot-docs [company]="company"></app-dot-docs>
-            </div>
-          </div>
-        </div>
-      </mat-tab>
-      <mat-tab>
-        <ng-template mat-tab-label>
-          ស្ថានភាពក្រុមហ៊ុន
-        </ng-template>
-        <div *ngIf="company" fxLayout="column" fxLayoutAlign="start" fxLayoutGap="30px">
-          <app-tax-history [companyId]="company._id" [taxHistory]="company.taxHistory ? company.taxHistory : ''"></app-tax-history>
-        </div>
-      </mat-tab>
-      <!-- <mat-tab>
+	<div>
+		<mat-tab-group>
+			<mat-tab>
+				<ng-template mat-tab-label>
+					<h4>
+						General
+					</h4>
+				</ng-template>
+				<div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="30px">
+					<app-general [user]="company.user"></app-general>
+					<!-- Minstry of Commerce -->
+					<div fxLayout="row" fxLayoutAlign="start">
+						<app-moc fxFlex="50" (addMoc)="onAddMoc(event)" (editMoc)="onEditMoc(event)"
+							[moc]="company.MOC">
+						</app-moc>
+						<app-moc-docs fxFlex="50" [company]="company"></app-moc-docs>
+					</div>
+					<div>
+						<app-dot (addDot)="onAddDot(event)" (editDot)="onEditDot(event)" [dot]="company.DOT"></app-dot>
+						<div class="mt-3">
+							<app-dot-docs [company]="company"></app-dot-docs>
+						</div>
+					</div>
+				</div>
+			</mat-tab>
+			<mat-tab>
+				<ng-template mat-tab-label>
+					<h4>
+						Company Status
+					</h4>
+				</ng-template>
+				<div *ngIf="company" fxLayout="column" fxLayoutAlign="start" fxLayoutGap="30px">
+					<app-tax-history [companyId]="company._id"
+						[taxHistory]="company.taxHistory ? company.taxHistory : ''"></app-tax-history>
+				</div>
+			</mat-tab>
+			<!-- <mat-tab>
         <ng-template mat-tab-label>
           ទូរឯកសារ
         </ng-template>
       </mat-tab> -->
-    </mat-tab-group>
-  </div>
+		</mat-tab-group>
+	</div>
 </mat-card>
