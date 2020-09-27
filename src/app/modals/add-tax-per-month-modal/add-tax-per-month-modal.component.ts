@@ -46,9 +46,9 @@ export class AddTaxPerMonthModalComponent implements OnInit {
     this.taxPerMonthForm = this.formBuilder.group({
       year: new FormControl(moment(this.currentYear).format('YYYY')),
       month: new FormControl(this.month),
-      revenue: new FormControl('', [Validators.required]),
-      spending: new FormControl('', [Validators.required]),
-      taxPaidAmount: new FormControl('', [Validators.required]),
+      revenue: new FormControl('', [Validators.required, Validators.min(1)]),
+      spending: new FormControl('', [Validators.required, Validators.min(1)]),
+      taxPaidAmount: new FormControl('', [Validators.required, Validators.min(1)]),
       others: new FormControl('',),
     });
   }

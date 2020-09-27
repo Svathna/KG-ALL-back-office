@@ -16,7 +16,7 @@
                                 Revenue (៛)
                             </label>
                         </mat-label>
-                        <input formControlName="revenue" type="number" matInput required>
+                        <input formControlName="revenue" type="number" min="1" matInput required>
                     </mat-form-field>
                 </p>
             </div>
@@ -31,7 +31,7 @@
                                 Expense (៛)
                             </label>
                         </mat-label>
-                        <input formControlName="spending" type="number" matInput required>
+                        <input formControlName="spending" type="number" min="1" matInput required>
                     </mat-form-field>
                 </p>
             </div>
@@ -46,7 +46,7 @@
                                 Taxes paid (៛)
                             </label>
                         </mat-label>
-                        <input formControlName="taxPaidAmount" type="number" matInput required>
+                        <input formControlName="taxPaidAmount" type="number" min="1" matInput required>
                     </mat-form-field>
                 </p>
             </div>

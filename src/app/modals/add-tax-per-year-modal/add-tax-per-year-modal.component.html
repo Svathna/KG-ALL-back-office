@@ -19,7 +19,7 @@
                                 {{ (currentDate | date: 'yyyy') - 1 }}
                             </label>
                         </mat-label>
-                        <input formControlName="taxPaidAmountLastYear" type="number" matInput required>
+                        <input formControlName="taxPaidAmountLastYear" type="number" min="1" matInput>
                     </mat-form-field>
                 </p>
             </div>
@@ -34,7 +34,7 @@
                                 {{ (currentDate | date: 'yyyy') - 2 }}
                             </label>
                         </mat-label>
-                        <input formControlName="taxPaidAmountLastTwoYear" type="number" matInput>
+                        <input formControlName="taxPaidAmountLastTwoYear" type="number" min="1" matInput>
                     </mat-form-field>
                 </p>
             </div>
@@ -49,7 +49,7 @@
                                 {{ (currentDate | date: 'yyyy') - 3 }}
                             </label>
                         </mat-label>
-                        <input formControlName="taxPaidAmountLastThreeYear" type="number" matInput>
+                        <input formControlName="taxPaidAmountLastThreeYear" type="number" min="1" matInput>
                     </mat-form-field>
                 </p>
             </div>
