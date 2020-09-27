@@ -44,7 +44,6 @@ export class RequestsComponent implements OnInit {
   }
 
   filterSearch() {
-    console.log('het')
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map((value) => {

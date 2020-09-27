@@ -19,14 +19,11 @@ export class RemoveCompanyConfirmModalComponent implements OnInit {
     private toaster: ToastrService
   ) {
       if (this.data && this.data.content) {
-        console.log(this.data);
         this.content = this.data.content;
     }
   }
 
-  ngOnInit() {
-    console.log(this.data);
-  }
+  ngOnInit() {}
 
   confirmRemove() {
     this.dialogRef.close({

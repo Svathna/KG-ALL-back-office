@@ -93,7 +93,6 @@ export class TaxHistoryComponent implements OnInit {
   }
 
   onTaxPerMonthRemoved(index: number) {
-    console.log(index);
     this.isFetching = true;
     const value = { month: index + 1 };
     this.companyService.removeTaxPerMonth(this.taxHistory._id, value).subscribe((data: any) => {
