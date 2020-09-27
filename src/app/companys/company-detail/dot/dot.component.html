@@ -1,25 +1,25 @@
 <div fxLayout="column" fxLayoutGap="10px">
     <div class="pb-3" fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start center">
-        <h4 class="m-t-5 text-khmer-bold">អគ្គនាយកដ្ឋានពន្ធដារ</h4>
+        <h3 class="m-t-5 text-khmer-bold">General Department of Taxation</h3>
         <a *ngIf="!dot" (click)="onAddDot($event)" class="cursor-pointer link">
-            បញ្ចូលពត៌មាន
+            Add information
         </a>
         <a *ngIf="dot" (click)="onEditDot($event)" class="cursor-pointer link">
-            កែប្រែពត៌មាន
+            Update information
         </a>
     </div>
 
     <div fxLayout="row" fxFlex="100">
         <div fxLayout="column" fxFlex="20" fxLayoutAlign="start" fxLayoutGap="18px">
-            <h6>លេខអត្តសញ្ញាណសារពើពន្ធ :</h6>
-            <h6>ចុះថ្ងៃទី :</h6>
-            <h6>ចុះបញ្ជីនៅ :</h6>
-            <h6>អាសយដ្ឋាន :</h6>
-            <h6>ឈ្មោះធនាគារ :</h6>
-            <h6>ឈ្មោះគណនីធនាគារ :</h6>
-            <h6>លេខគណនីធនាគារ :</h6>
-            <h6>លេខកាតពន្ធដារ :</h6>
-            <h6>លេខទូរសព្ទភ្ជាប់ប្រព័ន្ធ :</h6>
+            <h6>Fiscal identification Number :</h6>
+            <h6>Registration date :</h6>
+            <h6>Registration at :</h6>
+            <h6>address :</h6>
+            <h6>Bank name :</h6>
+            <h6>Bank account name :</h6>
+            <h6>Bank account number :</h6>
+            <h6>Tax card number :</h6>
+            <h6>Phonenumber :</h6>
         </div>
         <div *ngIf="dot" fxLayout="column" fxFlex="30" fxLayoutAlign="start" fxLayoutGap="16px">
             <h5>{{ dot.dotNumber }}</h5>
