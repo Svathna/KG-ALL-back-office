@@ -49,7 +49,7 @@ export class DocUploaderComponent implements OnInit {
         }
         break;
       case this.isVatCertificate:
-        this.title = "វិញ្ញាបនប័ត្រចុះបញ្ជីពន្ធដារ/Vat certificate";
+        this.title = "វិញ្ញាបនប័ត្រចុះបញ្ជីពន្ធដារ/VAT certificate";
         this.docName = "vat_certificate";
         if (this.company.docs) {
           this.docUrl = this.company.docs.vat_certificate? this.company.docs.vat_certificate: "";

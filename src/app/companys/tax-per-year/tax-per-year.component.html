@@ -46,7 +46,7 @@
                         fxFlex="16"
                         [ngClass]="lastIndex ? 'no-border' : ''">
                         <h5>
-                            {{ item.taxPaidAmount }}
+                            {{ item.taxPaidAmount | number }}
                         </h5>
                     </td>
                 </tr>

@@ -10,7 +10,7 @@ export interface Menu {
 const MENUITEMS = [
   { state: 'company', type: 'link', name: 'Company List', icon: 'assignment' },
   { state: 'request', type: 'link', name: 'Request List', icon: 'folder' },
-  { state: 'service', type: 'link', name: 'Service', icon: 'monetization_on' },
+  { state: 'service', type: 'link', name: 'Service Pricing', icon: 'monetization_on' },
 ];
 
 @Injectable()
