@@ -49,7 +49,7 @@ export class DocUploaderComponent implements OnInit {
         }
         break;
       case this.isVatCertificate:
-        this.title = "វិញ្ញាបនប័ត្រចុះបញ្ជីពន្ធដារ/Vat certificate";
+        this.title = "វិញ្ញាបនប័ត្រចុះបញ្ជីពន្ធដារ/VAT certificate";
         this.docName = "vat_certificate";
         if (this.company.docs) {
           this.docUrl = this.company.docs.vat_certificate? this.company.docs.vat_certificate: "";
@@ -63,7 +63,7 @@ export class DocUploaderComponent implements OnInit {
         }
         break;
       case this.isGdtCard:
-        this.title = "កាតពន្ធដារ/GTD card";
+        this.title = "កាតពន្ធដារ/GDT card";
         this.docName = "gdt_card";
         if (this.company.docs) {
           this.docUrl = this.company.docs.gdt_card? this.company.docs.gdt_card: "";

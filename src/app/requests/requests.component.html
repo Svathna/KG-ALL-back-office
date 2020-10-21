@@ -37,7 +37,7 @@
 </div>
 <!-- grid request -->
 <div *ngIf="!isFetching && requestsFiltered.length > 0" fxLayout="row wrap" fxLayoutAlign="start" fxLayoutGap="20px">
-    <div *ngFor="let request of requests">
+    <div *ngFor="let request of requestsFiltered">
         <div>
             <request-card
                 (accept)="onAcceptRequest($event)"

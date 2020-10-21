@@ -76,7 +76,6 @@ export class CompanyService {
   }
 
   removeTaxPerMonth(id: string, body) {
-    console.log(body)
     return this.http.patch(environment.apiURL + `/tax/taxPerMonth/remove/${id}`, body);
   }
 

@@ -98,7 +98,7 @@ export class CompanysComponent implements OnInit {
   registerCompany() {
     this.dialogRef = this.dialog.open(RegisterCompanyModalComponent, {
       width: "800px",
-      height: "500px",
+      // height: "500px",
     });
 
     this.dialogRef.afterClosed().subscribe((data) => {

@@ -1,29 +1,29 @@
 <div fxLayout="column" fxLayoutGap="10px">
     <div class="pb-3" fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start center">
-        <h4 class="m-t-5 text-khmer-bold">ក្រសួងពាណិជ្ជកម្ម</h4>
+        <h3 class="m-t-5 text-khmer-bold">Ministry of Commerce</h3>
         <a *ngIf="!moc" (click)="onAddMoc($event)" class="cursor-pointer link">
-            បញ្ចូលពត៌មាន
+            Add information
         </a>
         <a *ngIf="moc" (click)="onEditMoc($event)" class="cursor-pointer link">
-            កែប្រែពត៌មាន
+            Update information
         </a>
     </div>
 
     <div fxLayout="row" fxFlex="100">
         <div fxLayout="column" fxFlex="40" fxLayoutAlign="start" fxLayoutGap="18px">
-            <h6>ចុះបញ្ជីពាណិជ្ជកម្មលេខ :</h6>
-            <h6>ចុះថ្ងៃទី :</h6>
-            <h6>ដើមទុនចុះបញ្ជី :</h6>
-            <h6>ប្រភេទ :</h6>
-            <h6>ថ្ងៃខែតម្កល់ប្រតិវេទប្រចាំឆ្នាំ :</h6>
-            <h6>ឈ្មោះប្រើប្រាស់ប្រព័ន្ធពាណិជ្ជកម្ម :</h6>
-            <h6>លេខកូដប្រើប្រាស់ប្រព័ន្ធពាណិជ្ជកម្ម :</h6>
+            <h6>Registration number :</h6>
+            <h6>Registration date :</h6>
+            <h6>Registration capital :</h6>
+            <h6>Company Type :</h6>
+            <h6>Filling Annual Declare date :</h6>
+            <h6>Username login MOC system :</h6>
+            <h6>Password login MOC system :</h6>
         </div>
         <div *ngIf="moc" fxLayout="column" fxFlex="60" fxLayoutAlign="start" fxLayoutGap="16px">
             <h5>{{ moc.mocNumber }}</h5>
             <h5>{{ moment(moc.notedDate).format('DD-MM-YYYY') }}</h5>
-            <h5>{{ moc.capital | number }} <strong>រៀល</strong></h5>
-            <h5>{{ companyTypeInKhmer[moc.companyType] }}</h5>
+            <h5>{{ moc.capital | number }} <strong>៛</strong></h5>
+            <h5>{{ companyType[moc.companyType] }}</h5>
             <h5>{{ moment(moc.annualTranscriptMaintenanceDate).format('DD-MM-YYYY') }}</h5>
             <h5>{{ moc.mocUsernameLogin }}</h5>
             <h5>{{ moc.mocPasswordLogin }}</h5>

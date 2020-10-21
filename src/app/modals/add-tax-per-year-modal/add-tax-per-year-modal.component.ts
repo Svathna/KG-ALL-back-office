@@ -43,21 +43,21 @@ export class AddTaxPerYearModalComponent implements OnInit {
 
   buildNewForm() {
     this.taxPerYearForm = this.formBuilder.group({
-      taxPaidAmountLastYear: new FormControl([Validators.required]),
-      taxPaidAmountLastTwoYear: new FormControl(),
-      taxPaidAmountLastThreeYear: new FormControl(),
-      taxPaidAmountLastFourYear: new FormControl(),
-      taxPaidAmountLastFiveYear: new FormControl(),
+      taxPaidAmountLastYear: new FormControl('', [Validators.min(1)]),
+      taxPaidAmountLastTwoYear: new FormControl('', [Validators.min(1)]),
+      taxPaidAmountLastThreeYear: new FormControl('', [Validators.min(1)]),
+      taxPaidAmountLastFourYear: new FormControl('', [Validators.min(1)]),
+      taxPaidAmountLastFiveYear: new FormControl('', [Validators.min(1)]),
     });
   }
 
   buildEditForm() {
     this.taxPerYearForm = this.formBuilder.group({
-      taxPaidAmountLastYear: new FormControl(this.taxPerYears[0].taxPaidAmount, [Validators.required]),
-      taxPaidAmountLastTwoYear: new FormControl(this.taxPerYears[1].taxPaidAmount),
-      taxPaidAmountLastThreeYear: new FormControl(this.taxPerYears[2].taxPaidAmount),
-      taxPaidAmountLastFourYear: new FormControl(this.taxPerYears[3].taxPaidAmount),
-      taxPaidAmountLastFiveYear: new FormControl(this.taxPerYears[4].taxPaidAmount),
+      taxPaidAmountLastYear: new FormControl(this.taxPerYears[0].taxPaidAmount, [Validators.min(1)]),
+      taxPaidAmountLastTwoYear: new FormControl(this.taxPerYears[1].taxPaidAmount, [Validators.min(1)]),
+      taxPaidAmountLastThreeYear: new FormControl(this.taxPerYears[2].taxPaidAmount, [Validators.min(1)]),
+      taxPaidAmountLastFourYear: new FormControl(this.taxPerYears[3].taxPaidAmount, [Validators.min(1)]),
+      taxPaidAmountLastFiveYear: new FormControl(this.taxPerYears[4].taxPaidAmount, [Validators.min(1)]),
     });
   }
 
