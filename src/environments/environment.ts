@@ -5,7 +5,8 @@
 
 export const environment = {
   production: true,
-  apiURL: "http://localhost:5000",
+  // apiURL: "http://localhost:3000",
+  apiURL: "https://kg-all.herokuapp.com",
 
   CLOUD_NAME: "sva",
   CLOUD_API_KEY: 975547421473123,
