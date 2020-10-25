@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "heroku-postbuild": "ng serve",
+    "heroku-postbuild": "npm install",
+    "postinstall": "ng build --prod=fasle",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod=false",
