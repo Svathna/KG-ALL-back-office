@@ -1,8 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Moc, CompanyDetail, CompanyType } from '../../../model/company.model';
-import { COMPANY_TYPE_IN_KHMER } from '../../../modals/add-moc-modal/add-moc-modal.component';
+import { Moc, CompanyDetail } from '../../../model/company.model';
+import { COMPANY_TYPE } from '../../../modals/add-moc-modal/add-moc-modal.component';
 import * as moment from 'moment';
-import { Observable } from 'rxjs';
 
 declare var require: any
 const FileSaver = require('file-saver');
@@ -18,7 +17,7 @@ export class MocComponent {
   @Output() addMoc = new EventEmitter<CompanyDetail>();
   @Output() editMoc = new EventEmitter<CompanyDetail>();
 
-  companyTypeInKhmer = COMPANY_TYPE_IN_KHMER;
+  companyType = COMPANY_TYPE;
   moment: any = moment;
 
   constructor() {}

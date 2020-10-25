@@ -46,19 +46,22 @@ export class RequestsComponent implements OnInit {
   filterSearch() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
-      map((value) => this._filter(value))
+      map((value) => {
+        const filterValue = value.toLowerCase();
+
+        // filter request
+        if (this.requests.length > 0) {
+          this.requestsFiltered = this.requests.filter((request) => {
+            return request.company.name.toLowerCase().includes(filterValue) || request.company.nameInKhmer.toLowerCase().includes(filterValue);
+          });
+        }
+        return this._filter(value);
+      })
     );
   }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-
-    // filter request
-    if (this.requests.length > 0) {
-      this.requestsFiltered = this.requests.filter((request) => {
-        return request.company.name.toLowerCase().includes(filterValue) || request.company.nameInKhmer.toLowerCase().includes(filterValue);
-      });
-    }
 
     return this.options.filter((option) =>
       option.toLowerCase().includes(filterValue)

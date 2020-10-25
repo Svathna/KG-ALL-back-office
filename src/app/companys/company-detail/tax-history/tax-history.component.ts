@@ -7,7 +7,7 @@ import { ExportAsService, ExportAsConfig } from 'ngx-export-as';
 import { TaxPerYear } from '../../../interfaces/tax-per-year.interface';
 import { ToastrService } from 'ngx-toastr';
 
-export const MONTHS = [
+export const MONTHS_IN_KHMERS = [
   'មករា',
   'កុម្ភៈ',
   'មីនា',
@@ -20,6 +20,21 @@ export const MONTHS = [
   'តុលា',
   'វិច្ឆិកា',
   'ធ្នូ',
+];
+
+export const MONTHS = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ];
 
 @Component({
@@ -78,7 +93,6 @@ export class TaxHistoryComponent implements OnInit {
   }
 
   onTaxPerMonthRemoved(index: number) {
-    console.log(index);
     this.isFetching = true;
     const value = { month: index + 1 };
     this.companyService.removeTaxPerMonth(this.taxHistory._id, value).subscribe((data: any) => {

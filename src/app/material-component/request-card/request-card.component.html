@@ -19,7 +19,7 @@
         </div>
         <div fxFlex fxLayout="row" fxLayoutAlign="space-between end">
             <span *ngIf="request.status === 'pending'" class="text-white date-text">date: {{ request.createdAt | date }}</span>
-            <span *ngIf="request.status !== 'pending'" class="text-white date-text">date: {{ (request.updatedAt ? request.updatedAt : request.createdAt) | date }}</span>
+            <span *ngIf="request.status !== 'pending'" class="text-white date-text"> {{ request.status === 'accepted' ? 'acceptedAt:' : 'rejectedAt:' }} {{ (request.updatedAt ? request.updatedAt : request.createdAt) | date }}</span>
             <div *ngIf="request.status === 'pending'" fxFlex fxLayout="row" fxLayoutAlign="end end">
                 <button class="mr-2" color="warn"  mat-raised-button (click)="rejectRequest($event)">
                     reject

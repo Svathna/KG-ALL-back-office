@@ -15,6 +15,13 @@ export const COMPANY_TYPE_IN_KHMER = [
   'ក្រុមហ៊ុនមហាជនទទួលខុសត្រូវមានកម្រិត',
 ]
 
+export const COMPANY_TYPE = [
+  '',
+  "Sole Proprietorships",
+  "Private Limited Company",
+  "Public Limited Company",
+]
+
 @Component({
   selector: 'app-add-moc-modal',
   templateUrl: './add-moc-modal.component.html',
@@ -26,7 +33,7 @@ export class AddMocModalComponent implements OnInit {
   isFetching = false;
   passwordVisible = false;
   companyId: string;
-  companyTypeInKhmer = COMPANY_TYPE_IN_KHMER;
+  companyTypeInKhmer = COMPANY_TYPE;
   companyType = CompanyType;
   moc: Moc;
 

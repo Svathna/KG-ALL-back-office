@@ -31,7 +31,6 @@ export class ServiceComponent implements OnInit {
 		this.isFetching = true;
 		this.companyService.getService().subscribe((data: any) => {
 			this.isFetching = false;
-			console.log(data);
 			if (data && data.success) {
 				if (data.service) {
 					this.service = data.service;
@@ -116,7 +115,6 @@ export class ServiceComponent implements OnInit {
 		const value = this.serviceForm.value;
 		this.companyService.updateService(this.service._id, value).subscribe((data: any) => {
 			this.isFetching = false;
-			console.log(data);
 			if (data && data.success) {
 				this.toaster.success("Updated Successful");
 			} else {

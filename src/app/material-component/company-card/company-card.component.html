@@ -12,18 +12,18 @@
 
         <mat-card-content>
             <div *ngIf="user" class="text-white" fxLayout="column" fxLayoutAlign="start none" fxLayoutGap="10px">
-                <h5 class="text-center text-bold mb-4">Manager</h5>
+                <h5 class="text-center text-bold mb-4">Contact</h5>
                 <div fxLayout="row" fxLayoutAlign="space-between end" fxLayoutGap="20px">
-                    <h6>Fullname :</h6>
+                    <h6>Manager fullname :</h6>
                     <h6 class="text-right">{{ user.fullName }}</h6>
-                </div>
-                <div fxLayout="row" fxLayoutAlign="space-between end">
-                    <h6>Username:</h6>
-                    <h6>{{ user.userName }}</h6>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="space-between end">
                     <h6>Phonenumber:</h6>
                     <h6>0{{ user.phoneNumber }}</h6>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-between end">
+                    <h6>Username login:</h6>
+                    <h6>{{ user.userName }}</h6>
                 </div>
             </div>
         </mat-card-content>

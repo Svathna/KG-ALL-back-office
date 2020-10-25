@@ -4,7 +4,7 @@
 
 <form [formGroup]="taxPerMonthForm">
     <div>
-        <h4>ពន្ធប្រចាំខែ {{monthArray[month -1]}}</h4>
+        <h4 class="text-khmer-bold">Monthly tax in {{monthArray[month -1]}}</h4>
     </div>
     <div fxLayout="column">
         <div class="mt-2" fxLayout="row">
@@ -13,10 +13,10 @@
                     <mat-form-field appearance="outline">
                         <mat-label>
                             <label class="mt-1">
-                                ចំណូល (រៀល)
+                                Revenue (៛)
                             </label>
                         </mat-label>
-                        <input formControlName="revenue" type="number" matInput required>
+                        <input formControlName="revenue" type="number" min="1" matInput required>
                     </mat-form-field>
                 </p>
             </div>
@@ -28,10 +28,10 @@
                     <mat-form-field appearance="outline">
                         <mat-label>
                             <label class="mt-1">
-                                ចំណាយ (រៀល)
+                                Expense (៛)
                             </label>
                         </mat-label>
-                        <input formControlName="spending" type="number" matInput required>
+                        <input formControlName="spending" type="number" min="1" matInput required>
                     </mat-form-field>
                 </p>
             </div>
@@ -43,10 +43,10 @@
                     <mat-form-field appearance="outline">
                         <mat-label>
                             <label>
-                                ប្រាក់ពន្ធបង់រួច (រៀល)
+                                Taxes paid (៛)
                             </label>
                         </mat-label>
-                        <input formControlName="taxPaidAmount" type="number" matInput required>
+                        <input formControlName="taxPaidAmount" type="number" min="1" matInput required>
                     </mat-form-field>
                 </p>
             </div>
@@ -57,7 +57,7 @@
                     <mat-form-field appearance="outline">
                         <mat-label>
                             <label>
-                                ផ្សេងៗ
+                                Ohters
                             </label>
                         </mat-label>
                         <input formControlName="others" type="text" matInput>
