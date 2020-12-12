@@ -5,11 +5,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng builld",
+    "build": "ng builld --prod=false",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --prod=false"
+    "postinstall": "ng build"
   },
   "heroku-run-build-script": true,
   "engines": {
