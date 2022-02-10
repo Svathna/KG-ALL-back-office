@@ -55,7 +55,7 @@
     "ngx-show-hide-password": "^2.1.0",
     "ngx-toastr": "^11.2.1",
     "ngx-uploader": "^8.0.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "popper.js": "^1.16.0",
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.0.0-rc.0",
